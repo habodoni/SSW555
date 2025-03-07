@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://w50n88bd07ln"]
+
+[ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
+[ext_resource type="Texture2D" uid="uid://x8wsyhu3eu5o" path="res://icon.svg" id="2_mvyt7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_flsmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_mvyt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
