@@ -16,11 +16,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3  # Gets your latest code
 
-      - name: Download Godot
-        run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux_headless.64.zip -O godot.zip
-          unzip godot.zip
-          mv Godot_v4.2.1-stable_linux_headless.64 godot
+      - name: Set up Godot
+        uses: firebelley/setup-godot@v1
+        with:
+          version: 4.2.1
+          edition: standard
+
 
       - name: Run Godot tests
         run: |
