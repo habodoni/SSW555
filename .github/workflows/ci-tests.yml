@@ -18,8 +18,8 @@ jobs:
 
       - name: Download Godot
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_linux_headless.64.zip
-          unzip Godot_v4.0-stable_linux_headless.64.zip
+          wget https://github.com/godotengine/godot/releases/download/4.0-stable/Godot_v4.0-stable_linux_headless.64.zip -O godot.zip
+          unzip godot.zip
           mv Godot_v4.0-stable_linux_headless.64 godot
 
       - name: Run Godot tests
