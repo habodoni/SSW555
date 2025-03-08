@@ -1,0 +1,28 @@
+name: Godot Automated Tests
+
+on:
+  push:
+    branches:
+      - main  # Runs tests when pushing to the main branch
+  pull_request:
+    branches:
+      - main  # Runs tests on pull requests
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest  # Use a Linux machine
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Gets your latest code
+
+      - name: Download Godot
+        run: |
+          wget https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_linux_headless.64.zip
+          unzip Godot_v4.0-stable_linux_headless.64.zip
+          mv Godot_v4.0-stable_linux_headless.64 godot
+
+      - name: Run Godot tests
+        run: |
+          chmod +x godot  # Make Godot executable
+          ./godot --headless --script run_tests.gd
