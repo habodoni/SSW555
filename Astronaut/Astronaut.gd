@@ -38,8 +38,3 @@ func increase_health(amount: int):
 	health = min(health, MAX_HEALTH)  # Ensure health does not exceed max
 	health_bar.value = health
 	print("Current Health: ", health)
-
-func _physics_process(_delta):
-	get_input()
-	move_and_slide()
-
