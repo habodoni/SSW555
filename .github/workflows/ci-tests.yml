@@ -24,5 +24,6 @@ jobs:
 
       - name: Run Godot tests
         run: |
-          chmod +x godot  # Make Godot executable
-          ./godot --headless --script run_tests.gd
+          chmod +x godot
+          ./godot --headless --path tests --run RunTests
+
