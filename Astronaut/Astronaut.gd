@@ -6,7 +6,7 @@ extends CharacterBody2D
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	drain_health(delta)  # Call health drain every frame
+	#drain_health(delta)  # Call health drain every frame
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -20,6 +20,7 @@ const MAX_HEALTH = 100
 var health = MAX_HEALTH
 var drain_time = 60.0  # Time in seconds for health to reach zero
 
+"""
 @onready var health_bar = $HealthBar  # Ensure HealthBar is a child of Astronaut
 
 func _ready():
@@ -38,3 +39,5 @@ func increase_health(amount: int):
 	health = min(health, MAX_HEALTH)  # Ensure health does not exceed max
 	health_bar.value = health
 	print("Current Health: ", health)
+	
+"""

@@ -1,33 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://w50n88bd07ln"]
+[gd_scene load_steps=3 format=3 uid="uid://cx3ayeiy1mufr"]
 
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
 [ext_resource type="Texture2D" uid="uid://x8wsyhu3eu5o" path="res://icon.svg" id="2_mvyt7"]
-[ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_emdfu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cjane"]
-radius = 62.0725
+[node name="Node2D" type="Node2D"]
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_flsmn")
 
-[node name="MainScene" type="Node2D"]
-
-[node name="Astronaut" type="CharacterBody2D" parent="."]
-script = ExtResource("1_flsmn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Astronaut"]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_mvyt7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronaut"]
-shape = SubResource("CircleShape2D_cjane")
-
-[node name="HealthBar" type="ProgressBar" parent="Astronaut"]
-offset_left = -59.0
-offset_top = -97.0
-offset_right = 70.0
-offset_bottom = -70.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Apple" parent="." instance=ExtResource("3_emdfu")]
-position = Vector2(234, 92)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
