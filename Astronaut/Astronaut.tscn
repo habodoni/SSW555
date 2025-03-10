@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx3ayeiy1mufr"]
+[gd_scene load_steps=5 format=3 uid="uid://cx3ayeiy1mufr"]
 
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
 [ext_resource type="Texture2D" uid="uid://x8wsyhu3eu5o" path="res://icon.svg" id="2_mvyt7"]
+[ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_jav7a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gk42i"]
+radius = 62.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +16,15 @@ script = ExtResource("1_flsmn")
 texture = ExtResource("2_mvyt7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_gk42i")
+
+[node name="HealthBar" type="ProgressBar" parent="CharacterBody2D"]
+offset_left = -54.0
+offset_top = -99.0
+offset_right = 57.0
+offset_bottom = -72.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node2D" parent="." instance=ExtResource("3_jav7a")]
+position = Vector2(268, 54)
