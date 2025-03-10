@@ -1,0 +1,40 @@
+name: Godot CI Tests
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: sudo apt-get update && sudo apt-get install -y libfontconfig1
+
+    - name: Download Godot 4.3 Headless
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/4.3/godot-headless-4.3-linux.x86_64.zip
+        unzip godot-headless-4.3-linux.x86_64.zip -d godot-headless
+        chmod +x godot-headless/godot
+
+    - name: Run GUT Tests
+      run: |
+        godot-headless/godot --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
+
+    - name: Save Test Results
+      if: always()
+      run: mkdir -p test-results && mv tests/results.xml test-results/
+
+    - name: Upload Test Artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: test-results/
+
