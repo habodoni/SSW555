@@ -1,19 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx3ayeiy1mufr"]
+[gd_scene load_steps=15 format=3 uid="uid://cx3ayeiy1mufr"]
 
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
-[ext_resource type="Texture2D" uid="uid://x8wsyhu3eu5o" path="res://icon.svg" id="2_mvyt7"]
+[ext_resource type="Texture2D" uid="uid://bv01g33ka45dt" path="res://Astronaut/kosmonaut.png" id="3_8murx"]
 [ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_jav7a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gk42i"]
 radius = 62.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kdit"]
+atlas = ExtResource("3_8murx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dstls"]
+atlas = ExtResource("3_8murx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsr2f"]
+atlas = ExtResource("3_8murx")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqp2u"]
+atlas = ExtResource("3_8murx")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64v5b"]
+atlas = ExtResource("3_8murx")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3sdx"]
+atlas = ExtResource("3_8murx")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfdfi"]
+atlas = ExtResource("3_8murx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3l2n"]
+atlas = ExtResource("3_8murx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc8dl"]
+atlas = ExtResource("3_8murx")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03ftk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kdit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dstls")
+}],
+"loop": true,
+"name": &"DownWalk",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsr2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqp2u")
+}],
+"loop": true,
+"name": &"LeftWalk",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64v5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3sdx")
+}],
+"loop": true,
+"name": &"RightWalk",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfdfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3l2n")
+}],
+"loop": true,
+"name": &"UpWalk",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc8dl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_flsmn")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_mvyt7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_gk42i")
@@ -23,6 +111,12 @@ offset_left = -54.0
 offset_top = -99.0
 offset_right = 57.0
 offset_bottom = -72.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_03ftk")
+animation = &"UpWalk"
+frame_progress = 0.869232
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

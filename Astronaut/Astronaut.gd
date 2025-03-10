@@ -10,6 +10,17 @@ func _physics_process(delta):
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
+	#walking animation
+	if input_direction == Vector2(0,0):
+		$AnimatedSprite2D.play("default")
+	elif input_direction.y == -1:
+		$AnimatedSprite2D.play("UpWalk")
+	elif input_direction.y == 1:
+		$AnimatedSprite2D.play("DownWalk")
+	elif input_direction.x == -1:
+		$AnimatedSprite2D.play("LeftWalk")
+	elif input_direction.x == 1:
+		$AnimatedSprite2D.play("RightWalk")
 
 
 # ==============================
