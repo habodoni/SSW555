@@ -108,6 +108,7 @@ position = Vector2(1, 1)
 [node name="Spaceship" parent="." instance=ExtResource("2_2q6ue")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(33, 32)
 script = ExtResource("1_flsmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -131,4 +132,4 @@ frame_progress = 0.869232
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Apple" parent="." instance=ExtResource("3_jav7a")]
-position = Vector2(160, 160)
+position = Vector2(380, 290)
