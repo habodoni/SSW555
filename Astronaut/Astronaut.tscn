@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cx3ayeiy1mufr"]
+[gd_scene load_steps=17 format=3 uid="uid://cx3ayeiy1mufr"]
 
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
+[ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_gjr6w"]
+[ext_resource type="PackedScene" uid="uid://b102yoln5f6aa" path="res://Spaceship/Spaceship.tscn" id="2_2q6ue"]
 [ext_resource type="Texture2D" uid="uid://bv01g33ka45dt" path="res://Astronaut/kosmonaut.png" id="3_8murx"]
 [ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_jav7a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gk42i"]
-radius = 62.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avexo"]
+size = Vector2(64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kdit"]
 atlas = ExtResource("3_8murx")
@@ -98,13 +100,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Astronaut" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_gjr6w")]
+position = Vector2(1, 1)
+
+[node name="Spaceship" parent="." instance=ExtResource("2_2q6ue")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_flsmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_gk42i")
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_avexo")
 
 [node name="HealthBar" type="ProgressBar" parent="CharacterBody2D"]
 offset_left = -54.0
@@ -113,12 +121,14 @@ offset_right = 57.0
 offset_bottom = -72.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-scale = Vector2(6, 6)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_03ftk")
 animation = &"UpWalk"
 frame_progress = 0.869232
 
+[node name="Node2D" type="Node2D" parent="CharacterBody2D/AnimatedSprite2D"]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Node2D" parent="." instance=ExtResource("3_jav7a")]
-position = Vector2(268, 54)
+[node name="Apple" parent="." instance=ExtResource("3_jav7a")]
+position = Vector2(160, 160)
