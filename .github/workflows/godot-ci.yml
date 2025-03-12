@@ -23,19 +23,22 @@ jobs:
         unzip godot-headless-4.3-linux.x86_64.zip -d godot-headless
         chmod +x godot-headless/godot
 
-    - name: Debug - Check Test Files
+    - name: Debug - Check Directory Structure
       run: |
-        echo "Listing test directory contents:"
-        ls -R tests/ || echo "⚠️ Test directory not found!"
-        ls -R addons/gut/ || echo "⚠️ GUT not found!"
+        echo "Listing repository files..."
+        ls -R
+        echo "Listing tests directory..."
+        ls -R tests/ || echo "Test directory not found!"
+        echo "Listing GUT directory..."
+        ls -R addons/gut/ || echo "GUT not found!"
 
-    - name: Run GUT Tests (Verbose)
+    - name: Run GUT Tests (Using RunTests.tscn)
       run: |
-        godot-headless/godot --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/ --verbose
+        godot-headless/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/RunTests.tscn
 
     - name: Save Test Results
       if: always()
-      run: mkdir -p test-results && mv tests/results.xml test-results/ || echo "⚠️ No test results found!"
+      run: mkdir -p test-results && mv tests/results.xml test-results/ || echo "No test results found."
 
     - name: Upload Test Artifacts
       if: always()
