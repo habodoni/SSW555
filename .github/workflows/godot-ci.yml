@@ -24,13 +24,13 @@ jobs:
     - name: Verify Godot Installation
       run: godot --version
 
-    - name: Force Import of Assets
+    - name: Reimport Assets Before Tests
       run: |
-        godot --headless --fix-imports --path .
+        godot --headless --path . --quit-after 5
 
-    - name: Run GUT Tests
+    - name: Run GUT Tests (from tests/)
       run: |
-        godot --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
+        godot --headless --path . --script res://addons/gut/gut_cmdln.gd -gdir=res://tests/ -gexit
 
     - name: Save Test Results
       if: always()
