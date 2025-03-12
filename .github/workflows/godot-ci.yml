@@ -24,11 +24,11 @@ jobs:
     - name: Verify Godot Installation
       run: godot --version
 
-    - name: Reimport Assets Before Tests
+    - name: Force Reimport of Assets (Tests Only)
       run: |
         godot --headless --path . --quit-after 5
 
-    - name: Run GUT Tests (from tests/)
+    - name: Run GUT Tests (Only `tests/`)
       run: |
         godot --headless --path . --script res://addons/gut/gut_cmdln.gd -gdir=res://tests/ -gexit
 
