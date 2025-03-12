@@ -2,7 +2,7 @@ name: Godot CI Tests
 
 on:
   push:
-    branches: [ main]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -23,13 +23,19 @@ jobs:
         unzip godot-headless-4.3-linux.x86_64.zip -d godot-headless
         chmod +x godot-headless/godot
 
-    - name: Run GUT Tests
+    - name: Debug - Check Test Files
       run: |
-        godot-headless/godot --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
+        echo "Listing test directory contents:"
+        ls -R tests/ || echo "⚠️ Test directory not found!"
+        ls -R addons/gut/ || echo "⚠️ GUT not found!"
+
+    - name: Run GUT Tests (Verbose)
+      run: |
+        godot-headless/godot --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/ --verbose
 
     - name: Save Test Results
       if: always()
-      run: mkdir -p test-results && mv tests/results.xml test-results/
+      run: mkdir -p test-results && mv tests/results.xml test-results/ || echo "⚠️ No test results found!"
 
     - name: Upload Test Artifacts
       if: always()
@@ -37,4 +43,3 @@ jobs:
       with:
         name: test-results
         path: test-results/
-
