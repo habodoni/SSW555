@@ -22,31 +22,13 @@ jobs:
         mv Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
 
     - name: Verify Godot Installation
-      run: |
-        godot --version
+      run: godot --version
 
-    - name: Debug: List Project Files
-      run: |
-        ls -R .
+    - name: Force Asset Reimport
+      run: godot --headless --fix-imports --path . --quit-after 5
 
-    - name: Debug: List Imported Assets
-      run: |
-        ls -R .godot/imported || echo "No imported assets found"
-
-    - name: Force Full Asset Reimport (Log Output)
-      run: |
-        godot --headless --fix-imports --path . --quit-after 5 > import_log.txt 2>&1 || echo "Import failed, see log"
-
-    - name: Upload Import Log for Debugging
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: import-log
-        path: import_log.txt
-
-    - name: Run GUT Tests (Only `tests/`)
-      run: |
-        godot --headless --path . --script res://addons/gut/gut_cmdln.gd -gdir=res://tests/ -gexit || echo "Tests failed, see logs"
+    - name: Run GUT Tests
+      run: godot --headless --path . --script res://addons/gut/gut_cmdln.gd -gdir=res://tests/ -gexit
 
     - name: Save Test Results
       if: always()
