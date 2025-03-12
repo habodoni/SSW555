@@ -1,5 +1,5 @@
 name: Godot CI Tests
-#
+
 on:
   push:
     branches: [ main ]
@@ -22,13 +22,16 @@ jobs:
         mv Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
 
     - name: Verify Godot Installation
-      run: godot --version
+      run: |
+        godot --version
 
     - name: Debug: List Project Files
-      run: ls -R .
+      run: |
+        ls -R .
 
     - name: Debug: List Imported Assets
-      run: ls -R .godot/imported || echo "No imported assets found"
+      run: |
+        ls -R .godot/imported || echo "No imported assets found"
 
     - name: Force Full Asset Reimport (Log Output)
       run: |
@@ -47,7 +50,9 @@ jobs:
 
     - name: Save Test Results
       if: always()
-      run: mkdir -p test-results && mv tests/results.xml test-results/ || echo "No test results found."
+      run: |
+        mkdir -p test-results
+        mv tests/results.xml test-results/ || echo "No test results found."
 
     - name: Upload Test Artifacts
       if: always()
