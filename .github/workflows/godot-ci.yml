@@ -14,21 +14,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install Dependencies
-      run: sudo apt-get update && sudo apt-get install -y libfontconfig1 libx11-6
-
-    - name: Download Godot 4.3 Standard Edition
+    - name: Run GUT Tests (Using Docker for Godot 4.3)
       run: |
-        wget https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
-        unzip Godot_v4.3-stable_linux.x86_64.zip -d godot-4.3
-        chmod +x godot-4.3/Godot_v4.3-stable_linux.x86_64
-
-    - name: Verify Godot Installation
-      run: ./godot-4.3/Godot_v4.3-stable_linux.x86_64 --version
-
-    - name: Run GUT Tests (Command Line)
-      run: |
-        ./godot-4.3/Godot_v4.3-stable_linux.x86_64 --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
+        docker run --rm -v $(pwd):/workspace barichello/godot-ci:4.3 \
+          godot --headless --path /workspace --script /workspace/addons/gut/gut_cmdln.gd -d res://tests/
 
     - name: Save Test Results
       if: always()
