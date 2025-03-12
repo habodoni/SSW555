@@ -24,9 +24,13 @@ jobs:
     - name: Verify Godot Installation
       run: godot --version
 
+    - name: Force Import of Assets
+      run: |
+        godot --headless --fix-imports --path .
+
     - name: Run GUT Tests
       run: |
-        godot --headless --fix-imports --path . --script addons/gut/gut_cmdln.gd -d res://tests/
+        godot --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
 
     - name: Save Test Results
       if: always()
