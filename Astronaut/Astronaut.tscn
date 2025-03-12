@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cx3ayeiy1mufr"]
+[gd_scene load_steps=18 format=3 uid="uid://cx3ayeiy1mufr"]
 
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_gjr6w"]
 [ext_resource type="PackedScene" uid="uid://b102yoln5f6aa" path="res://Spaceship/Spaceship.tscn" id="2_2q6ue"]
 [ext_resource type="Texture2D" uid="uid://bv01g33ka45dt" path="res://Astronaut/kosmonaut.png" id="3_8murx"]
 [ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_jav7a"]
+[ext_resource type="PackedScene" uid="uid://dd7imvfo72tbu" path="res://TaskMarker/TaskMarker.tscn" id="6_0faae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avexo"]
 size = Vector2(64, 32)
@@ -129,7 +130,10 @@ frame_progress = 0.869232
 
 [node name="Node2D" type="Node2D" parent="CharacterBody2D/AnimatedSprite2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Apple" parent="." instance=ExtResource("3_jav7a")]
 position = Vector2(380, 290)
+
+[node name="TaskMarker" parent="." instance=ExtResource("6_0faae")]
+position = Vector2(-224, -320)
+
+[node name="Camera2D" type="Camera2D" parent="."]

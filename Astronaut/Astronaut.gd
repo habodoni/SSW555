@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @export var speed = 250
 
+var player_status = true
+
 # Movement Code
 func _physics_process(delta):
 	get_input()
@@ -36,6 +38,7 @@ var drain_time = 60.0  # Time in seconds for health to reach zero
 func _ready():
 	health_bar.max_value = MAX_HEALTH
 	health_bar.value = health
+	add_to_group("player")
 
 func drain_health(delta):
 	var health_decrease_rate = MAX_HEALTH / drain_time
@@ -49,3 +52,6 @@ func increase_health(amount: int):
 	health = min(health, MAX_HEALTH)  # Ensure health does not exceed max
 	health_bar.value = health
 	print("Current Health: ", health)
+	
+func is_player():
+	return player_status

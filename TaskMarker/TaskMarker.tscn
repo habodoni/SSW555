@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd7imvfo72tbu"]
+
+[ext_resource type="Script" path="res://TaskMarker/task_marker.gd" id="1_v3x2p"]
+[ext_resource type="PackedScene" uid="uid://xd7ffxi5gwxs" path="res://OxygenMinigame/OxygenMinigame.tscn" id="2_tfn8c"]
+
+[sub_resource type="Gradient" id="Gradient_h4shr"]
+offsets = PackedFloat32Array(0.532468, 0.792208)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xouih"]
+gradient = SubResource("Gradient_h4shr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gygn7"]
+radius = 65.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_v3x2p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D"]
+texture = SubResource("GradientTexture2D_xouih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gygn7")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_left = -1213.0
+offset_top = -609.0
+offset_right = 1881.0
+offset_bottom = 1218.0
+color = Color(0, 0, 0, 1)
+
+[node name="OxygenMinigame" parent="Area2D" instance=ExtResource("2_tfn8c")]
+position = Vector2(140, 540)
+scale = Vector2(3, 3)
