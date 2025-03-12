@@ -15,26 +15,17 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Dependencies
-      run: sudo apt-get update && sudo apt-get install -y libfontconfig1
+      run: sudo apt-get update && sudo apt-get install -y libfontconfig1 libx11-6
 
     - name: Download Godot 4.3 Headless
       run: |
-        wget https://downloads.tuxfamily.org/godotengine/4.3/godot-headless-4.3-linux.x86_64.zip
-        unzip godot-headless-4.3-linux.x86_64.zip -d godot-headless
-        chmod +x godot-headless/godot
+        wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux_headless.64.zip
+        unzip Godot_v4.3-stable_linux_headless.64.zip -d godot-headless
+        chmod +x godot-headless/Godot_v4.3-stable_linux_headless.64
 
-    - name: Debug - Check Directory Structure
+    - name: Run GUT Tests
       run: |
-        echo "Listing repository files..."
-        ls -R
-        echo "Listing tests directory..."
-        ls -R tests/ || echo "Test directory not found!"
-        echo "Listing GUT directory..."
-        ls -R addons/gut/ || echo "GUT not found!"
-
-    - name: Run GUT Tests (Using RunTests.tscn)
-      run: |
-        godot-headless/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/RunTests.tscn
+        godot-headless/Godot_v4.3-stable_linux_headless.64 --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
 
     - name: Save Test Results
       if: always()
