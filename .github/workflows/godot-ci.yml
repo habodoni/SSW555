@@ -14,10 +14,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Run GUT Tests (Using Docker for Godot 4.3)
+    - name: Set up Godot 4.3
+      uses: manleydev/setup-godot@v1
+      with:
+        version: 4.3
+        use-mono: false  # Set to true if your project uses C#.
+
+    - name: Run GUT Tests (Using Installed Godot)
       run: |
-        docker run --rm -v $(pwd):/workspace barichello/godot-ci:4.3 \
-          godot --headless --path /workspace --fix-imports --script /workspace/addons/gut/gut_cmdln.gd -d res://tests/
+        godot --headless --fix-imports --path . --script addons/gut/gut_cmdln.gd -d res://tests/
 
     - name: Save Test Results
       if: always()
