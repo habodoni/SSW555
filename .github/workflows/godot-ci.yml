@@ -17,15 +17,15 @@ jobs:
     - name: Install Dependencies
       run: sudo apt-get update && sudo apt-get install -y libfontconfig1 libx11-6
 
-    - name: Download Godot 4.3 Headless
+    - name: Download Godot 4.3 Standard Edition (Linux)
       run: |
-        wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux_headless.64.zip
-        unzip Godot_v4.3-stable_linux_headless.64.zip -d godot-headless
-        chmod +x godot-headless/Godot_v4.3-stable_linux_headless.64
+        wget https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+        unzip Godot_v4.3-stable_linux.x86_64.zip -d godot-4.3
+        chmod +x godot-4.3/Godot_v4.3-stable_linux.x86_64
 
     - name: Run GUT Tests
       run: |
-        godot-headless/Godot_v4.3-stable_linux_headless.64 --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
+        ./godot-4.3/Godot_v4.3-stable_linux.x86_64 --headless --path . --script addons/gut/gut_cmdln.gd -d res://tests/
 
     - name: Save Test Results
       if: always()
