@@ -33,7 +33,6 @@ jobs:
         run: |
           ./Godot_v4.3-stable_linux.x86_64 --headless --import --quit --path .
 
-      - name: Run Unit Tests
+      - name: Run Scene-Based Unit Tests
         run: |
-          ./Godot_v4.3-stable_linux.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
-
+          ./Godot_v4.3-stable_linux.x86_64 --headless --path . --scene tests/RunTests.tscn
