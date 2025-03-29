@@ -61,6 +61,9 @@ func _ready():
 
 	print("\n".join(results))
 	print("All Astronaut tests completed.\n")
+	
+	get_tree().quit() #Terminates run for CI.
+
 
 # ---------------------- ACTUAL UNIT TESTS ----------------------
 

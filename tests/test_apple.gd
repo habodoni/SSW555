@@ -57,6 +57,9 @@ func _ready():
 
 	print("\n".join(results))
 	print("All Apple tests completed.\n")
+	
+	get_tree().quit() #Terminates run for ci
+
 
 # ---------------------- Helper Function for Apple ----------------------
 
