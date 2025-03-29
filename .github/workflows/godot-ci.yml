@@ -23,9 +23,9 @@ jobs:
       # Download and setup Godot 4.3 headless explicitly
       - name: Download Godot Headless
         run: |
-          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
-          unzip Godot_v4.3-stable_linux.x86_64.zip
-          chmod +x Godot_v4.3-stable_linux.x86_64
+          wget https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux_headless.64.zip
+          unzip Godot_v4.3-stable_linux_headless.64.zip
+          chmod +x Godot_v4.3-stable_linux_headless.64
 
       # Run Godot Unit Tests
       - name: Run Unit Tests
