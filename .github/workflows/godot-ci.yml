@@ -16,19 +16,18 @@ jobs:
     # Job Test:
     runs-on: ubuntu-latest
 
-    # Steps provide a sequence of tasks to be run in the job.
     steps:
       # Checks out this repository
       - uses: actions/checkout@v3
 
-      # Setup Godot Engine
-      - name: Setup Godot
-        uses: chickensoft-games/setup-godot@v1
-        with:
-          version: 3.4.0
-          include-templates: true
+      # Download and setup Godot headless explicitly
+      - name: Download Godot Headless
+        run: |
+          wget https://downloads.tuxfamily.org/godotengine/3.4/Godot_v3.4-stable_linux_headless.64.zip
+          unzip Godot_v3.4-stable_linux_headless.64.zip
+          chmod +x Godot_v3.4-stable_linux_headless.64
 
       # Run Godot Unit Tests
       - name: Run Unit Tests
         run: |
-          godot --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
+          ./Godot_v3.4-stable_linux_headless.64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
