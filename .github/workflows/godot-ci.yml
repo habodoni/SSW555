@@ -1,24 +1,34 @@
-name: Godot CI
+name: Godot CI Tests
 
-#When Workflow will run
+# When Workflow will run
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-  #Workflow runs Manually from actions
+  # Workflow runs Manually from actions
   workflow_dispatch:
 
-#What the workflow does
+# What the workflow does
 jobs:
-  build:
-    #Job Build:
+  test:
+    # Job Test:
     runs-on: ubuntu-latest
 
-    #steps provide a sequence of tasks to be ran in the job.
+    # Steps provide a sequence of tasks to be run in the job.
     steps:
+      # Checks out this repository
       - uses: actions/checkout@v3
-      - name: run a script
-        run: echo Testing ci setup.
-      
+
+      # Setup Godot Engine
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v1
+        with:
+          version: 3.4-stable
+          export-templates: true
+
+      # Run Godot Unit Tests
+      - name: Run Unit Tests
+        run: |
+          godot --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
