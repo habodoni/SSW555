@@ -25,8 +25,8 @@ jobs:
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v1
         with:
-          version: 3.4-stable
-          export-templates: true
+          version: 3.4
+          include-templates: true
 
       # Run Godot Unit Tests
       - name: Run Unit Tests
