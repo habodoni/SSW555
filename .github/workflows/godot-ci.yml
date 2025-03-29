@@ -29,10 +29,6 @@ jobs:
           unzip Godot_v4.3-stable_linux.x86_64.zip
           chmod +x Godot_v4.3-stable_linux.x86_64
 
-      - name: Import Project and Plugins
-        run: |
-          ./Godot_v4.3-stable_linux.x86_64 --headless --editor --quit --path .
-
       - name: Run Unit Tests
         run: |
           ./Godot_v4.3-stable_linux.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
