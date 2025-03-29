@@ -34,9 +34,9 @@ jobs:
           ./Godot_v4.3-stable_linux.x86_64 --headless --import --quit --path .
       #Since no GUT export directly, tscn files must be ran and placed here in this format.
       - name: Run All Scene-Based Unit Tests
-          run: |
-            for scene in tests/*.tscn; do
-              echo "Running scene: $scene"
-              ./Godot_v4.3-stable_linux.x86_64 --headless --path . --scene "$scene"
-            done
+        run: |
+          for scene in tests/*.tscn; do
+            echo "Running scene: $scene"
+            ./Godot_v4.3-stable_linux.x86_64 --headless --path . --scene "$scene"
+          done
 
