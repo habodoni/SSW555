@@ -20,14 +20,14 @@ jobs:
       # Checks out this repository
       - uses: actions/checkout@v3
 
-      # Download and setup Godot headless explicitly
+      # Download and setup Godot 4.3 headless explicitly
       - name: Download Godot Headless
         run: |
-          wget https://absinthe.tuxfamily.org/godotengine/3.4/Godot_v3.4-stable_linux_headless.64.zip
-          unzip Godot_v3.4-stable_linux_headless.64.zip
-          chmod +x Godot_v3.4-stable_linux_headless.64
+          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip Godot_v4.3-stable_linux.x86_64.zip
+          chmod +x Godot_v4.3-stable_linux.x86_64
 
       # Run Godot Unit Tests
       - name: Run Unit Tests
         run: |
-          ./Godot_v3.4-stable_linux_headless.64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
+          ./Godot_v4.3-stable_linux.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
