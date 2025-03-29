@@ -29,6 +29,10 @@ jobs:
           unzip Godot_v4.3-stable_linux.x86_64.zip
           chmod +x Godot_v4.3-stable_linux.x86_64
 
+      - name: Initialize Godot Project (generate .godot folder)
+        run: |
+          ./Godot_v4.3-stable_linux.x86_64 --headless --quit --path .
+
       - name: Run Unit Tests
         run: |
           ./Godot_v4.3-stable_linux.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
