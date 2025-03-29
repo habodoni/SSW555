@@ -21,13 +21,14 @@ jobs:
       - uses: actions/checkout@v3
 
       # Download and setup Godot 4.3 headless explicitly
+      #THIS BUILD WORKS.
       - name: Download Godot Headless
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
-          unzip Godot_v4.3-stable_linux.x86_64.zip
-          chmod +x Godot_v4.3-stable_linux.x86_64
-
-      # Run Godot Unit Tests
-      - name: Run Unit Tests
+          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux_headless.x86_64.zip
+          unzip Godot_v4.3-stable_linux_headless.x86_64.zip
+          chmod +x Godot_v4.3-stable_linux_headless.x86_64
+      
+      - name: Run Godot Unit Tests
         run: |
-          ./Godot_v4.3-stable_linux.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
+          ./Godot_v4.3-stable_linux_headless.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
+      
