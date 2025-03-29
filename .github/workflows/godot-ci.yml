@@ -29,7 +29,12 @@ jobs:
           unzip Godot_v4.3-stable_linux.x86_64.zip
           chmod +x Godot_v4.3-stable_linux.x86_64
       
-      # Run unit tests explicitly in headless mode
+      # Import Project Files explicitly (needed for addons like GUT)
+      - name: Import Assets
+        run: |
+          ./Godot_v4.3-stable_linux.x86_64 --headless --editor --quit
+
+      # Run Unit Tests with GUT
       - name: Run Unit Tests
         run: |
           ./Godot_v4.3-stable_linux.x86_64 --headless -s addons/gut/gut_cmdln.gd -gdir=tests -gexit
