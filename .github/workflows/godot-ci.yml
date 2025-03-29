@@ -23,7 +23,7 @@ jobs:
       # Download and setup Godot headless explicitly
       - name: Download Godot Headless
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/3.4/Godot_v3.4-stable_linux_headless.64.zip
+          wget https://absinthe.tuxfamily.org/godotengine/3.4/Godot_v3.4-stable_linux_headless.64.zip
           unzip Godot_v3.4-stable_linux_headless.64.zip
           chmod +x Godot_v3.4-stable_linux_headless.64
 
