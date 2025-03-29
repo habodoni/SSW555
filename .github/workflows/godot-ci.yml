@@ -29,9 +29,7 @@ jobs:
           unzip Godot_v4.3-stable_linux.x86_64.zip
           chmod +x Godot_v4.3-stable_linux.x86_64
 
-      - name: Import Godot Resources (generate .godot folder with class_name support)
-        run: |
-          ./Godot_v4.3-stable_linux.x86_64 --headless --import --quit --path .
+
       #Since no GUT export directly, tscn files must be ran and placed here in this format.
       - name: Run All Scene-Based Unit Tests
         run: |
