@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dag6fxbbkoffm" path="res://Spaceship/tileset_sf.png" id="1_cmsd0"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xs376"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmcj3"]
 texture = ExtResource("1_cmsd0")
 texture_region_size = Vector2i(64, 64)
 0:6/0 = 0
@@ -145,7 +145,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_xqxlo"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_xs376")
+sources/1 = SubResource("TileSetAtlasSource_cmcj3")
 
 [node name="Spaceship" type="Node2D"]
 

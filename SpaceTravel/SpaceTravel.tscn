@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcinoyc1nyh0m"]
+
+[ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
+[ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
+[ext_resource type="PackedScene" uid="uid://b102yoln5f6aa" path="res://Spaceship/Spaceship.tscn" id="2_8s5n5"]
+[ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_447bn"]
+[ext_resource type="PackedScene" uid="uid://dd7imvfo72tbu" path="res://TaskMarker/TaskMarker.tscn" id="4_ynd6j"]
+
+[node name="SpaceTravel" type="Node2D"]
+script = ExtResource("1_wutnr")
+
+[node name="Background" parent="." instance=ExtResource("1_16vgx")]
+position = Vector2(1, 1)
+
+[node name="Spaceship" parent="." instance=ExtResource("2_8s5n5")]
+
+[node name="Apple" parent="." instance=ExtResource("3_447bn")]
+position = Vector2(380, 290)
+
+[node name="TaskMarker" parent="." instance=ExtResource("4_ynd6j")]
+position = Vector2(-224, -320)
+
+[node name="Camera2D" type="Camera2D" parent="."]

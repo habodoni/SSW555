@@ -2,11 +2,13 @@ extends CharacterBody2D
 @export var speed = 250
 
 var player_status = true
+var active_player = false
 
 # Movement Code
 func _physics_process(delta):
-	get_input()
-	move_and_slide()
+	if(active_player):
+		get_input()
+		move_and_slide()
 	drain_health(delta)  # Call health drain every frame
 
 func get_input():
@@ -34,6 +36,11 @@ var health = MAX_HEALTH
 var drain_time = 60.0  # Time in seconds for health to reach zero
 
 @onready var health_bar = $HealthBar  # Ensure HealthBar is a child of Astronaut
+
+func setup(active, x, y):
+	active_player = active
+	position = Vector2(x, y)
+	$AnimatedSprite2D.play("default")
 
 func _ready():
 	health_bar.max_value = MAX_HEALTH
