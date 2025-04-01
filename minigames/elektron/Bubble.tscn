@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://chv4onvpatlhg"]
+
+[ext_resource type="Texture2D" uid="uid://bd02xe6p2heo7" path="res://bubble_1.png" id="1_oa602"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7f3g7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oa602")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_oa602")
+}],
+"loop": true,
+"name": &"float",
+"speed": 7.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7f3g7")
+animation = &"float"
