@@ -54,6 +54,9 @@ func _ready():
 	results.append(test_movement("down", Vector2(0, astronaut.speed)))
 	results.append(test_health_drain())
 	results.append(test_health_recovery())
+	results.append(test_multiple_astronauts())
+	results.append(test_active_player_can_move())
+	results.append(test_non_active_player_cannot_move())
 
 	# Display results in the UI
 	output_label.text += "\n".join(results)
@@ -101,3 +104,45 @@ func test_health_recovery():
 	var expected_health = min(initial_health + 20, astronaut.MAX_HEALTH)
 	assert(astronaut.health == expected_health, "❌ Health recovery test failed! Expected: %d, Got: %d" % [expected_health, astronaut.health])
 	return "✅ Health recovery test passed!"
+	
+# Tests that there is more than one astronaut 
+func test_multiple_astronauts():
+	var space_travel_scene = preload("res://SpaceTravel/SpaceTravel.tscn")  # ✅ Use the SCENE, not the script
+	var space_travel = space_travel_scene.instantiate()
+	add_child(space_travel)
+
+	# _ready will be called automatically after add_child, but just in case
+	if space_travel.has_method("_ready"):
+		space_travel._ready()
+
+	var astronaut_count = 0
+	for child in space_travel.get_children():
+		if child.has_method("is_player"):  # Simple check to identify astronaut
+			astronaut_count += 1
+
+	assert(astronaut_count > 1, "❌ Astronaut count test failed! Expected more than 1 astronaut, got: %d" % astronaut_count)
+	return "✅ Astronaut count test passed!"
+
+# Tests that an active player can move
+func test_active_player_can_move():
+	astronaut.setup(true, 0, 0)  # Set as active player
+	astronaut.velocity = Vector2.ZERO
+	Input.action_press("right")
+	astronaut._physics_process(1.0)
+	Input.action_release("right")
+
+	var expected = Vector2(astronaut.speed, 0)
+	assert(astronaut.velocity == expected, "❌ Active player move test failed! Expected: %s, Got: %s" % [expected, astronaut.velocity])
+	return "✅ Active player movement test passed!"
+
+# Tests that a non-active player cannot move
+func test_non_active_player_cannot_move():
+	astronaut.setup(false, 0, 0)  # Set as non-active
+	astronaut.velocity = Vector2.ZERO  # Reset to ensure a clean test
+	Input.action_press("right")
+	astronaut._physics_process(1.0)  # Simulate 1 second of game logic
+	Input.action_release("right")
+
+	var expected = Vector2(0, 0)
+	assert(astronaut.velocity == expected, "❌ Non-active player move test failed! Expected: %s, Got: %s" % [expected, astronaut.velocity])
+	return "✅ Non-active player cannot move test passed!"

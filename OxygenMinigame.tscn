@@ -1,9 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://2vf3p8odxjqt"]
+[gd_scene load_steps=28 format=3 uid="uid://2vf3p8odxjqt"]
 
 [ext_resource type="Texture2D" uid="uid://cmndvikm7w0o3" path="res://OxygenMinigame/sprites/Barrel2.png" id="1_eslhe"]
 [ext_resource type="Texture2D" uid="uid://d0frm56s2cpih" path="res://OxygenMinigame/sprites/Fire-extinguisher1.png" id="2_7wqte"]
-[ext_resource type="Texture2D" uid="uid://cyurht14bucst" path="res://OxygenMinigame/sprites/Hammer.png" id="3_njm11"]
-[ext_resource type="Texture2D" uid="uid://7gcxe0y6yxtu" path="res://OxygenMinigame/sprites/IndustrialTile_04.png" id="4_j0cnd"]
 [ext_resource type="Texture2D" uid="uid://brgxo12jkdh6m" path="res://OxygenMinigame/sprites/IndustrialTile_70.png" id="5_synlg"]
 [ext_resource type="Texture2D" uid="uid://datf3w8bdcdnk" path="res://OxygenMinigame/sprites/Screen2.png" id="6_1wwix"]
 [ext_resource type="Texture2D" uid="uid://cyurht14bucst" path="res://OxygenMinigame/sprites/Hammer.png" id="7_uiei8"]
@@ -30,7 +28,7 @@ texture_region_size = Vector2i(12, 21)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0npt"]
-texture = ExtResource("3_njm11")
+texture = ExtResource("7_uiei8")
 separation = Vector2i(1, 0)
 texture_region_size = Vector2i(15, 24)
 1:0/next_alternative_id = 2
@@ -39,7 +37,7 @@ texture_region_size = Vector2i(15, 24)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42c8n"]
-texture = ExtResource("4_j0cnd")
+texture = ExtResource("8_pq2y2")
 0:0/next_alternative_id = 3
 0:0/0 = 0
 0:1/0 = 0
