@@ -4,6 +4,9 @@ extends CharacterBody2D
 var player_status = true
 var active_player = false
 
+var active_shape: RectangleShape2D
+var not_active_shape: CircleShape2D
+
 # Movement Code
 func _physics_process(delta):
 	if(active_player):
@@ -37,15 +40,27 @@ var drain_time = 60.0  # Time in seconds for health to reach zero
 
 @onready var health_bar = $HealthBar  # Ensure HealthBar is a child of Astronaut
 
-func setup(active, x, y):
-	active_player = active
+func setup(active: bool, x: int, y: int):
+	set_active_player(active)
 	position = Vector2(x, y)
-	$AnimatedSprite2D.play("default")
+	
+
+func set_active_player(active: bool):
+	active_player = active
+	if(active_player):
+		$CollisionShape2D.disabled = false
+		$Area2D/CollisionShape2D.disabled = true
+	else:
+		$CollisionShape2D.disabled = true
+		$Area2D/CollisionShape2D.disabled = false
+		$AnimatedSprite2D.play("default")
+	
 
 func _ready():
 	health_bar.max_value = MAX_HEALTH
 	health_bar.value = health
 	add_to_group("player")
+	create_collision_shapes()
 
 func drain_health(delta):
 	var health_decrease_rate = MAX_HEALTH / drain_time
@@ -59,6 +74,13 @@ func increase_health(amount: int):
 	health = min(health, MAX_HEALTH)  # Ensure health does not exceed max
 	health_bar.value = health
 	print("Current Health: ", health)
-	
+
+
+func create_collision_shapes():
+	active_shape = RectangleShape2D.new()
+	active_shape.size = Vector2(64,32)
+	not_active_shape = CircleShape2D.new()
+	not_active_shape.radius = 65
+
 func is_player():
 	return player_status

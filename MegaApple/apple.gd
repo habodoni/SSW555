@@ -6,7 +6,7 @@ func _ready():
 	connect("body_entered", _on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("body entered")
+	#print("body entered")
 	if body is CharacterBody2D:  # Ensure only the player picks it up
 		if body.has_method("increase_health"):
 			body.increase_health(heal_amount)  # Increase player's health
