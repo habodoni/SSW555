@@ -1,7 +1,6 @@
 extends CharacterBody2D
 @export var speed = 250
 
-var player_status = true
 var active_player = false
 
 var active_shape: RectangleShape2D
@@ -9,10 +8,14 @@ var not_active_shape: CircleShape2D
 
 # Movement Code
 func _physics_process(delta):
-	if(active_player):
-		get_input()
-		move_and_slide()
-	drain_health(delta)  # Call health drain every frame
+	if not get_parent().minigame_active:
+		show()
+		if(active_player):
+			get_input()
+			move_and_slide()
+		drain_health(delta)  # Call health drain every frame
+	else:
+		hide()
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -83,4 +86,4 @@ func create_collision_shapes():
 	not_active_shape.radius = 65
 
 func is_player():
-	return player_status
+	return active_player

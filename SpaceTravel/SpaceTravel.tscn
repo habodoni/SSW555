@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcinoyc1nyh0m"]
+[gd_scene load_steps=9 format=3 uid="uid://bcinoyc1nyh0m"]
 
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
 [ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
 [ext_resource type="PackedScene" uid="uid://b102yoln5f6aa" path="res://Spaceship/Spaceship.tscn" id="2_8s5n5"]
 [ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_447bn"]
 [ext_resource type="PackedScene" uid="uid://dd7imvfo72tbu" path="res://TaskMarker/TaskMarker.tscn" id="4_ynd6j"]
+[ext_resource type="PackedScene" uid="uid://xd7ffxi5gwxs" path="res://OxygenMinigame/OxygenMinigame.tscn" id="6_6mcsa"]
+[ext_resource type="PackedScene" uid="uid://cfnxk2s14rps7" path="res://Task2.tscn" id="7_5fd5d"]
+[ext_resource type="PackedScene" uid="uid://devy8q30tlart" path="res://Task3.tscn" id="8_lpcof"]
 
 [node name="SpaceTravel" type="Node2D"]
 script = ExtResource("1_wutnr")
@@ -17,7 +20,24 @@ position = Vector2(1, 1)
 [node name="Apple" parent="." instance=ExtResource("3_447bn")]
 position = Vector2(380, 290)
 
-[node name="TaskMarker" parent="." instance=ExtResource("4_ynd6j")]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="OxygenTaskMarker" parent="." instance=ExtResource("4_ynd6j")]
 position = Vector2(-224, -320)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="TaskMarker2" parent="." instance=ExtResource("4_ynd6j")]
+position = Vector2(-224, 184)
+
+[node name="TaskMarker3" parent="." instance=ExtResource("4_ynd6j")]
+position = Vector2(352, -320)
+
+[node name="OxygenMinigame" parent="." instance=ExtResource("6_6mcsa")]
+visible = false
+position = Vector2(-127, 228)
+scale = Vector2(3, 3)
+
+[node name="Task2" parent="." instance=ExtResource("7_5fd5d")]
+visible = false
+
+[node name="Task3" parent="." instance=ExtResource("8_lpcof")]
+visible = false

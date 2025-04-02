@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://devy8q30tlart"]
+
+[node name="Task2" type="Node2D"]
+position = Vector2(-400, 0)
+scale = Vector2(8, 8)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Minigame 3
+To be implemented"

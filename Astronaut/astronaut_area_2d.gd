@@ -3,7 +3,9 @@ extends Area2D
 @onready var light = $PointLight2D
 @onready var highlight = load("res://TaskMarker/Highlight.tres")
 
+#represents if a player is in switch range
 var player_near = false
+#represents the player in switch range
 var player = null
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +27,9 @@ func switch_player():
 	player.set_active_player(false)
 	var this_astronaut = get_parent()
 	this_astronaut.set_active_player(true)
+	light.hide()
+	player_near = false
+	player = false
 
 func _on_body_entered(body: Node2D) -> void:
 	print("body entered")
