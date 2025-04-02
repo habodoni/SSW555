@@ -1,28 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfcyqmsv328hw"]
+[gd_scene load_steps=7 format=3 uid="uid://dfcyqmsv328hw"]
 
 [ext_resource type="Script" path="res://elektron_minigame.gd" id="1_4wkh4"]
+[ext_resource type="Script" path="res://liquid_unit_slot.gd" id="2_ncmwc"]
+[ext_resource type="Texture2D" uid="uid://clt5hphmtwb4y" path="res://Barrel2.png" id="2_xls2b"]
+[ext_resource type="Script" path="res://new_liquid_unit.gd" id="3_0pmcg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjp4r"]
+size = Vector2(110, 129.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwgfn"]
+size = Vector2(16.4571, 24.1225)
 
 [node name="ElektronMinigame" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 2.0
 offset_right = 1150.0
-offset_bottom = 647.0
+offset_bottom = 649.0
 script = ExtResource("1_4wkh4")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 3.0
+offset_top = -35.0
 offset_right = 1150.0
-offset_bottom = 646.0
+offset_bottom = 643.0
 
 [node name="OxygenStatus" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 29.0
-offset_right = 696.0
-offset_bottom = 101.0
+offset_left = 469.0
+offset_top = 70.0
+offset_right = 695.0
+offset_bottom = 142.0
 
 [node name="OxygenLevel" type="ProgressBar" parent="OxygenStatus"]
 layout_mode = 2
@@ -32,20 +42,36 @@ layout_mode = 2
 text = "Oxgen Level"
 horizontal_alignment = 1
 
-[node name="InstructionsLabel" type="Label" parent="."]
+[node name="InstructionsPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 674.0
-offset_top = 531.0
-offset_right = 924.0
-offset_bottom = 580.0
-text = "Instructions: "
+offset_left = 758.0
+offset_top = 18.0
+offset_right = 1148.0
+offset_bottom = 128.0
+
+[node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 36.0
+offset_right = 323.0
+offset_bottom = 85.0
+text = "(will be generated once compiled)"
+autowrap_mode = 2
+
+[node name="InstructionsHeader" type="Label" parent="InstructionsPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 31.0
+text = "Instructions:"
 
 [node name="GasAnalyzerPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 157.0
-offset_top = 147.0
-offset_right = 386.0
-offset_bottom = 350.0
+offset_left = 149.0
+offset_top = 164.0
+offset_right = 348.0
+offset_bottom = 349.0
 
 [node name="GasAnalyzerLabel" type="Label" parent="GasAnalyzerPanel"]
 layout_mode = 0
@@ -63,57 +89,88 @@ offset_right = 157.0
 offset_bottom = 126.0
 text = "SCAN"
 
-[node name="BubblesSection" type="HBoxContainer" parent="."]
+[node name="BubbleSection" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 397.0
-offset_right = 478.0
-offset_bottom = 570.0
+offset_left = 372.0
+offset_top = 172.0
+offset_right = 721.0
+offset_bottom = 345.0
 
-[node name="BubbleContainer" type="Node2D" parent="BubblesSection"]
-position = Vector2(-129, -397)
-
-[node name="ReleasePressureButton" type="Button" parent="BubblesSection"]
+[node name="ReleasePressureButton" type="Button" parent="BubbleSection"]
 layout_mode = 2
 text = "Release
 Pressure"
 
+[node name="BubbleContainer" type="Node2D" parent="BubbleSection"]
+position = Vector2(73, 82)
+
 [node name="LiquidUnitSection" type="Node2D" parent="."]
-position = Vector2(718, 449)
+position = Vector2(515, 479)
 
 [node name="LiquidUnitSlot" type="Area2D" parent="LiquidUnitSection"]
-visible = false
+script = ExtResource("2_ncmwc")
 
-[node name="NewLiquidUnit" type="Sprite2D" parent="LiquidUnitSection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/LiquidUnitSlot"]
+position = Vector2(130, -28)
+shape = SubResource("RectangleShape2D_xjp4r")
+debug_color = Color(0.728159, 0.474566, 0, 0.42)
+
+[node name="Label" type="Label" parent="LiquidUnitSection/LiquidUnitSlot/CollisionShape2D"]
+offset_left = -34.0
+offset_top = -15.0
+offset_right = 45.0
+offset_bottom = 8.0
+text = "Drag Here"
+
+[node name="NewLiquidUnit" type="Area2D" parent="LiquidUnitSection"]
+position = Vector2(-515, -479)
+script = ExtResource("3_0pmcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/NewLiquidUnit"]
+position = Vector2(219, 461)
+scale = Vector2(3.88889, 4.39423)
+shape = SubResource("RectangleShape2D_cwgfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="LiquidUnitSection/NewLiquidUnit"]
+position = Vector2(219.746, 459.124)
+scale = Vector2(-3.52259, 4.13088)
+texture = ExtResource("2_xls2b")
 
 [node name="CommandSection" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 746.0
-offset_top = 280.0
-offset_right = 988.0
-offset_bottom = 443.0
+offset_left = 272.0
+offset_top = 538.0
+offset_right = 884.0
+offset_bottom = 615.0
 
 [node name="CommandLabel" type="Label" parent="CommandSection"]
 layout_mode = 2
 text = "COMMAND SECTION"
 horizontal_alignment = 1
 
-[node name="PowerOn" type="Button" parent="CommandSection"]
+[node name="CommandButtonRow" type="HBoxContainer" parent="CommandSection"]
+layout_mode = 2
+
+[node name="PowerOn" type="Button" parent="CommandSection/CommandButtonRow"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Power On"
 
-[node name="WaterFlow" type="Button" parent="CommandSection"]
+[node name="WaterFlow" type="Button" parent="CommandSection/CommandButtonRow"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Water Flow"
 
-[node name="Electrolysis" type="Button" parent="CommandSection"]
+[node name="Electrolysisq" type="Button" parent="CommandSection/CommandButtonRow"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-text = "Electrolysis"
+text = "Electrolysis Start"
 
-[node name="HydrogenPurge" type="Button" parent="CommandSection"]
+[node name="HydrogenPurge" type="Button" parent="CommandSection/CommandButtonRow"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-text = "Purge"
+text = "Hydrogen Purge"
 
 [node name="BubbleTimer" type="Timer" parent="CommandSection"]
 
-[connection signal="pressed" from="BubblesSection/ReleasePressureButton" to="." method="_on_release_pressure_button_pressed"]
+[connection signal="pressed" from="BubbleSection/ReleasePressureButton" to="." method="_on_release_pressure_button_pressed"]
