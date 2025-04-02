@@ -8,7 +8,7 @@ var liquid_unit_damaged: bool = true
 var command_sequence = ["Power On", "Water Flow", "Electrolysis Start", "Hydrogen Purge"]
 var command_index = 0
 # Bubble scene to spawn
-var BubbleScene = preload("res://Bubble.tscn")  # Make sure this path is correct!
+var BubbleScene = preload("res://minigames/elektron/Bubble.tscn")  # Make sure this path is correct!
 # Node references using @onready
 @onready var oxygen_bar = $OxygenStatus/OxygenLevel
 @onready var instructions_label = $InstructionsPanel/InstructionsLabel

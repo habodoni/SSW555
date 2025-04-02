@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfcyqmsv328hw"]
 
-[ext_resource type="Script" path="res://elektron_minigame.gd" id="1_4wkh4"]
-[ext_resource type="Script" path="res://liquid_unit_slot.gd" id="2_ncmwc"]
-[ext_resource type="Texture2D" uid="uid://clt5hphmtwb4y" path="res://Barrel2.png" id="2_xls2b"]
-[ext_resource type="Script" path="res://new_liquid_unit.gd" id="3_0pmcg"]
+[ext_resource type="Script" path="res://minigames/elektron/elektron_minigame.gd" id="1_4wkh4"]
+[ext_resource type="Script" path="res://minigames/elektron/liquid_unit_slot.gd" id="2_ncmwc"]
+[ext_resource type="Texture2D" uid="uid://clt5hphmtwb4y" path="res://minigames/elektron/Barrel2.png" id="2_xls2b"]
+[ext_resource type="Script" path="res://minigames/elektron/new_liquid_unit.gd" id="3_0pmcg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjp4r"]
 size = Vector2(110, 129.5)
@@ -14,7 +14,8 @@ size = Vector2(16.4571, 24.1225)
 [node name="ElektronMinigame" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 2.0
+offset_left = -600.0
+offset_top = -306.0
 offset_right = 1150.0
 offset_bottom = 649.0
 script = ExtResource("1_4wkh4")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clt5hphmtwb4y"
-path="res://.godot/imported/Barrel2.png-77ab310e423488f758ffd68822340ef5.ctex"
+path="res://.godot/imported/Barrel2.png-a43fa139761f94ad992c2225295cc9e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Barrel2.png"
-dest_files=["res://.godot/imported/Barrel2.png-77ab310e423488f758ffd68822340ef5.ctex"]
+source_file="res://minigames/elektron/Barrel2.png"
+dest_files=["res://.godot/imported/Barrel2.png-a43fa139761f94ad992c2225295cc9e5.ctex"]
 
 [params]
 

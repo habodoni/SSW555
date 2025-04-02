@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd02xe6p2heo7"
-path="res://.godot/imported/bubble_1.png-0167a073c4d60c9af5c1e2a342f0687d.ctex"
+path="res://.godot/imported/bubble_1.png-a266f5add7cda36e7c6d3d9fe1d55edd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bubble_1.png"
-dest_files=["res://.godot/imported/bubble_1.png-0167a073c4d60c9af5c1e2a342f0687d.ctex"]
+source_file="res://minigames/elektron/bubble_1.png"
+dest_files=["res://.godot/imported/bubble_1.png-a266f5add7cda36e7c6d3d9fe1d55edd.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chcu6ns5nt552"
-path="res://.godot/imported/Elements-01.png-3a037eb9b2072f4b02d1dae4136ff147.ctex"
+path="res://.godot/imported/Elements-01.png-dfc152edde919e3571d9aa6e0189c3a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Elements-01.png"
-dest_files=["res://.godot/imported/Elements-01.png-3a037eb9b2072f4b02d1dae4136ff147.ctex"]
+source_file="res://minigames/elektron/Elements-01.png"
+dest_files=["res://.godot/imported/Elements-01.png-dfc152edde919e3571d9aa6e0189c3a7.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@ extends Node2D
 
 var astronaut = preload("res://Astronaut/Astronaut.tscn")  # Preloads at compile-time
 
-@onready var oxygen_minigame = $OxygenMinigame
+@onready var oxygen_minigame = $ElektronMinigame
 @onready var oxygen_minigame_marker = $OxygenTaskMarker
 
 @onready var minigame_2 = $Task2
