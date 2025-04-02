@@ -1,7 +1,15 @@
 extends CharacterBody2D
-@export var speed = 250
+
+@export var speed := 250
+@export var navigation_skill := 1.0
+@export var repair_skill := 1.0
 
 var active_player = false
+
+# Store base stats for reset after switching
+var base_navigation_skill := 1.0
+var base_repair_skill := 1.0
+var base_speed := 250
 
 var active_shape: RectangleShape2D
 var not_active_shape: CircleShape2D
@@ -60,6 +68,10 @@ func set_active_player(active: bool):
 	
 
 func _ready():
+	base_navigation_skill = navigation_skill
+	base_repair_skill = repair_skill
+	base_speed = speed
+	
 	health_bar.max_value = MAX_HEALTH
 	health_bar.value = health
 	add_to_group("player")

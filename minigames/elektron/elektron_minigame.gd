@@ -1,4 +1,6 @@
 extends Control
+@export var astronaut: Node
+
 # Oxygen system settings
 @export var max_oxygen: int = 100
 var oxygen_level: float
@@ -88,10 +90,14 @@ func _ready():
 
 func _process(delta):
 	if oxygen_level > 0:
-		oxygen_level -= delta * 0.5
+		# Get repair_skill from the assigned astronaut node
+		var repair_skill = astronaut.repair_skill if astronaut else 1.0
+		var drain_multiplier = 1.0 / repair_skill
+		oxygen_level -= delta * 0.5 * drain_multiplier
 		oxygen_bar.value = oxygen_level
 	else:
 		game_over("Oxygen depleted! Mission failed.")
+
 
 # --- BUBBLE MANAGEMENT ---
 func _spawn_bubbles(count := 3):

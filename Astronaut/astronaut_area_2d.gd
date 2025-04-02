@@ -24,12 +24,33 @@ func _process(delta: float) -> void:
 			switch_player()
 
 func switch_player():
+	if not player or player == get_parent():
+		return
+
+	# Reset stats on old astronaut
 	player.set_active_player(false)
-	var this_astronaut = get_parent()
-	this_astronaut.set_active_player(true)
+	player.navigation_skill = player.base_navigation_skill
+	player.repair_skill = player.base_repair_skill
+	player.speed = player.base_speed
+
+	# Activate new astronaut (parent of this Area2D)
+	var new_astronaut = get_parent()
+	new_astronaut.set_active_player(true)
+
+	# Apply stat boosts
+	new_astronaut.navigation_skill += 0.2
+	new_astronaut.repair_skill += 0.2
+	new_astronaut.speed += 20
+
+	print("Switched to:", new_astronaut.name)
+	print("→ Boosted Nav:", new_astronaut.navigation_skill,
+		  "Repair:", new_astronaut.repair_skill,
+		  "Speed:", new_astronaut.speed)
+
 	light.hide()
 	player_near = false
-	player = false
+	player = null
+
 
 func _on_body_entered(body: Node2D) -> void:
 	print("body entered")
