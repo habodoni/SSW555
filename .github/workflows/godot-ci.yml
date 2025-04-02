@@ -14,24 +14,25 @@ on:
 jobs:
   test:
     # Job Test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #Runs with linux for universal integration.
 
     steps:
       # Checks out this repository
       - uses: actions/checkout@v3
 
       # Download and setup Godot 4.3 headless explicitly
-      #THIS BUILD WORKS.
+      #THIS BUILD WORKS!!!!!!!!
       # Download standard Godot binary explicitly
       - name: Download Godot Headless
         run: |
           wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip Godot_v4.3-stable_linux.x86_64.zip
-          chmod +x Godot_v4.3-stable_linux.x86_64
-
+          chmod +x Godot_v4.3-stable_linux.x86_64    
+      #Godot CLI functionality downloaded for github workflow
 
       #Since no GUT export directly, tscn files must be ran and placed here in this format.
       - name: Run All Scene-Based Unit Tests
+      #Finds all test scenes and runs using "Headless" Godot.
         run: |
           for scene in tests/*.tscn; do
             echo "Running scene: $scene"
