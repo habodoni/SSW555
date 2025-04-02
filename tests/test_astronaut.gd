@@ -2,6 +2,7 @@ extends Node  # Test runner
 
 var astronaut  # Astronaut instance
 var output_label  # Label to display results
+var minigame_active = false # Expected node
 
 func _ready():
 	"""
@@ -9,7 +10,7 @@ func _ready():
 	"""
 	print("Running Astronaut Unit Tests...\n")
 
-	# ✅ Create a UI label to show results
+	# Create a UI label to show results
 	output_label = Label.new()
 	output_label.text = "Running Astronaut Tests...\n"
 	output_label.set("theme_override_colors/font_color", Color(1, 1, 1))  # White text
@@ -17,8 +18,8 @@ func _ready():
 	add_child(output_label)  # Add to scene
 
 	# Create astronaut instance
-	astronaut = CharacterBody2D.new()
-	astronaut.set_script(load("res://Astronaut/Astronaut.gd"))  # Load the Astronaut script
+	var astronaut_scene = preload("res://Astronaut/Astronaut.tscn")  # Make sure this exists!
+	astronaut = astronaut_scene.instantiate()
 
 	# Manually create HealthBar
 	var health_bar = ProgressBar.new()
@@ -57,6 +58,7 @@ func _ready():
 	results.append(test_multiple_astronauts())
 	results.append(test_active_player_can_move())
 	results.append(test_non_active_player_cannot_move())
+	results.append(test_switching_mechanic())
 
 	# Display results in the UI
 	output_label.text += "\n".join(results)
@@ -146,3 +148,34 @@ func test_non_active_player_cannot_move():
 	var expected = Vector2(0, 0)
 	assert(astronaut.velocity == expected, "❌ Non-active player move test failed! Expected: %s, Got: %s" % [expected, astronaut.velocity])
 	return "✅ Non-active player cannot move test passed!"
+	
+# Tests astronaut switching functionality
+func test_switching_mechanic():
+	var astronaut_scene = preload("res://Astronaut/Astronaut.tscn")
+
+	# Instantiate two astronauts
+	var astro1 = astronaut_scene.instantiate()
+	var astro2 = astronaut_scene.instantiate()
+
+	add_child(astro1)
+	add_child(astro2)
+
+	# Set initial active status
+	astro1.set_active_player(true)
+	astro2.set_active_player(false)
+
+	# Grab the Area2D node from astro2
+	var area2d = astro2.get_node("Area2D")
+	area2d.player_near = true
+	area2d.player = astro1  # Simulate astro1 being near the switch
+
+	# Simulate pressing the switch key
+	Input.action_press("Switch")
+	area2d._process(0.016)  # Simulate one frame
+	Input.action_release("Switch")
+
+	# Assert switch happened
+	assert(astro1.active_player == false and astro2.active_player == true,
+		"❌ Astronaut switch mechanic failed! astro1 active: %s, astro2 active: %s" % [astro1.active_player, astro2.active_player])
+
+	return "✅ Astronaut switch mechanic test passed!"
