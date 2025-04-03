@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chv4onvpatlhg"]
 
-[ext_resource type="Texture2D" uid="uid://bd02xe6p2heo7" path="res://bubble_1.png" id="1_oa602"]
+[ext_resource type="Texture2D" uid="uid://bd02xe6p2heo7" path="res://minigames/elektron/bubble_1.png" id="1_oa602"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7f3g7"]
 animations = [{
@@ -17,8 +17,8 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
-position = Vector2(-0.5, 0)
-scale = Vector2(1.0625, 1)
+position = Vector2(13.5, 14)
+scale = Vector2(2.8125, 2.75)
 sprite_frames = SubResource("SpriteFrames_7f3g7")
 animation = &"float"
 frame_progress = 0.881275

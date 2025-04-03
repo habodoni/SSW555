@@ -1,39 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfcyqmsv328hw"]
+[gd_scene load_steps=12 format=3 uid="uid://dfcyqmsv328hw"]
 
 [ext_resource type="Script" path="res://minigames/elektron/elektron_minigame.gd" id="1_4wkh4"]
+[ext_resource type="Theme" uid="uid://cpbys7lgecobh" path="res://minigames/elektron/instructionsTheme.tres" id="2_6dos2"]
+[ext_resource type="Theme" uid="uid://cgyjjwosr7gi0" path="res://minigames/elektron/ButtonTheme.tres" id="2_80k3h"]
 [ext_resource type="Script" path="res://minigames/elektron/liquid_unit_slot.gd" id="2_ncmwc"]
+[ext_resource type="Theme" uid="uid://cf8n0pd58kpho" path="res://minigames/elektron/PanelTheme.tres" id="2_qpl4u"]
 [ext_resource type="Texture2D" uid="uid://clt5hphmtwb4y" path="res://minigames/elektron/Barrel2.png" id="2_xls2b"]
+[ext_resource type="Theme" uid="uid://pq6c32rtp5tf" path="res://minigames/elektron/backgroundPanel.tres" id="2_xqiqr"]
 [ext_resource type="Script" path="res://minigames/elektron/new_liquid_unit.gd" id="3_0pmcg"]
+[ext_resource type="Theme" uid="uid://cxq6fu707dpwv" path="res://minigames/elektron/hboxTheme.tres" id="6_ispnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjp4r"]
-size = Vector2(110, 129.5)
+size = Vector2(43.25, 377.688)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwgfn"]
-size = Vector2(16.4571, 24.1225)
+size = Vector2(41.6571, 63.9475)
 
 [node name="ElektronMinigame" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -600.0
-offset_top = -306.0
-offset_right = 1150.0
-offset_bottom = 649.0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 1880.0
+offset_bottom = 1070.0
 script = ExtResource("1_4wkh4")
+metadata/_edit_vertical_guides_ = [-954.0, 956.0]
+metadata/_edit_horizontal_guides_ = [-541.0, 539.0]
 
 [node name="BackgroundPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 2.0
-offset_top = -35.0
-offset_right = 1150.0
-offset_bottom = 643.0
+offset_left = -1022.0
+offset_top = -620.0
+offset_right = 1023.0
+offset_bottom = 606.0
+theme = ExtResource("2_xqiqr")
 
 [node name="OxygenStatus" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 70.0
-offset_right = 695.0
-offset_bottom = 142.0
+offset_left = -921.0
+offset_top = -527.0
+offset_right = -521.0
+offset_bottom = -419.0
+scale = Vector2(1.7, 1.7)
 
 [node name="OxygenLevel" type="ProgressBar" parent="OxygenStatus"]
 layout_mode = 2
@@ -45,104 +53,129 @@ horizontal_alignment = 1
 
 [node name="InstructionsPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 758.0
-offset_top = 18.0
-offset_right = 1148.0
-offset_bottom = 128.0
+offset_left = 202.0
+offset_top = -524.0
+offset_right = 904.0
+offset_bottom = -311.0
+theme = ExtResource("2_6dos2")
 
 [node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 36.0
-offset_right = 323.0
-offset_bottom = 85.0
+offset_left = 90.0
+offset_top = 93.0
+offset_right = 407.0
+offset_bottom = 142.0
+scale = Vector2(1.5, 1.5)
 text = "(will be generated once compiled)"
 autowrap_mode = 2
 
 [node name="InstructionsHeader" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 8.0
-offset_right = 105.0
-offset_bottom = 31.0
+offset_left = 97.0
+offset_top = 52.0
+offset_right = 195.0
+offset_bottom = 75.0
+scale = Vector2(1.5, 1.5)
 text = "Instructions:"
 
 [node name="GasAnalyzerPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 164.0
-offset_right = 348.0
-offset_bottom = 349.0
+offset_left = -934.0
+offset_top = -391.0
+offset_right = -645.0
+offset_bottom = -108.0
+scale = Vector2(1.2, 1.2)
+theme = ExtResource("2_qpl4u")
 
 [node name="GasAnalyzerLabel" type="Label" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 4.0
-offset_right = 170.0
-offset_bottom = 27.0
+offset_left = 100.0
+offset_top = 33.3333
+offset_right = 204.0
+offset_bottom = 56.3333
 text = "Gas Analyzer "
 
 [node name="ScanButton" type="Button" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 60.0
-offset_right = 157.0
-offset_bottom = 126.0
+offset_left = 55.8333
+offset_top = 101.667
+offset_right = 241.833
+offset_bottom = 182.667
+theme = ExtResource("2_80k3h")
 text = "SCAN"
+
+[node name="BubblePanel" type="Panel" parent="."]
+layout_mode = 2
+offset_left = -411.0
+offset_top = -383.0
+offset_right = 127.0
+offset_bottom = -68.0
+theme = ExtResource("6_ispnt")
 
 [node name="BubbleSection" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 372.0
-offset_top = 172.0
-offset_right = 721.0
-offset_bottom = 345.0
+offset_left = -445.0
+offset_top = -381.0
+offset_right = -4.0
+offset_bottom = -147.0
+scale = Vector2(1.3, 1.3)
 
 [node name="ReleasePressureButton" type="Button" parent="BubbleSection"]
 layout_mode = 2
-text = "Release
-Pressure"
+theme = ExtResource("2_80k3h")
+text = "Release 
+    Pressure     "
 
 [node name="BubbleContainer" type="Node2D" parent="BubbleSection"]
-position = Vector2(73, 82)
+position = Vector2(123.077, 116.154)
 
 [node name="LiquidUnitSection" type="Node2D" parent="."]
-position = Vector2(515, 479)
+position = Vector2(-441, -60)
+
+[node name="Panel" type="Panel" parent="LiquidUnitSection"]
+offset_left = 964.0
+offset_top = -106.0
+offset_right = 1197.0
+offset_bottom = 302.0
+theme = ExtResource("2_qpl4u")
 
 [node name="LiquidUnitSlot" type="Area2D" parent="LiquidUnitSection"]
 script = ExtResource("2_ncmwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/LiquidUnitSlot"]
-position = Vector2(130, -28)
+position = Vector2(1156, 99)
 shape = SubResource("RectangleShape2D_xjp4r")
 debug_color = Color(0.728159, 0.474566, 0, 0.42)
 
 [node name="Label" type="Label" parent="LiquidUnitSection/LiquidUnitSlot/CollisionShape2D"]
-offset_left = -34.0
-offset_top = -15.0
-offset_right = 45.0
-offset_bottom = 8.0
+offset_left = -151.0
+offset_top = -25.0
+offset_right = -72.0
+offset_bottom = -2.0
+scale = Vector2(2, 2)
 text = "Drag Here"
+metadata/_edit_use_anchors_ = true
 
 [node name="NewLiquidUnit" type="Area2D" parent="LiquidUnitSection"]
 position = Vector2(-515, -479)
 script = ExtResource("3_0pmcg")
 
+[node name="Sprite2D" type="Sprite2D" parent="LiquidUnitSection/NewLiquidUnit"]
+position = Vector2(240.87, 688.329)
+scale = Vector2(-11.7633, 12.4868)
+texture = ExtResource("2_xls2b")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(219, 461)
+position = Vector2(236, 694)
 scale = Vector2(3.88889, 4.39423)
 shape = SubResource("RectangleShape2D_cwgfn")
 
-[node name="Sprite2D" type="Sprite2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(219.746, 459.124)
-scale = Vector2(-3.52259, 4.13088)
-texture = ExtResource("2_xls2b")
-
 [node name="CommandSection" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 538.0
-offset_right = 884.0
-offset_bottom = 615.0
+offset_left = -484.0
+offset_top = 305.0
+offset_right = 340.0
+offset_bottom = 532.0
 
 [node name="CommandLabel" type="Label" parent="CommandSection"]
 layout_mode = 2
@@ -153,23 +186,27 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="PowerOn" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme = ExtResource("2_80k3h")
 text = "Power On"
 
 [node name="WaterFlow" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme = ExtResource("2_80k3h")
 text = "Water Flow"
 
 [node name="Electrolysisq" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme = ExtResource("2_80k3h")
 text = "Electrolysis Start"
 
 [node name="HydrogenPurge" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
+theme = ExtResource("2_80k3h")
 text = "Hydrogen Purge"
 
 [node name="BubbleTimer" type="Timer" parent="CommandSection"]

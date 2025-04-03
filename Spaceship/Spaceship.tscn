@@ -148,6 +148,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_cmcj3")
 
 [node name="Spaceship" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [1086.0]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 1)
