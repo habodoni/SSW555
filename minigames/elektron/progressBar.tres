@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://sf7qn2yyxnlh"]
+
+[ext_resource type="FontFile" uid="uid://47e1nbgxk5y2" path="res://minigames/elektron/diffusion-bold.ttf" id="1_tagcn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd2ne"]
+bg_color = Color(0.847059, 0.0823529, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ow7l"]
+bg_color = Color(0, 0.720236, 0.329272, 1)
+
+[resource]
+default_font = ExtResource("1_tagcn")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = ExtResource("1_tagcn")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_wd2ne")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_0ow7l")

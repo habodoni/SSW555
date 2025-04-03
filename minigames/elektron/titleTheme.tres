@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dihjmvg4f4uf6"]
+
+[ext_resource type="Texture2D" uid="uid://chcu6ns5nt552" path="res://minigames/elektron/Elements-01.png" id="1_qnm0d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xocy3"]
+texture = ExtResource("1_qnm0d")
+texture_margin_top = 0.385545
+region_rect = Rect2(1642, 865, 368, 93)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_xocy3")

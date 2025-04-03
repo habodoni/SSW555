@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfcyqmsv328hw"]
+[gd_scene load_steps=17 format=3 uid="uid://dfcyqmsv328hw"]
 
 [ext_resource type="Script" path="res://minigames/elektron/elektron_minigame.gd" id="1_4wkh4"]
 [ext_resource type="Theme" uid="uid://cpbys7lgecobh" path="res://minigames/elektron/instructionsTheme.tres" id="2_6dos2"]
@@ -8,24 +8,29 @@
 [ext_resource type="Texture2D" uid="uid://clt5hphmtwb4y" path="res://minigames/elektron/Barrel2.png" id="2_xls2b"]
 [ext_resource type="Theme" uid="uid://pq6c32rtp5tf" path="res://minigames/elektron/backgroundPanel.tres" id="2_xqiqr"]
 [ext_resource type="Script" path="res://minigames/elektron/new_liquid_unit.gd" id="3_0pmcg"]
+[ext_resource type="Theme" uid="uid://sf7qn2yyxnlh" path="res://minigames/elektron/progressBar.tres" id="3_uvnwj"]
+[ext_resource type="FontFile" uid="uid://47e1nbgxk5y2" path="res://minigames/elektron/diffusion-bold.ttf" id="4_23a4x"]
+[ext_resource type="FontFile" uid="uid://ciwbki5m65m7g" path="res://minigames/elektron/Stacked pixel.ttf" id="4_mdrl8"]
 [ext_resource type="Theme" uid="uid://cxq6fu707dpwv" path="res://minigames/elektron/hboxTheme.tres" id="6_ispnt"]
+[ext_resource type="Theme" uid="uid://by1qi61odx0mi" path="res://minigames/elektron/NewElektronUnit.tres" id="11_gvy0i"]
+[ext_resource type="Theme" uid="uid://dihjmvg4f4uf6" path="res://minigames/elektron/titleTheme.tres" id="14_l4xwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjp4r"]
-size = Vector2(43.25, 377.688)
+size = Vector2(34.6251, 195)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwgfn"]
-size = Vector2(41.6571, 63.9475)
+size = Vector2(29.5714, 30.7221)
 
 [node name="ElektronMinigame" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 20.0
-offset_top = 9.0
-offset_right = 1880.0
-offset_bottom = 1070.0
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 1877.0
+offset_bottom = 1076.0
 script = ExtResource("1_4wkh4")
 metadata/_edit_vertical_guides_ = [-954.0, 956.0]
-metadata/_edit_horizontal_guides_ = [-541.0, 539.0]
+metadata/_edit_horizontal_guides_ = [-541.0, 539.0, -412.0]
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 0
@@ -37,14 +42,15 @@ theme = ExtResource("2_xqiqr")
 
 [node name="OxygenStatus" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -921.0
-offset_top = -527.0
-offset_right = -521.0
-offset_bottom = -419.0
-scale = Vector2(1.7, 1.7)
+offset_left = -848.0
+offset_top = -398.0
+offset_right = -512.0
+offset_bottom = -343.0
+scale = Vector2(1.5, 1.5)
 
 [node name="OxygenLevel" type="ProgressBar" parent="OxygenStatus"]
 layout_mode = 2
+theme = ExtResource("3_uvnwj")
 
 [node name="OxygenLabel" type="Label" parent="OxygenStatus"]
 layout_mode = 2
@@ -54,119 +60,140 @@ horizontal_alignment = 1
 [node name="InstructionsPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 202.0
-offset_top = -524.0
+offset_top = -411.0
 offset_right = 904.0
-offset_bottom = -311.0
+offset_bottom = -139.0
 theme = ExtResource("2_6dos2")
 
 [node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 93.0
-offset_right = 407.0
-offset_bottom = 142.0
+offset_left = 101.0
+offset_top = 125.0
+offset_right = 438.0
+offset_bottom = 174.0
 scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("4_23a4x")
+theme_override_font_sizes/font_size = 17
 text = "(will be generated once compiled)"
 autowrap_mode = 2
 
 [node name="InstructionsHeader" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 52.0
-offset_right = 195.0
-offset_bottom = 75.0
+offset_left = 98.0
+offset_top = 64.0
+offset_right = 242.0
+offset_bottom = 87.0
 scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 25
 text = "Instructions:"
 
 [node name="GasAnalyzerPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -934.0
-offset_top = -391.0
-offset_right = -645.0
-offset_bottom = -108.0
+offset_left = -864.0
+offset_top = -278.0
+offset_right = -582.0
+offset_bottom = 14.0
 scale = Vector2(1.2, 1.2)
 theme = ExtResource("2_qpl4u")
 
 [node name="GasAnalyzerLabel" type="Label" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 33.3333
-offset_right = 204.0
-offset_bottom = 56.3333
+offset_left = 88.3333
+offset_top = 17.5
+offset_right = 192.333
+offset_bottom = 40.5
 text = "Gas Analyzer "
 
 [node name="ScanButton" type="Button" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 55.8333
-offset_top = 101.667
-offset_right = 241.833
-offset_bottom = 182.667
+offset_left = 70.8334
+offset_top = 64.1667
+offset_right = 208.833
+offset_bottom = 131.167
 theme = ExtResource("2_80k3h")
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 35
 text = "SCAN"
 
 [node name="BubblePanel" type="Panel" parent="."]
 layout_mode = 2
-offset_left = -411.0
-offset_top = -383.0
-offset_right = 127.0
-offset_bottom = -68.0
+anchor_left = -0.138
+anchor_top = -0.106
+anchor_right = -0.138
+anchor_bottom = -0.106
+offset_left = -267.32
+offset_top = -120.534
+offset_right = 129.68
+offset_bottom = 133.466
 theme = ExtResource("6_ispnt")
 
 [node name="BubbleSection" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 0
-offset_left = -445.0
-offset_top = -381.0
-offset_right = -4.0
-offset_bottom = -147.0
+offset_left = -795.0
+offset_top = -108.0
+offset_right = -521.0
+offset_bottom = -8.00001
 scale = Vector2(1.3, 1.3)
 
 [node name="ReleasePressureButton" type="Button" parent="BubbleSection"]
+custom_minimum_size = Vector2(150, 100)
+layout_direction = 2
 layout_mode = 2
 theme = ExtResource("2_80k3h")
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 20
 text = "Release 
     Pressure     "
 
 [node name="BubbleContainer" type="Node2D" parent="BubbleSection"]
-position = Vector2(123.077, 116.154)
+position = Vector2(249.231, -3.07692)
 
 [node name="LiquidUnitSection" type="Node2D" parent="."]
-position = Vector2(-441, -60)
+position = Vector2(-441, 53)
 
 [node name="Panel" type="Panel" parent="LiquidUnitSection"]
-offset_left = 964.0
-offset_top = -106.0
-offset_right = 1197.0
-offset_bottom = 302.0
+offset_left = 1068.0
+offset_top = 175.0
+offset_right = 1247.0
+offset_bottom = 437.0
 theme = ExtResource("2_qpl4u")
 
 [node name="LiquidUnitSlot" type="Area2D" parent="LiquidUnitSection"]
 script = ExtResource("2_ncmwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/LiquidUnitSlot"]
-position = Vector2(1156, 99)
+position = Vector2(1205, 304)
 shape = SubResource("RectangleShape2D_xjp4r")
 debug_color = Color(0.728159, 0.474566, 0, 0.42)
 
 [node name="Label" type="Label" parent="LiquidUnitSection/LiquidUnitSlot/CollisionShape2D"]
-offset_left = -151.0
-offset_top = -25.0
-offset_right = -72.0
-offset_bottom = -2.0
+offset_left = -112.0
+offset_top = -36.0
+offset_right = -52.0001
+offset_bottom = 11.0
 scale = Vector2(2, 2)
-text = "Drag Here"
-metadata/_edit_use_anchors_ = true
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.438413, 0.507247, 0.272581, 1)
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 20
+text = "Drag 
+Here"
+horizontal_alignment = 1
 
 [node name="NewLiquidUnit" type="Area2D" parent="LiquidUnitSection"]
 position = Vector2(-515, -479)
 script = ExtResource("3_0pmcg")
 
 [node name="Sprite2D" type="Sprite2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(240.87, 688.329)
-scale = Vector2(-11.7633, 12.4868)
+position = Vector2(134.2, 825.499)
+scale = Vector2(-7.13338, 6.96142)
 texture = ExtResource("2_xls2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(236, 694)
+position = Vector2(133.7, 837.999)
 scale = Vector2(3.88889, 4.39423)
 shape = SubResource("RectangleShape2D_cwgfn")
 
@@ -179,6 +206,10 @@ offset_bottom = 532.0
 
 [node name="CommandLabel" type="Label" parent="CommandSection"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 40
 text = "COMMAND SECTION"
 horizontal_alignment = 1
 
@@ -189,26 +220,73 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 35
 text = "Power On"
 
 [node name="WaterFlow" type="Button" parent="CommandSection/CommandButtonRow"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 30
 text = "Water Flow"
 
-[node name="Electrolysisq" type="Button" parent="CommandSection/CommandButtonRow"]
+[node name="Electrolysis" type="Button" parent="CommandSection/CommandButtonRow"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 20
 text = "Electrolysis Start"
 
 [node name="HydrogenPurge" type="Button" parent="CommandSection/CommandButtonRow"]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
+theme_override_fonts/font = ExtResource("4_mdrl8")
+theme_override_font_sizes/font_size = 25
 text = "Hydrogen Purge"
 
 [node name="BubbleTimer" type="Timer" parent="CommandSection"]
+
+[node name="NewElektronUnitPanel" type="Panel" parent="."]
+offset_left = -938.0
+offset_top = 205.0
+offset_right = -700.0
+offset_bottom = 306.0
+theme = ExtResource("11_gvy0i")
+
+[node name="NewElektronUnitLabel" type="Label" parent="NewElektronUnitPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 15.0
+offset_right = 223.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "NEW WATER 
+UNIT"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -732.0
+offset_top = -537.0
+offset_right = 832.0
+offset_bottom = -446.0
+theme = ExtResource("14_l4xwj")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 2.0
+offset_right = 1563.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_23a4x")
+theme_override_font_sizes/font_size = 62
+text = "Elektron Oxygen Generator Control Panel"
 
 [connection signal="pressed" from="BubbleSection/ReleasePressureButton" to="." method="_on_release_pressure_button_pressed"]

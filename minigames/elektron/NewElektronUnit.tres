@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://by1qi61odx0mi"]
+
+[ext_resource type="Texture2D" uid="uid://c8a22k8uyoemf" path="res://minigames/elektron/GUI.png" id="1_85cbm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_io2dq"]
+texture = ExtResource("1_85cbm")
+region_rect = Rect2(145, 65, 46, 14)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_io2dq")
