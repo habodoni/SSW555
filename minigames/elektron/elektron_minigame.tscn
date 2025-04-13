@@ -73,7 +73,7 @@ offset_right = 438.0
 offset_bottom = 174.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("4_23a4x")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 15
 text = "(will be generated once compiled)"
 autowrap_mode = 2
 
@@ -99,11 +99,14 @@ theme = ExtResource("2_qpl4u")
 
 [node name="GasAnalyzerLabel" type="Label" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 88.3333
+offset_left = 69.1667
 offset_top = 17.5
-offset_right = 192.333
-offset_bottom = 40.5
+offset_right = 218.167
+offset_bottom = 49.5
+theme_override_colors/font_color = Color(0.272364, 0.227635, 0.144631, 1)
+theme_override_font_sizes/font_size = 23
 text = "Gas Analyzer "
+horizontal_alignment = 1
 
 [node name="ScanButton" type="Button" parent="GasAnalyzerPanel"]
 layout_mode = 0
@@ -153,7 +156,7 @@ position = Vector2(249.231, -3.07692)
 [node name="LiquidUnitSection" type="Node2D" parent="."]
 position = Vector2(-441, 53)
 
-[node name="Panel" type="Panel" parent="LiquidUnitSection"]
+[node name="LiquidUnitPanel" type="Panel" parent="LiquidUnitSection"]
 offset_left = 1068.0
 offset_top = 175.0
 offset_right = 1247.0
@@ -168,7 +171,7 @@ position = Vector2(1205, 304)
 shape = SubResource("RectangleShape2D_xjp4r")
 debug_color = Color(0.728159, 0.474566, 0, 0.42)
 
-[node name="Label" type="Label" parent="LiquidUnitSection/LiquidUnitSlot/CollisionShape2D"]
+[node name="DragHereLabel" type="Label" parent="LiquidUnitSection/LiquidUnitSlot/CollisionShape2D"]
 offset_left = -112.0
 offset_top = -36.0
 offset_right = -52.0001
@@ -188,12 +191,12 @@ position = Vector2(-515, -479)
 script = ExtResource("3_0pmcg")
 
 [node name="Sprite2D" type="Sprite2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(134.2, 825.499)
+position = Vector2(257.2, 725.499)
 scale = Vector2(-7.13338, 6.96142)
 texture = ExtResource("2_xls2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(133.7, 837.999)
+position = Vector2(256.7, 737.999)
 scale = Vector2(3.88889, 4.39423)
 shape = SubResource("RectangleShape2D_cwgfn")
 
@@ -251,10 +254,11 @@ text = "Hydrogen Purge"
 [node name="BubbleTimer" type="Timer" parent="CommandSection"]
 
 [node name="NewElektronUnitPanel" type="Panel" parent="."]
-offset_left = -938.0
-offset_top = 205.0
-offset_right = -700.0
-offset_bottom = 306.0
+layout_mode = 0
+offset_left = -815.0
+offset_top = 105.0
+offset_right = -577.0
+offset_bottom = 206.0
 theme = ExtResource("11_gvy0i")
 
 [node name="NewElektronUnitLabel" type="Label" parent="NewElektronUnitPanel"]
@@ -269,7 +273,7 @@ text = "NEW WATER
 UNIT"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TitlePanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = -732.0
 offset_top = -537.0
@@ -277,7 +281,7 @@ offset_right = 832.0
 offset_bottom = -446.0
 theme = ExtResource("14_l4xwj")
 
-[node name="Title" type="Label" parent="Panel"]
+[node name="Title" type="Label" parent="TitlePanel"]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 2.0
@@ -288,5 +292,10 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_23a4x")
 theme_override_font_sizes/font_size = 62
 text = "Elektron Oxygen Generator Control Panel"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(19, -15)
+scale = Vector2(1.2, 1.2)
+zoom = Vector2(0.95, 0.95)
 
 [connection signal="pressed" from="BubbleSection/ReleasePressureButton" to="." method="_on_release_pressure_button_pressed"]

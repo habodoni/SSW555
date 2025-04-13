@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://q84ddoxkffpr"]
+
+[ext_resource type="Script" path="res://SystemDiagnostics/system_diagnostics.gd" id="1_3n2lh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03xfj"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="SystemDiagnostics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -956.0
+offset_top = -544.0
+offset_right = -956.0
+offset_bottom = -544.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3n2lh")
+metadata/_edit_horizontal_guides_ = [-543.0, 541.0]
+metadata/_edit_vertical_guides_ = [-969.0, 963.0]
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -114.0
+offset_top = -51.0
+offset_right = 1985.0
+offset_bottom = 1167.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_03xfj")
+
+[node name="SystemDiagnostics" type="Label" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 53.0
+offset_right = 729.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 65
+text = "System Diagnostics"
+horizontal_alignment = 1
+
+[node name="StatusGrid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 113.32
+offset_top = 273.0
+offset_right = 666.32
+offset_bottom = 725.0
+columns = 2
+
+[node name="OxygenLabel" type="Label" parent="StatusGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Oxygen System"
+horizontal_alignment = 1
+
+[node name="OxygenIndicator" type="ColorRect" parent="StatusGrid"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+color = Color(0.8, 0.2, 0.2, 1)
+
+[node name="NavigationLabel" type="Label" parent="StatusGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Navigation System  "
+horizontal_alignment = 1
+
+[node name="NavigationIndicator" type="ColorRect" parent="StatusGrid"]
+custom_minimum_size = Vector2(5, 30)
+layout_mode = 2
+color = Color(0.8, 0.2, 0.2, 1)
+
+[node name="Return Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 1020.0
+offset_right = 334.0
+offset_bottom = 1055.0
+theme_override_font_sizes/font_size = 25
+text = "Press 'E' to return to Ship"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(965, 538)
+zoom = Vector2(1.005, 1.005)
+
+[node name="MissionControl" type="Label" parent="."]
+offset_left = 1209.0
+offset_top = 49.0
+offset_right = 1813.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 65
+text = "Mission Control"
+horizontal_alignment = 1

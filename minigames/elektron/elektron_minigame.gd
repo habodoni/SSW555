@@ -20,11 +20,24 @@ var BubbleScene = preload("res://minigames/elektron/Bubble.tscn")  # Make sure t
 @onready var liquid_slot = $LiquidUnitSection/LiquidUnitSlot
 @onready var liquid_unit = $LiquidUnitSection/NewLiquidUnit
 
+# Track if the minigame is completed
+var minigame_completed = false
+
 func _ready():
 	oxygen_level = max_oxygen
 	oxygen_bar.value = oxygen_level
 	
 	print("ElektronMinigame: _ready function called")
+	
+	# Check if the oxygen system is already repaired
+	if Engine.has_singleton("GameState"):
+		var game_state = Engine.get_singleton("GameState")
+		if game_state.get_system_status("oxygen"):
+			# System is already repaired
+			minigame_completed = true
+			instructions_label.text = "Oxygen system is functional.\nPress 'E' to return to ship."
+			if oxygen_bar:
+				oxygen_bar.modulate = Color(0.5, 1.0, 0.5)  # Green tint to indicate success
 	
 	# Add null checks for node references
 	if release_pressure_button:
@@ -85,19 +98,19 @@ func _ready():
 				button.pressed.connect(_on_command_button.bind(button.text))
 		print("Attempted to connect direct child buttons")
 	
-	if liquid_unit_damaged:
+	if liquid_unit_damaged and not minigame_completed:
 		instructions_label.text = "Liquid unit appears damaged. Start by scanning the system."
 
 func _process(delta):
-	if oxygen_level > 0:
+	if oxygen_level > 0 and not minigame_completed:
 		# Get repair_skill from the assigned astronaut node
 		var repair_skill = astronaut.repair_skill if astronaut else 1.0
 		var drain_multiplier = 1.0 / repair_skill
 		oxygen_level -= delta * 0.5 * drain_multiplier
 		oxygen_bar.value = oxygen_level
 	else:
-		game_over("Oxygen depleted! Mission failed.")
-
+		if not minigame_completed and oxygen_level <= 0:
+			game_over("Oxygen depleted! Mission failed.")
 
 # --- BUBBLE MANAGEMENT ---
 func _spawn_bubbles(count := 3):
@@ -135,6 +148,10 @@ func clear_bubbles():
 
 # --- PHASE 1: Detect the Problem ---
 func _on_scan_pressed():
+	if minigame_completed:
+		instructions_label.text = "System is functioning correctly.\nPress 'E' to return to ship."
+		return
+		
 	print("Scan button pressed")
 	# Always spawn bubbles when scan is pressed
 	bubbles_present = true
@@ -146,6 +163,9 @@ func _on_scan_pressed():
 
 # --- PHASE 2: Clear the Gas Bubbles ---
 func _on_pressure_release():
+	if minigame_completed:
+		return
+		
 	print("Pressure release button pressed")
 	if bubbles_present:
 		bubbles_present = false
@@ -164,6 +184,9 @@ func _on_pressure_release():
 
 # Keep this function definition but we won't connect it
 func _on_bubble_timer_timeout():
+	if minigame_completed:
+		return
+		
 	print("Bubble timer timeout")
 	bubbles_present = true
 	_spawn_bubbles(3)
@@ -174,6 +197,9 @@ func _on_bubble_timer_timeout():
 # --- PHASE 3: Swap the Liquid Unit ---
 # This is called when the NewLiquidUnit enters the LiquidUnitSlot area
 func _on_liquid_slot_area_entered(area):
+	if minigame_completed:
+		return
+		
 	print("Area entered liquid slot: ", area.name)
 	if area.name == "NewLiquidUnit":
 		print("NewLiquidUnit placed in slot!")
@@ -185,6 +211,9 @@ func _on_liquid_slot_area_entered(area):
 
 # Legacy function, can be removed
 func _on_liquid_unit_replaced(body):
+	if minigame_completed:
+		return
+		
 	print("Body entered: ", body.name)
 	if body.name == "NewLiquidUnit":
 		liquid_unit_damaged = false
@@ -193,6 +222,10 @@ func _on_liquid_unit_replaced(body):
 
 # --- PHASE 4: Restart System ---
 func _on_command_button(command):
+	if minigame_completed:
+		instructions_label.text = "System is already functional.\nPress 'E' to return to ship."
+		return
+		
 	print("Command button pressed: ", command)
 	print("Current command index: ", command_index)
 	print("Expecting command: ", command_sequence[command_index])
@@ -202,17 +235,36 @@ func _on_command_button(command):
 		instructions_label.text = "Step completed: %s" % command
 		print("Correct command! New index: ", command_index)
 		if command_index == command_sequence.size():
-			game_success("Elektron system restored. Oxygen stabilized.")
+			minigame_completed = true
+			complete_minigame("Elektron system restored. Oxygen stabilized.")
 	else:
 		command_index = 0
 		instructions_label.text = "Incorrect sequence! Restart from 'Power On'."
 		print("Incorrect command! Sequence reset.")
 
 # --- END STATES ---
+func complete_minigame(message: String):
+	print(message)
+	instructions_label.text = message + "\nPress 'E' to return to ship."
+	
+	# Stop oxygen depletion
+	minigame_completed = true
+	
+	# Update the game state to mark oxygen system as functional
+	if Engine.has_singleton("GameState"):
+		var game_state = Engine.get_singleton("GameState")
+		game_state.set_system_status("oxygen", true)
+		print("Oxygen system status updated in GameState")
+	
+	# Optional: Update UI to show game is complete
+	if oxygen_bar:
+		oxygen_bar.modulate = Color(0.5, 1.0, 0.5)  # Green tint to indicate success
+
 func game_success(message: String):
 	print(message)
-	get_tree().change_scene_to_file("res://main_game_scene.tscn")
+	# Instead of changing scenes, we now mark the game as complete
+	complete_minigame(message)
 
 func game_over(message: String):
 	print(message)
-	get_tree().change_scene_to_file("res://game_over_scene.tscn")
+	instructions_label.text = message + "\n\nPress 'E' to try again."
