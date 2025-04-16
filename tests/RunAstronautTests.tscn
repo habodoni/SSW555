@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqy2tn4tsls2x"]
 
-[ext_resource type="Script" path="res://tests/test_astronaut.gd" id="1_rm08e"]
+[ext_resource type="Script" path="res://tests/test_astronaut.gd" id="1_wbnlw"]
 
 [node name="RunAstronautTests" type="Node"]
-script = ExtResource("1_rm08e")
+script = ExtResource("1_wbnlw")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

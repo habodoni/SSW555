@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsc8dlcb5dfah"]
+
+[ext_resource type="Script" path="res://tests/test_system_diagnostics.gd" id="1_2mplg"]
+
+[node name="RunSystemDiagnosticsTests" type="Node"]
+script = ExtResource("1_2mplg")
