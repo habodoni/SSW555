@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cykx2nj1ncdl1"]
+
+[ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="2_n6hmm"]
+[ext_resource type="PackedScene" uid="uid://cuevps0ppc45q" path="res://Planet/Planet.tscn" id="3_gk017"]
+
+[node name="Navigation" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("2_n6hmm")]
+position = Vector2(960, 540)
+
+[node name="Planet" parent="." instance=ExtResource("3_gk017")]
+position = Vector2(1419, 346)
+script = null
+
+[node name="Planet2" parent="." instance=ExtResource("3_gk017")]
+position = Vector2(517, 769)
+script = null
+
+[node name="ShipIcon" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+position = Vector2(912, 649)
+script = null

@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3fk5oqvf3oxo"]
+
+[ext_resource type="Texture2D" uid="uid://cmhnwo4irgq6e" path="res://Background/Space Background (2).png" id="1_7mpog"]
+[ext_resource type="PackedScene" uid="uid://cuevps0ppc45q" path="res://Planet/Planet.tscn" id="1_vat5x"]
+[ext_resource type="Script" path="res://Navigation/ship_icon.gd" id="2_cx4ik"]
+[ext_resource type="Script" path="res://Planet/Mars.gd" id="3_kcb4w"]
+[ext_resource type="Script" path="res://Planet/Ganymede.gd" id="4_ogkxl"]
+[ext_resource type="Script" path="res://Planet/Jupiter.gd" id="5_l53cs"]
+[ext_resource type="Script" path="res://Planet/Moon.gd" id="6_soegm"]
+[ext_resource type="Script" path="res://Planet/Asteroid.gd" id="7_6gync"]
+[ext_resource type="Script" path="res://Planet/Asteroid2.gd" id="8_fxjmu"]
+[ext_resource type="Script" path="res://Planet/Asteroid3.gd" id="9_q83op"]
+[ext_resource type="Texture2D" uid="uid://dfr4oiugoo4b2" path="res://Navigation/Main Ship - Base - Full health.png" id="11_y0nw6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(770, -320)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1000
+position = Vector2(770, -320)
+texture = ExtResource("1_7mpog")
+
+[node name="Earth" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(-61, 90)
+
+[node name="Mars" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(209, -304)
+script = ExtResource("3_kcb4w")
+mass = 2e+07
+
+[node name="Ganymede" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(1554, -434)
+script = ExtResource("4_ogkxl")
+
+[node name="Jupiter" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(1340, -739)
+scale = Vector2(2, 2)
+script = ExtResource("5_l53cs")
+mass = 1e+08
+
+[node name="Moon" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(210, 43)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_soegm")
+mass = 1e+06
+
+[node name="Asteroid" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(983, -70)
+script = ExtResource("7_6gync")
+mass = 100000.0
+
+[node name="Asteroid2" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(546, -618)
+script = ExtResource("8_fxjmu")
+mass = 100000.0
+
+[node name="Asteroid3" parent="." instance=ExtResource("1_vat5x")]
+position = Vector2(795, -373)
+script = ExtResource("9_q83op")
+mass = 100000.0
+
+[node name="ShipIcon" type="Node2D" parent="."]
+script = ExtResource("2_cx4ik")
+
+[node name="Sprite2D" type="Sprite2D" parent="ShipIcon"]
+texture = ExtResource("11_y0nw6")
+
+[node name="StatusLabel" type="Label" parent="ShipIcon"]
+offset_left = -147.0
+offset_top = -825.0
+offset_right = -107.0
+offset_bottom = -802.0
+
+[node name="ThrustInput" type="LineEdit" parent="ShipIcon"]
+offset_left = 515.0
+offset_top = 151.0
+offset_right = 647.0
+offset_bottom = 182.0
+placeholder_text = "(Change Thrust)"
+
+[node name="AngleInput" type="LineEdit" parent="ShipIcon"]
+offset_left = 923.0
+offset_top = 150.0
+offset_right = 1055.0
+offset_bottom = 181.0
+placeholder_text = "(Change Angle)"
+
+[node name="ApplyButton" type="Button" parent="ShipIcon"]
+offset_left = 723.0
+offset_top = 144.0
+offset_right = 864.0
+offset_bottom = 187.0
+text = "Apply"
+
+[node name="ChartButton" type="Button" parent="ShipIcon"]
+offset_left = 1495.0
+offset_top = 130.0
+offset_right = 1702.0
+offset_bottom = 195.0
+text = "Chart Path"
