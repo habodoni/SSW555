@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cew1ahlqbm2yf"]
+
+[ext_resource type="Script" path="res://WarningOverlay.gd" id="1_a34om"]
+
+[node name="WarningOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a34om")
+
+[node name="OxygenWarning" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 40)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -6,6 +6,8 @@ extends Control
 var oxygen_level: float
 var bubbles_present: bool = false
 var liquid_unit_damaged: bool = true
+var is_oxygen_critical: bool = false
+var warning_threshold := 90.0
 # Restart sequence logic
 var command_sequence = ["Power On", "Water Flow", "Electrolysis Start", "Hydrogen Purge"]
 var command_index = 0
@@ -102,16 +104,24 @@ func _ready():
 		instructions_label.text = "Liquid unit appears damaged. Start by scanning the system."
 
 func _process(delta):
-	if visible: #minigame does not work when player isnt actively playing it
+	if visible: # minigame only runs when visible
 		if oxygen_level > 0 and not minigame_completed:
 			# Get repair_skill from the assigned astronaut node
 			var repair_skill = astronaut.repair_skill if astronaut else 1.0
 			var drain_multiplier = 1.0 / repair_skill
 			oxygen_level -= delta * 0.5 * drain_multiplier
 			oxygen_bar.value = oxygen_level
-		else:
-			if not minigame_completed and oxygen_level <= 0:
-				game_over("Oxygen depleted! Mission failed.")
+
+			if oxygen_level < warning_threshold:
+				if not is_oxygen_critical:
+					print("🚨 Oxygen critical! Level = ", oxygen_level)
+				is_oxygen_critical = true
+			else:
+				is_oxygen_critical = false
+
+		elif not minigame_completed and oxygen_level <= 0:
+			game_over("Oxygen depleted! Mission failed.")
+
 
 # --- BUBBLE MANAGEMENT ---
 func _spawn_bubbles(count := 3):

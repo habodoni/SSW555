@@ -4,6 +4,8 @@ var astronaut = preload("res://Astronaut/Astronaut.tscn")  # Preloads at compile
 
 @onready var oxygen_minigame = $ElektronMinigame
 @onready var oxygen_minigame_marker = $OxygenTaskMarker
+@onready var warning_label = $OxygenWarning
+
 
 @onready var minigame_2 = $Task2
 @onready var minigame_2_marker = $TaskMarker2
@@ -71,3 +73,10 @@ func _process(delta: float) -> void:
 			count = 0
 		else:
 			count += 1
+			
+	# Oxygen warning check
+	if oxygen_minigame.is_oxygen_critical:
+		warning_label.visible = true
+		warning_label.text = "CRITICAL OXYGEN: %.1f%%" % oxygen_minigame.oxygen_level
+	else:
+		warning_label.visible = false

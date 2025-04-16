@@ -57,3 +57,14 @@ position = Vector2(704, -96)
 
 [node name="SystemDiagnostics" parent="." instance=ExtResource("9_tg18w")]
 visible = false
+
+[node name="OxygenWarning" type="Label" parent="."]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(400, 200)
+offset_left = 720.0
+offset_top = -500.0
+offset_right = 1420.0
+offset_bottom = -300.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+
