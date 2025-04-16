@@ -52,4 +52,8 @@ visible = false
 visible = false
 position = Vector2(-770, 320)
 
+[node name="SystemDiagnosticsMarker" parent="." instance=ExtResource("4_ynd6j")]
+position = Vector2(704, -96)
+
 [node name="SystemDiagnostics" parent="." instance=ExtResource("9_tg18w")]
+visible = false
