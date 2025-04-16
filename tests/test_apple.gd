@@ -22,7 +22,8 @@ func _ready():
 
 	# Create a fake player (simulating CharacterBody2D)
 	fake_player = CharacterBody2D.new()
-	fake_player.set_script(load("res://Astronaut/Astronaut.gd"))  # Load astronaut script
+	fake_player.set_script(load("res://tests/mock_astronaut.gd")) # Load astronaut script
+	fake_player.minigame_active = false
 	
 	# Manually create a HealthBar for the fake player
 	var health_bar = ProgressBar.new()
