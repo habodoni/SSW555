@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcinoyc1nyh0m"]
+[gd_scene load_steps=12 format=3 uid="uid://ds05bt1gshscd"]
 
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
 [ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cfnxk2s14rps7" path="res://Task2.tscn" id="7_5fd5d"]
 [ext_resource type="PackedScene" uid="uid://devy8q30tlart" path="res://Task3.tscn" id="8_lpcof"]
 [ext_resource type="PackedScene" uid="uid://dfcyqmsv328hw" path="res://minigames/elektron/elektron_minigame.tscn" id="9_rdfu0"]
+[ext_resource type="PackedScene" uid="uid://q84ddoxkffpr" path="res://SystemDiagnostics/system_diagnostics.tscn" id="9_tg18w"]
+[ext_resource type="PackedScene" uid="uid://d3fk5oqvf3oxo" path="res://Navigation/ShipIcon.tscn" id="10_75olf"]
 
 [node name="SpaceTravel" type="Node2D"]
 script = ExtResource("1_wutnr")
@@ -38,7 +40,16 @@ position = Vector2(-127, 228)
 scale = Vector2(3, 3)
 
 [node name="Task2" parent="." instance=ExtResource("7_5fd5d")]
+visible = false
 
 [node name="Task3" parent="." instance=ExtResource("8_lpcof")]
+visible = false
 
 [node name="ElektronMinigame" parent="." instance=ExtResource("9_rdfu0")]
+visible = false
+
+[node name="Navigation" parent="." instance=ExtResource("10_75olf")]
+visible = false
+position = Vector2(-770, 320)
+
+[node name="SystemDiagnostics" parent="." instance=ExtResource("9_tg18w")]

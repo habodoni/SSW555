@@ -17,21 +17,24 @@ extends Node2D
 var velocity := Vector2.ZERO
 var angle := 0.0
 var gravity_bodies := []
+var x_offset = 0
+var y_offset = 0
 
 func _ready():
 	add_child(line)
 	line.position = Vector2.ZERO
 	line.width = 2
 	line.default_color = line_color
-	line.z_index = -1
+	line.z_index = 10
 
 	# Connect the button signal
 	apply_button.pressed.connect(apply_input_values)
 	chart_button.pressed.connect(complete_minigame)
 
 func _process(delta):
-	handle_input(delta)
-	draw_trajectory()
+	if get_parent().visible: #minigame does not work when player isnt actively playing it
+		handle_input(delta)
+		draw_trajectory()
 
 	var angle_deg = angle * 180.0 / PI
 	status_label.text = "Chart your path to Ganymede:\n
@@ -56,7 +59,7 @@ func handle_input(delta):
 		thrust_power = 0
 
 func complete_minigame():
-	get_tree().quit()
+	GameState.set_system_status("navigation", true)
 
 func apply_input_values():
 	# Read values from LineEdits and apply them to thrust and angle
@@ -71,6 +74,10 @@ func apply_input_values():
 	
 	thrust_input.text = ""
 	angle_input.text = ""
+
+func offset(x, y):
+	x_offset = x
+	y_offset = y
 
 func draw_trajectory():
 	var points: Array[Vector2] = []
@@ -124,4 +131,7 @@ func draw_trajectory():
 			points.append(pos)
 	if not orbiting || orbit == null || not orbit.isTarget():
 			chart_button.hide()
+	var offset = Vector2(x_offset, y_offset)
+	for i in range(points.size()):
+		points[i] += offset
 	line.points = points

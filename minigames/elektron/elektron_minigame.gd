@@ -102,15 +102,16 @@ func _ready():
 		instructions_label.text = "Liquid unit appears damaged. Start by scanning the system."
 
 func _process(delta):
-	if oxygen_level > 0 and not minigame_completed:
-		# Get repair_skill from the assigned astronaut node
-		var repair_skill = astronaut.repair_skill if astronaut else 1.0
-		var drain_multiplier = 1.0 / repair_skill
-		oxygen_level -= delta * 0.5 * drain_multiplier
-		oxygen_bar.value = oxygen_level
-	else:
-		if not minigame_completed and oxygen_level <= 0:
-			game_over("Oxygen depleted! Mission failed.")
+	if visible: #minigame does not work when player isnt actively playing it
+		if oxygen_level > 0 and not minigame_completed:
+			# Get repair_skill from the assigned astronaut node
+			var repair_skill = astronaut.repair_skill if astronaut else 1.0
+			var drain_multiplier = 1.0 / repair_skill
+			oxygen_level -= delta * 0.5 * drain_multiplier
+			oxygen_bar.value = oxygen_level
+		else:
+			if not minigame_completed and oxygen_level <= 0:
+				game_over("Oxygen depleted! Mission failed.")
 
 # --- BUBBLE MANAGEMENT ---
 func _spawn_bubbles(count := 3):
@@ -251,10 +252,14 @@ func complete_minigame(message: String):
 	minigame_completed = true
 	
 	# Update the game state to mark oxygen system as functional
-	if Engine.has_singleton("GameState"):
-		var game_state = Engine.get_singleton("GameState")
-		game_state.set_system_status("oxygen", true)
-		print("Oxygen system status updated in GameState")
+	#if Engine.has_singleton("GameState"):
+		#var game_state = Engine.get_singleton("GameState")
+		#game_state.set_system_status("oxygen", true)
+		#print("Oxygen system status updated in GameState")
+	
+	#get_singleton wasn't recognizing GameState so changed the code
+	
+	GameState.set_system_status("oxygen", true)
 	
 	# Optional: Update UI to show game is complete
 	if oxygen_bar:

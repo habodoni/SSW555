@@ -29,16 +29,25 @@ func _ready():
 
 func _process(delta):
 	# Check for 'E' key press to exit
-	if Input.is_action_just_pressed("interact"):
-		return_to_main_game()
+	#if Input.is_action_just_pressed("interact"):
+		#return_to_main_game()
+		
+	#had to comment out because the E interaction already exists in space travel 
+		#this was causing bugs
+		
+	if visible:
+		load_system_status()
+		update_ui()
 
 # Load system status from wherever you're storing game state
 func load_system_status():
 	# Check if GameState exists
-	if Engine.has_singleton("GameState"):
-		var game_state = Engine.get_singleton("GameState")
-		if game_state.has_method("get_system_status"):
-			system_status = game_state.get_system_status()
+	#if Engine.has_singleton("GameState"):
+		#var game_state = Engine.get_singleton("GameState")
+		#if game_state.has_method("get_system_status"):
+			#system_status = game_state.get_system_status()
+	#had to comment out because it wasn't able to find gamestate
+	system_status = GameState.get_system_status()
 	
 	# For testing: you can enable this line to simulate completed repairs
 	# system_status["oxygen"] = true

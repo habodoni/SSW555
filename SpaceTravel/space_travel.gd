@@ -5,10 +5,10 @@ var astronaut = preload("res://Astronaut/Astronaut.tscn")  # Preloads at compile
 @onready var oxygen_minigame = $ElektronMinigame
 @onready var oxygen_minigame_marker = $OxygenTaskMarker
 
-@onready var minigame_2 = $Task2
+@onready var minigame_2 = $SystemDiagnostics
 @onready var minigame_2_marker = $TaskMarker2
 
-@onready var minigame_3 = $Task3
+@onready var minigame_3 = $Navigation
 @onready var minigame_3_marker = $TaskMarker3
 
 var task_deck = []
@@ -33,6 +33,7 @@ func stack_deck():
 	oxygen_minigame_marker.setup(oxygen_minigame)
 	minigame_2_marker.setup(minigame_2)
 	minigame_3_marker.setup(minigame_3)
+	minigame_3.offset(770, -320)
 	
 	oxygen_minigame_marker.deactivate()
 	minigame_2_marker.deactivate()

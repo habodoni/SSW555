@@ -82,6 +82,7 @@ position = Vector2(965, 538)
 zoom = Vector2(1.005, 1.005)
 
 [node name="MissionControl" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1209.0
 offset_top = 49.0
 offset_right = 1813.0

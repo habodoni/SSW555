@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3fk5oqvf3oxo"]
+[gd_scene load_steps=13 format=3 uid="uid://d3fk5oqvf3oxo"]
 
 [ext_resource type="Texture2D" uid="uid://cmhnwo4irgq6e" path="res://Background/Space Background (2).png" id="1_7mpog"]
+[ext_resource type="Script" path="res://Navigation/navigation.gd" id="1_qqsym"]
 [ext_resource type="PackedScene" uid="uid://cuevps0ppc45q" path="res://Planet/Planet.tscn" id="1_vat5x"]
 [ext_resource type="Script" path="res://Navigation/ship_icon.gd" id="2_cx4ik"]
 [ext_resource type="Script" path="res://Planet/Mars.gd" id="3_kcb4w"]
@@ -13,12 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://dfr4oiugoo4b2" path="res://Navigation/Main Ship - Base - Full health.png" id="11_y0nw6"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_qqsym")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(770, -320)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = -1000
 position = Vector2(770, -320)
 texture = ExtResource("1_7mpog")
 
