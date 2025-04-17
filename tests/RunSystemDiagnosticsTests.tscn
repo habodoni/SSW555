@@ -1,6 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsc8dlcb5dfah"]
+[gd_scene load_steps=2 format=3 uid="uid://bg4vfappjjg1u"]
 
-[ext_resource type="Script" path="res://tests/test_system_diagnostics.gd" id="1_2mplg"]
+[sub_resource type="GDScript" id="GDScript_vf26e"]
+script/source = "extends Node
+
+var diagnostics_instance
+var mock_game_state
+var result_label
+
+func _ready():
+	print(\"Running System Diagnostics Tests...\\n\")
+
+	# STEP 1: Create and add mock to root, named \"GameState\"
+	mock_game_state = preload(\"res://tests/mock_game_state.gd\").new()
+	mock_game_state.name = \"GameState\"
+	get_tree().root.add_child(mock_game_state)
+
+	# STEP 2: Mutate the existing dictionary instead of replacing it
+	mock_game_state.mock_status[\"oxygen\"] = true
+	mock_game_state.mock_status[\"navigation\"] = false
+	print(\"✅ Set mock_status to: \", mock_game_state.mock_status)
+
+	# STEP 3: Create result label
+	result_label = Label.new()
+	result_label.text = \"Running Tests...\"
+	result_label.set(\"theme_override_colors/font_color\", Color(1, 1, 1))
+	result_label.set(\"theme_override_font_sizes/font_size\", 16)
+	add_child(result_label)
+
+	# STEP 4: Wait one frame so changes take effect
+	await get_tree().process_frame
+
+	run_all_tests()
+
+func run_all_tests():
+	test_indicators_update_correctly()
+
+func test_indicators_update_correctly():
+	var diagnostics_scene = preload(\"res://SystemDiagnostics/system_diagnostics.tscn\")
+	diagnostics_instance = diagnostics_scene.instantiate()
+	add_child(diagnostics_instance)
+
+	await get_tree().process_frame
+
+	var oxygen_color = diagnostics_instance.oxygen_indicator.color
+	var nav_color = diagnostics_instance.navigation_indicator.color
+
+	var passed = oxygen_color == diagnostics_instance.color_functional and \\
+				 nav_color == diagnostics_instance.color_nonfunctional
+
+	if passed:
+		result_label.text += \"\\n✅ Test Passed!\"
+		print(\"✅ Indicator Test Passed!\")
+	else:
+		result_label.text += \"\\n❌ Test Failed!\"
+		print(\"❌ Indicator Test Failed!\")
+		print(\"Expected oxygen to be green and navigation to be red.\")
+		print(\"Got oxygen color: \", oxygen_color)
+		print(\"Got navigation color: \", nav_color)
+
+	diagnostics_instance.queue_free()
+"
 
 [node name="RunSystemDiagnosticsTests" type="Node"]
-script = ExtResource("1_2mplg")
+script = SubResource("GDScript_vf26e")

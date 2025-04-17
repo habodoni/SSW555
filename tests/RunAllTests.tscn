@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://bghomomtby02s"]
+
+[sub_resource type="GDScript" id="GDScript_grw7t"]
+script/source = "extends Control
+
+@onready var output = $OutputLabel
+
+var test_scenes = [
+	\"res://tests/RunAppleTests.tscn\",
+	\"res://tests/RunAstronautTests.tscn\",
+	\"res://tests/RunElektronMinigameTests.tscn\",
+	\"res://tests/RunSystemDiagnosticsTests.tscn\"
+	# Add more here as needed 
+]
+
+var current_index = 0
+
+func _ready():
+	output.text += \"👋 Hello from test_runner!\\n\"
+	output.text = \"🚀 Running Unit Tests...\\n\\n\"
+	run_next_test()
+
+func run_next_test():
+	if current_index >= test_scenes.size():
+		output.text += \"\\n✅ All tests complete.\\n\"
+		await get_tree().create_timer(2).timeout
+		get_tree().quit()
+		return
+
+	var scene_path = test_scenes[current_index]
+	output.text += \"🔍 Running: %s\\n\" % scene_path
+
+	var scene = load(scene_path)
+	if scene == null:
+		output.text += \"❌ Could not load: %s\\n\" % scene_path
+		current_index += 1
+		run_next_test()
+		return
+
+	var test_scene = scene.instantiate()
+	add_child(test_scene)
+
+	await get_tree().create_timer(1.5).timeout
+	remove_child(test_scene)
+
+	current_index += 1
+	run_next_test()
+"
+
+[node name="RunAllTests" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_grw7t")
+
+[node name="OutputLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -870.0
+offset_top = -343.0
+offset_right = 924.0
+offset_bottom = 390.0

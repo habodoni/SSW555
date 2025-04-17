@@ -29,6 +29,9 @@ func run_tests():
 	test_apply_inputs(ship_icon)
 	test_chart_button_logic(ship_icon)
 	test_navigation_completion(ship_icon)
+	test_invalid_inputs(ship_icon)
+	test_thrust_floor(ship_icon)
+	test_trajectory_points(ship_icon)
 
 	print("All tests finished.")
 
@@ -66,6 +69,24 @@ func test_navigation_completion(ship_icon):
 	# Simulate pressing chart button
 	ship_icon.chart_button.emit_signal("pressed")
 	assert_test(GameState.get_system_status("navigation") == true, "GameState updated on chart complete.")
+	
+func test_invalid_inputs(ship_icon):
+	ship_icon.thrust_input.text = "banana"
+	ship_icon.angle_input.text = "???"
+	ship_icon.apply_input_values()
+	assert_test(ship_icon.thrust_power == initial_thrust, "Invalid thrust input is ignored.")
+	assert_test(abs(ship_icon.angle - initial_angle) < 0.01, "Invalid angle input is ignored.")
+
+func test_thrust_floor(ship_icon):
+	ship_icon.thrust_power = -50
+	ship_icon.handle_input(0.1)
+	assert_test(ship_icon.thrust_power >= 0, "Thrust does not go below zero.")
+	
+func test_trajectory_points(ship_icon):
+	ship_icon.thrust_power = 300
+	ship_icon.angle = deg_to_rad(45)
+	ship_icon.draw_trajectory()
+	assert_test(ship_icon.line.points.size() > 10, "Trajectory line has points.")
 
 func assert_test(condition: bool, message: String):
 	if condition:
