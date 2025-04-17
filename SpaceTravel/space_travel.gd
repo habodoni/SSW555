@@ -16,6 +16,9 @@ var astronaut = preload("res://Astronaut/Astronaut.tscn")  # Preloads at compile
 @onready var system_diagnostics = $SystemDiagnostics
 @onready var system_diagnostics_marker = $SystemDiagnosticsMarker
 
+@onready var inventory = $ResourceTracker
+@onready var inventory_marker = $InventoryMarker
+
 var task_deck = []
 
 var minigame_active = false
@@ -39,10 +42,12 @@ func stack_deck():
 	minigame_2_marker.setup(minigame_2)
 	minigame_3_marker.setup(minigame_3)
 	system_diagnostics_marker.setup(system_diagnostics)
+	inventory_marker.setup(inventory)
 	
 	minigame_3.offset(770, -320)
 	
 	system_diagnostics_marker.activate()
+	inventory_marker.activate()
 	oxygen_minigame_marker.deactivate()
 	minigame_2_marker.deactivate()
 	minigame_3_marker.deactivate()
@@ -59,11 +64,13 @@ func set_minigame_active(active: bool):
 		minigame_2_marker.light.hide()
 		minigame_3_marker.light.hide()
 		system_diagnostics_marker.light.hide()
+		inventory_marker.light.hide()
 	else:
 		oxygen_minigame_marker.light.show()
 		minigame_2_marker.light.show()
 		minigame_3_marker.light.show()
 		system_diagnostics_marker.light.show()
+		inventory_marker.light.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

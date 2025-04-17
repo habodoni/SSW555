@@ -215,6 +215,8 @@ func _on_liquid_slot_area_entered(area):
 	if area.name == "NewLiquidUnit":
 		print("NewLiquidUnit placed in slot!")
 		liquid_unit_damaged = false
+		
+		GameState.set_resource_amount("oxygen_tanks", GameState.get_resource_amount("oxygen_tanks") - 1)
 		# Optional: you can queue_free the liquid unit here or just hide it
 		# area.queue_free()
 		area.visible = false
