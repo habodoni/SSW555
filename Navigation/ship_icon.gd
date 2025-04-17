@@ -6,6 +6,8 @@ extends Node2D
 @export var turn_speed := 4.0
 @export var line_color := Color.WHITE
 @export var planet_radius := 50.0
+@export var ship_weight := 10.0  # Default weight, adjustable per ship
+
 
 @onready var thrust_input: LineEdit = $ThrustInput
 @onready var angle_input: LineEdit = $AngleInput
@@ -19,6 +21,8 @@ var angle := 0.0
 var gravity_bodies := []
 var x_offset = 0
 var y_offset = 0
+var earth_position := Vector2(0, 0)  # Assume Earth is at origin
+
 
 func _ready():
 	add_child(line)
@@ -35,6 +39,8 @@ func _process(delta):
 	if get_parent().visible: #minigame does not work when player isnt actively playing it
 		handle_input(delta)
 		draw_trajectory()
+		apply_fuel_decay(delta)
+		
 
 	var angle_deg = angle * 180.0 / PI
 	status_label.text = "Chart your path to Ganymede:\n
@@ -45,6 +51,16 @@ func _process(delta):
 	gravitational fields in order to orbit Ganymede\n
 	Try to get there using the least amount of thrust\n\n"
 	status_label.text += "Thrust: %.1f\nAngle: %.2f°" % [thrust_power, fposmod(angle_deg, 360.0)]
+	
+		# Calculate distance from Earth and apply fuel decay
+	var dist_from_earth = global_position.distance_to(earth_position)
+	var fuel_decay_rate = (dist_from_earth / 1000.0) * (ship_weight / 10.0)  # tweak divisor for balance
+	
+	# Reduce fuel (clamp to 0)
+	var current_fuel = GameState.get_resource_amount("fuel")
+	var new_fuel = clamp(current_fuel - fuel_decay_rate * delta, 0, GameState.get_resource_amount("max_fuel"))
+	GameState.set_resource_amount("fuel", int(new_fuel))
+
 
 func handle_input(delta):
 	if Input.is_action_pressed("left"):
@@ -57,6 +73,17 @@ func handle_input(delta):
 		thrust_power -= 10
 	if thrust_power < 0:
 		thrust_power = 0
+		
+func apply_fuel_decay(delta):
+	var dist_from_earth = global_position.distance_to(earth_position)
+	var fuel_decay_rate = (dist_from_earth / 1000.0) * (ship_weight / 10.0)
+	print("📉 Distance from Earth:", dist_from_earth, " | Decay Rate:", fuel_decay_rate)
+
+	var current_fuel = GameState.get_resource_amount("fuel")
+	var new_fuel = clamp(current_fuel - fuel_decay_rate * delta, 0, GameState.get_resource_amount("max_fuel"))
+	GameState.set_resource_amount("fuel", int(new_fuel))
+	print("⛽ Fuel remaining:", int(new_fuel))
+
 
 func complete_minigame():
 	GameState.set_system_status("navigation", true)
@@ -136,3 +163,4 @@ func draw_trajectory():
 	for i in range(points.size()):
 		points[i] += offset
 	line.points = points
+	

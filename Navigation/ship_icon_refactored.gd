@@ -6,6 +6,7 @@ extends Node2D
 @export var turn_speed := 4.0
 @export var line_color := Color.WHITE
 @export var planet_radius := 50.0
+@export var ship_weight := 10.0
 
 @onready var thrust_input: LineEdit = $ThrustInput
 @onready var angle_input: LineEdit = $AngleInput
@@ -27,6 +28,8 @@ var orbit_angle := 0.0
 var orbit_start := Vector2.ZERO
 var orbit = null
 var completed_steps
+var earth_position := Vector2(0, 0)
+
 
 func _ready():
 	add_child(line)
@@ -66,9 +69,27 @@ func handle_input(delta):
 		thrust_power = 0
 
 func complete_minigame():
+	var points = simulate_trajectory()
+	if points.size() > 0:
+		var final_pos = points[-1]
+		var dist_from_earth = final_pos.distance_to(Vector2.ZERO)
+		var fuel_decay_rate = (dist_from_earth / 1000.0) * (ship_weight / 10.0)
+
+		var current_fuel = GameState.get_resource_amount("fuel")
+		var new_fuel = clamp(current_fuel - fuel_decay_rate, 0, GameState.get_resource_amount("max_fuel"))
+		GameState.set_resource_amount("fuel", int(new_fuel))
+
+		print("Trajectory confirmed!")
+		print("Distance: %.1f px" % dist_from_earth)
+		print("Fuel decay rate: %.2f" % fuel_decay_rate)
+		print("Fuel remaining: %d" % int(new_fuel))
+
 	GameState.set_system_status("navigation", true)
 
+
 func apply_input_values():
+	print("Apply button pressed")  # Sanity check
+
 	var thrust_text = thrust_input.text
 	var angle_text = angle_input.text
 
@@ -79,6 +100,8 @@ func apply_input_values():
 	
 	thrust_input.text = ""
 	angle_input.text = ""
+
+
 
 func set_draw_offset(x, y):
 	x_offset = x
@@ -129,6 +152,9 @@ func simulate_trajectory() -> Array[Vector2]:
 			vel += acc * dt
 			pos += vel * dt
 			points.append(pos)
+		# === Apply Fuel Decay ===
+
+
 	return points
 
 func enter_orbit(body, dist, current_pos, current_step):
