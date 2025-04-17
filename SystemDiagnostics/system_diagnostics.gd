@@ -1,5 +1,7 @@
 extends Control
 
+var GameState  # This will be injected manually during testing
+
 # Dictionary to track status of all systems
 var system_status = {
 	"oxygen": false,

@@ -68,7 +68,7 @@ custom_minimum_size = Vector2(5, 30)
 layout_mode = 2
 color = Color(0.8, 0.2, 0.2, 1)
 
-[node name="Return Label" type="Label" parent="."]
+[node name="InstructionLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 1020.0
