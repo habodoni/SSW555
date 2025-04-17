@@ -4,7 +4,7 @@ func _ready():
 	print("🔧 Starting system diagnostics tests...\n")
 
 	# Load and instance the SystemDiagnostics scene
-	var scene = load("res://SystemDiagnostics/system_diagnostics.tscn")  # <- Update this path!
+	var scene = load("res://SystemDiagnostics/system_diagnostics.tscn")  
 	var diagnostics = scene.instantiate()
 
 	# Inject mock GameState before adding to the tree
