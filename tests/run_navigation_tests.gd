@@ -1,6 +1,6 @@
 extends Node
 
-const MINIGAME_SCENE_PATH = "res://Navigation/ShipIcon.tscn"
+const MINIGAME_SCENE_PATH = "res://Navigation/Navigation.tscn"
 
 var minigame: Node = null
 var initial_thrust
@@ -10,7 +10,7 @@ func _ready():
 	run_tests()
 
 func run_tests():
-	print("Running tests...")
+	print("Running tests on ", MINIGAME_SCENE_PATH, "...")
 
 	var scene = load(MINIGAME_SCENE_PATH)
 	minigame = scene.instantiate()

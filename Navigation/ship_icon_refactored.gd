@@ -20,6 +20,14 @@ var gravity_bodies := []
 var x_offset = 0
 var y_offset = 0
 
+var orbiting := false
+var orbit_center := Vector2.ZERO
+var orbit_radius := 0.0
+var orbit_angle := 0.0
+var orbit_start := Vector2.ZERO
+var orbit = null
+var completed_steps
+
 func _ready():
 	add_child(line)
 	line.position = Vector2.ZERO
@@ -27,12 +35,11 @@ func _ready():
 	line.default_color = line_color
 	line.z_index = 10
 
-	# Connect the button signal
 	apply_button.pressed.connect(apply_input_values)
 	chart_button.pressed.connect(complete_minigame)
 
 func _process(delta):
-	if get_parent().visible: #minigame does not work when player isnt actively playing it
+	if get_parent().visible:
 		handle_input(delta)
 		draw_trajectory()
 
@@ -62,44 +69,44 @@ func complete_minigame():
 	GameState.set_system_status("navigation", true)
 
 func apply_input_values():
-	# Read values from LineEdits and apply them to thrust and angle
 	var thrust_text = thrust_input.text
 	var angle_text = angle_input.text
 
 	if thrust_text.is_valid_float():
 		thrust_power = thrust_text.to_float()
-
 	if angle_text.is_valid_float():
-		angle = deg_to_rad(angle_text.to_float())  # Convert degrees to radians
+		angle = deg_to_rad(angle_text.to_float())
 	
 	thrust_input.text = ""
 	angle_input.text = ""
 
-func offset(x, y):
+func set_draw_offset(x, y):
 	x_offset = x
 	y_offset = y
 
-#Bad Smell 2 master method, needs to be broken up
 func draw_trajectory():
+	var points = simulate_trajectory()
+	update_chart_button_visibility()
+	var draw_offset = Vector2(x_offset, y_offset)
+	for i in range(points.size()):
+		points[i] += draw_offset
+	line.points = points
+
+func simulate_trajectory() -> Array[Vector2]:
 	var points: Array[Vector2] = []
 	var pos = global_position
 	var vel = Vector2.RIGHT.rotated(angle) * thrust_power
 	var dt = trajectory_length / float(prediction_steps)
-	var completed_steps
+	completed_steps = 0
+	orbiting = false
+	orbit = null
 
 	gravity_bodies = get_tree().get_nodes_in_group("gravity_bodies")
-
-	var orbiting = false
-	var orbit_center = Vector2.ZERO
-	var orbit_radius = 0.0
-	var orbit_angle = 0.0
-	var orbit_start = Vector2.ZERO
-	var orbit = null
 
 	for i in range(prediction_steps):
 		if orbiting:
 			orbit_angle += 2 * PI / (prediction_steps - completed_steps)
-			var offset = Vector2(orbit_radius, 0).rotated(orbit_angle) #Bad Smell 1 variable used twice in differnt contexts
+			var offset = Vector2(orbit_radius, 0).rotated(orbit_angle) 
 			pos = orbit_center + offset
 			points.append(pos)
 			continue
@@ -114,15 +121,7 @@ func draw_trajectory():
 				acc += r.normalized() * grav_strength
 
 			if dist <= (body.radius + planet_radius) * body.scale.x * 2 / 3:
-				orbiting = true
-				orbit = body
-				if body.isTarget():
-					chart_button.show()
-				completed_steps = i
-				orbit_center = body.global_position
-				orbit_radius = dist
-				orbit_start = pos
-				orbit_angle = (orbit_start - orbit_center).angle()
+				enter_orbit(body, dist, pos, i)
 				points.append(orbit_start)
 				break
 
@@ -130,9 +129,19 @@ func draw_trajectory():
 			vel += acc * dt
 			pos += vel * dt
 			points.append(pos)
-	if not orbiting || orbit == null || not orbit.isTarget():
-			chart_button.hide()
-	var offset = Vector2(x_offset, y_offset)  #Bad Smell 1 variable used twice in differnt contexts
-	for i in range(points.size()):
-		points[i] += offset
-	line.points = points
+	return points
+
+func enter_orbit(body, dist, current_pos, current_step):
+	orbiting = true
+	orbit = body
+	completed_steps = current_step
+	orbit_center = body.global_position
+	orbit_radius = dist
+	orbit_start = current_pos
+	orbit_angle = (orbit_start - orbit_center).angle()
+
+func update_chart_button_visibility():
+	if not orbiting or orbit == null or not orbit.isTarget():
+		chart_button.hide()
+	else:
+		chart_button.show()

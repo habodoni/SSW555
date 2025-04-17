@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cmhnwo4irgq6e" path="res://Background/Space Background (2).png" id="1_7mpog"]
 [ext_resource type="Script" path="res://Navigation/navigation.gd" id="1_qqsym"]
 [ext_resource type="PackedScene" uid="uid://cuevps0ppc45q" path="res://Planet/Planet.tscn" id="1_vat5x"]
-[ext_resource type="Script" path="res://Navigation/ship_icon.gd" id="2_cx4ik"]
 [ext_resource type="Script" path="res://Planet/Mars.gd" id="3_kcb4w"]
 [ext_resource type="Script" path="res://Planet/Ganymede.gd" id="4_ogkxl"]
 [ext_resource type="Script" path="res://Planet/Jupiter.gd" id="5_l53cs"]
@@ -11,6 +10,7 @@
 [ext_resource type="Script" path="res://Planet/Asteroid.gd" id="7_6gync"]
 [ext_resource type="Script" path="res://Planet/Asteroid2.gd" id="8_fxjmu"]
 [ext_resource type="Script" path="res://Planet/Asteroid3.gd" id="9_q83op"]
+[ext_resource type="Script" path="res://Navigation/ship_icon_refactored.gd" id="11_caofv"]
 [ext_resource type="Texture2D" uid="uid://dfr4oiugoo4b2" path="res://Navigation/Main Ship - Base - Full health.png" id="11_y0nw6"]
 
 [node name="Node2D" type="Node2D"]
@@ -63,7 +63,7 @@ script = ExtResource("9_q83op")
 mass = 100000.0
 
 [node name="ShipIcon" type="Node2D" parent="."]
-script = ExtResource("2_cx4ik")
+script = ExtResource("11_caofv")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipIcon"]
 texture = ExtResource("11_y0nw6")

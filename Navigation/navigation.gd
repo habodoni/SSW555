@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	pass
 
 func offset(x_offset, y_offset):
-	ship_icon.offset(x_offset, y_offset)
+	ship_icon.set_draw_offset(x_offset, y_offset)
