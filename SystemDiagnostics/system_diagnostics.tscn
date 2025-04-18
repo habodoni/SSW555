@@ -48,6 +48,7 @@ text = "System Diagnostics"
 horizontal_alignment = 1
 
 [node name="MissionControlBackground" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 1112.0
 offset_top = 217.0
 offset_right = 1926.0
@@ -116,6 +117,7 @@ theme_override_font_sizes/font_size = 25
 text = "Press 'E' to return to Ship"
 
 [node name="OxygenLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 978.0
 offset_top = 284.0
 offset_right = 2044.0

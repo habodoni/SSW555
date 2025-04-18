@@ -1,6 +1,6 @@
 extends Control
 
-var GameState  # This will be injected manually during testing
+  # This will be injected manually during testing
 
 # Dictionary to track status of all systems
 var system_status = {
@@ -68,6 +68,7 @@ func update_ui():
 	# Update navigation system indicator
 	if navigation_indicator:
 		navigation_indicator.color = color_functional if system_status["navigation"] else color_nonfunctional
+		$StatusGrid/FuelSystemIndicator.color = color_functional if system_status["navigation"] else color_nonfunctional
 		print("Navigation indicator updated: ", system_status["navigation"])
 	else:
 		print("Navigation indicator not found!")

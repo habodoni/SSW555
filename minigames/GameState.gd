@@ -24,11 +24,13 @@ func _ready():
 	pass
 
 func _process(delta: float) -> void:
-	if (count == resources["fuel_deplete_time"] && resources["fuel"] != 0):
-			count = 0
-			resources["fuel"] = resources["fuel"] - 1
-	else:
-		count += 1
+	if (system_status["navigation"] == true):
+		if (count == resources["fuel_deplete_time"] && resources["fuel"] != 0):
+				count = 0
+				resources["fuel"] = resources["fuel"] - 1
+		else:
+			print("count")
+			count += 1
 
 
 # Set a specific system's status

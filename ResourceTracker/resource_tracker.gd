@@ -1,7 +1,7 @@
 extends Node
 
 @onready var inventory_label: Label = $Label  
-var GameState  # Will be injected by the test
+  # Will be injected by the test
 
 func _ready():
 	update_inventory_display()
