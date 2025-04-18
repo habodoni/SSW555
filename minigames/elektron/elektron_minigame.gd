@@ -8,6 +8,7 @@ var bubbles_present: bool = false
 var liquid_unit_damaged: bool = true
 var is_oxygen_critical: bool = false
 var warning_threshold := 90.0
+var Task_Manager = null
 # Restart sequence logic
 var command_sequence = ["Power On", "Water Flow", "Electrolysis Start", "Hydrogen Purge"]
 var command_index = 0
@@ -272,10 +273,20 @@ func complete_minigame(message: String):
 	#get_singleton wasn't recognizing GameState so changed the code
 	
 	GameState.set_system_status("oxygen", true)
+	print("Testing Task manager")
+	if (Task_Manager != null):
+		Task_Manager.task_done()
+	else:
+		print("No task manager")
 	
 	# Optional: Update UI to show game is complete
 	if oxygen_bar:
 		oxygen_bar.modulate = Color(0.5, 1.0, 0.5)  # Green tint to indicate success
+
+func set_task_manager(task_manager):
+	Task_Manager = task_manager
+	print("Task Manager Assigned")
+	print(Task_Manager)
 
 func game_success(message: String):
 	print(message)

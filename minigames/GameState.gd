@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 			print("count")
 			count += 1
 
-
 # Set a specific system's status
 func set_system_status(system_name: String, is_functional: bool):
 	if system_status.has(system_name):

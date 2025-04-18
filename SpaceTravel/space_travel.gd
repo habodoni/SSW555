@@ -19,6 +19,8 @@ var astronaut = preload("res://Astronaut/Astronaut.tscn")  # Preloads at compile
 @onready var inventory = $ResourceTracker
 @onready var inventory_marker = $InventoryMarker
 
+@onready var task_manager = $TaskManager
+
 var task_deck = []
 
 var minigame_active = false
@@ -35,7 +37,10 @@ func _ready() -> void:
 	var astronaut_2 = astronaut.instantiate()
 	add_child(astronaut_2)
 	astronaut_2.setup(false, 416, -180)
+	var task_markers = [minigame_3_marker, oxygen_minigame_marker]
+	minigame_2_marker.deactivate()
 	stack_deck()
+	task_manager.set_task_markers(task_markers)
 
 func stack_deck():
 	oxygen_minigame_marker.setup(oxygen_minigame)
@@ -45,6 +50,9 @@ func stack_deck():
 	inventory_marker.setup(inventory)
 	
 	minigame_3.offset(770, -320)
+	
+	oxygen_minigame.set_task_manager(task_manager)
+	minigame_3.set_task_manager(task_manager)
 	
 	system_diagnostics_marker.activate()
 	inventory_marker.activate()
@@ -65,21 +73,23 @@ func set_minigame_active(active: bool):
 		minigame_3_marker.light.hide()
 		system_diagnostics_marker.light.hide()
 		inventory_marker.light.hide()
+		task_manager.hide()
 	else:
 		oxygen_minigame_marker.light.show()
 		minigame_2_marker.light.show()
 		minigame_3_marker.light.show()
 		system_diagnostics_marker.light.show()
 		inventory_marker.light.show()
+		task_manager.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not minigame_active:
-		if (count == cardDeal && task_deck.size() != 0):
-			deal_deck()
-			count = 0
-		else:
-			count += 1
+	#if not minigame_active:
+		#if (count == cardDeal && task_deck.size() != 0):
+			#deal_deck()
+			#count = 0
+		#else:
+			#count += 1
 			
 	# Oxygen warning check
 	if oxygen_minigame.is_oxygen_critical:

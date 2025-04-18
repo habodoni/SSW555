@@ -85,6 +85,7 @@ func complete_minigame():
 		print("Fuel remaining: %d" % int(new_fuel))
 
 	GameState.set_system_status("navigation", true)
+	get_parent().task_done()
 
 
 func apply_input_values():
