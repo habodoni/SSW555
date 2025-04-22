@@ -1,44 +1,119 @@
-extends Control
+extends Node
 
-@onready var target_label = $TargetFrequencyLabel
-@onready var player_label = $PlayerFrequencyLabel
-@onready var slider = $FrequencySlider
-@onready var status_label = $StatusLabel
-@onready var target_wave = $TargetEKGPanel
-@onready var player_wave = $PlayerEKGPanel
+# Dictionary to track status of all systems
+var system_status = {
+	"oxygen": false,
+	"navigation": false,
+	# Add more systems as you create them
+}
 
-var target_frequency = 0.0
-var tolerance = 0.2  # How close the player must match
+# Dictionary to track status of all resources
+var resources = {
+	"oxygen_tanks": 5,
+	"fuel": 100,
+	"max_oxygen_tanks": 5,
+	"max_fuel": 100,
+	"fuel_deplete_time": 100
+	# Add more systems as you create them
+}
 
+var count = 0
+
+# Called when the node enters the scene tree for the first time
 func _ready():
-	# Set a random target frequency (between 2.0 and 5.0 Hz)
-	target_frequency = randf_range(2.0, 5.0)
-	target_label.text = "Target Frequency: %.1f Hz" % target_frequency
+	pass
 
-	# Apply target frequency to target waveform shader
-	if target_wave.material is ShaderMaterial:
-		var shader = target_wave.material as ShaderMaterial
-		shader.set_shader_parameter("freq", target_frequency)
+func _process(delta: float) -> void:
+	if (system_status["navigation"] == true):
+		if (count == resources["fuel_deplete_time"] && resources["fuel"] != 0):
+				count = 0
+				resources["fuel"] = resources["fuel"] - 1
+		else:
+			print("count")
+			count += 1
 
-func _process(delta):
-	var t = Time.get_ticks_msec() / 1000.0
-	var player_freq = slider.value
-
-	# Update time and frequency on wave materials
-	if target_wave.material is ShaderMaterial:
-		var mat = target_wave.material as ShaderMaterial
-		mat.set_shader_parameter("time", t)
-
-	if player_wave.material is ShaderMaterial:
-		var mat = player_wave.material as ShaderMaterial
-		mat.set_shader_parameter("time", t)
-		mat.set_shader_parameter("freq", player_freq)
-
-	# Update label
-	player_label.text = "Your Frequency: %.1f Hz" % player_freq
-
-	# Status feedback
-	if abs(player_freq - target_frequency) < tolerance:
-		status_label.text = "✅ Frequency Locked!"
+# Set a specific system's status
+func set_system_status(system_name: String, is_functional: bool):
+	if system_status.has(system_name):
+		system_status[system_name] = is_functional
+		print("System status updated - " + system_name + ": " + str(is_functional))
+		# You could emit a signal here to notify other parts of the game
 	else:
-		status_label.text = "Tuning..."
+		print("Warning: Attempted to set status for unknown system: " + system_name)
+
+# Set a specific system's status
+func set_resource_amount(resource_name: String, amount: int):
+	if resources.has(resource_name):
+		resources[resource_name] = amount
+		print("Resource updated - " + resource_name + ": " + str(amount))
+		# You could emit a signal here to notify other parts of the game
+	else:
+		print("Warning: Attempted to set amount for unknown resource: " + resource_name)
+
+# Get status of a specific system
+func get_system_status(system_name: String = "") -> Variant:
+	if system_name.is_empty():
+		# Return the entire dictionary if no system specified
+		return system_status
+	elif system_status.has(system_name):
+		return system_status[system_name]
+	else:
+		print("Warning: Attempted to get status for unknown system: " + system_name)
+		return null
+
+# Get status of a specific system
+func get_resource_amount(resource_name: String = "") -> Variant:
+	if resource_name.is_empty():
+		# Return the entire dictionary if no system specified
+		return resources
+	elif resources.has(resource_name):
+		return resources[resource_name]
+	else:
+		print("Warning: Attempted to get amount for unknown resource: " + resource_name)
+		return null
+
+# Reset all system statuses (e.g., when starting a new game)
+func reset_system_status():
+	for key in system_status.keys():
+		system_status[key] = false
+	print("All system statuses reset to non-functional")
+
+func set_resources_to_max():
+	resources["oxygen_tanks"] = resources["oxygen_tanks_max"]
+	resources["fuel"] = resources["fuel_max"]
+
+# Save game state to disk (implement if needed)
+func save_game():
+	# Example implementation using JSON
+	var save_data = {
+		"system_status": system_status,
+		"resources": resources
+	}
+	
+	var file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(save_data))
+		print("Game saved successfully")
+	else:
+		print("Failed to save game")
+
+# Load game state from disk (implement if needed)
+func load_game() -> bool:
+	if FileAccess.file_exists("user://savegame.json"):
+		var file = FileAccess.open("user://savegame.json", FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		
+		if parse_result == OK:
+			var data = json.get_data()
+			if data.has("system_status"):
+				system_status = data["system_status"]
+				print("Game loaded successfully")
+				return true
+		
+		print("Failed to parse save file")
+	else:
+		print("No save file found")
+	
+	return false
