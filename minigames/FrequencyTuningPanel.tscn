@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmoqn351ok71y"]
+
+[ext_resource type="Script" path="res://minigames/frequency_tuning_panel.gd" id="1_gvliq"]
+[ext_resource type="Shader" path="res://minigames/FrequencyTuningPanel.gdshader" id="2_5pes6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7h3n7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hcoe4"]
+shader = ExtResource("2_5pes6")
+shader_parameter/time = 0.0
+shader_parameter/freq = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sihnr"]
+shader = ExtResource("2_5pes6")
+shader_parameter/time = 0.0
+shader_parameter/freq = 1.0
+
+[node name="FrequencyTuningPanel" type="Control"]
+material = SubResource("ShaderMaterial_7h3n7")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvliq")
+
+[node name="TargetEKGPanel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hcoe4")
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.2
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerEKGPanel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sihnr")
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.35
+color = Color(0, 0, 0, 1)
+
+[node name="FrequencySlider" type="HSlider" parent="."]
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.45
+min_value = 1.0
+max_value = 5.0
+step = 0.1
+value = 3.0
+
+[node name="TargetFrequencyLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.55
+text = "Target Frequency: %.1f Hz"
+
+[node name="PlayerFrequencyLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.55
+text = "Your Frequency: 3.0 Hz"
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.35
+anchor_top = 0.6
+anchor_right = 0.65
+anchor_bottom = 0.65
+text = "Tuning..."

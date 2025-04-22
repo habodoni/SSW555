@@ -8,36 +8,36 @@ extends Control
 @onready var player_wave = $PlayerEKGPanel
 
 var target_frequency = 0.0
-var tolerance = 0.2  # How close the player must match
+var tolerance = 0.2  # Allowable margin for matching
 
 func _ready():
-	# Set a random target frequency (between 2.0 and 5.0 Hz)
+	# Set a random target frequency between 2.0 and 5.0 Hz
 	target_frequency = randf_range(2.0, 5.0)
 	target_label.text = "Target Frequency: %.1f Hz" % target_frequency
 
-	# Apply target frequency to target waveform shader
+	# Assign initial target frequency to the shader
 	if target_wave.material is ShaderMaterial:
-		var shader = target_wave.material as ShaderMaterial
-		shader.set_shader_parameter("freq", target_frequency)
+		var target_mat = target_wave.material as ShaderMaterial
+		target_mat.set_shader_param("freq", target_frequency)
 
 func _process(delta):
 	var t = Time.get_ticks_msec() / 1000.0
 	var player_freq = slider.value
 
-	# Update time and frequency on wave materials
+	# Update shader params for animation
 	if target_wave.material is ShaderMaterial:
-		var mat = target_wave.material as ShaderMaterial
-		mat.set_shader_parameter("time", t)
+		var target_mat = target_wave.material as ShaderMaterial
+		target_mat.set_shader_param("time", t)
 
 	if player_wave.material is ShaderMaterial:
-		var mat = player_wave.material as ShaderMaterial
-		mat.set_shader_parameter("time", t)
-		mat.set_shader_parameter("freq", player_freq)
+		var player_mat = player_wave.material as ShaderMaterial
+		player_mat.set_shader_param("time", t)
+		player_mat.set_shader_param("freq", player_freq)
 
-	# Update label
+	# Update UI labels
 	player_label.text = "Your Frequency: %.1f Hz" % player_freq
 
-	# Status feedback
+	# Determine if frequency is close enough to lock
 	if abs(player_freq - target_frequency) < tolerance:
 		status_label.text = "✅ Frequency Locked!"
 	else:

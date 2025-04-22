@@ -42,10 +42,10 @@ theme = ExtResource("2_xqiqr")
 
 [node name="OxygenStatus" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -848.0
-offset_top = -398.0
-offset_right = -512.0
-offset_bottom = -343.0
+offset_left = -709.0
+offset_top = -387.0
+offset_right = -434.0
+offset_bottom = -339.0
 scale = Vector2(1.5, 1.5)
 
 [node name="OxygenLevel" type="ProgressBar" parent="OxygenStatus"]
@@ -59,18 +59,18 @@ horizontal_alignment = 1
 
 [node name="InstructionsPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 202.0
-offset_top = -411.0
-offset_right = 904.0
-offset_bottom = -139.0
+offset_left = 318.0
+offset_top = -305.0
+offset_right = 974.0
+offset_bottom = 273.0
 theme = ExtResource("2_6dos2")
 
 [node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
 offset_left = 101.0
-offset_top = 125.0
-offset_right = 438.0
-offset_bottom = 174.0
+offset_top = 191.0
+offset_right = 396.0
+offset_bottom = 364.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("4_23a4x")
 theme_override_font_sizes/font_size = 15
@@ -80,9 +80,9 @@ autowrap_mode = 2
 [node name="InstructionsHeader" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
 offset_left = 98.0
-offset_top = 64.0
+offset_top = 130.0
 offset_right = 242.0
-offset_bottom = 87.0
+offset_bottom = 153.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("4_mdrl8")
 theme_override_font_sizes/font_size = 25
@@ -90,30 +90,30 @@ text = "Instructions:"
 
 [node name="GasAnalyzerPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -864.0
-offset_top = -278.0
-offset_right = -582.0
-offset_bottom = 14.0
+offset_left = -849.0
+offset_top = -307.0
+offset_right = -619.0
+offset_bottom = -60.0
 scale = Vector2(1.2, 1.2)
 theme = ExtResource("2_qpl4u")
 
 [node name="GasAnalyzerLabel" type="Label" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 69.1667
-offset_top = 17.5
-offset_right = 218.167
-offset_bottom = 49.5
-theme_override_colors/font_color = Color(0.272364, 0.227635, 0.144631, 1)
+offset_left = 45.8333
+offset_top = 26.6667
+offset_right = 194.834
+offset_bottom = 58.6667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Gas Analyzer "
 horizontal_alignment = 1
 
 [node name="ScanButton" type="Button" parent="GasAnalyzerPanel"]
 layout_mode = 0
-offset_left = 70.8334
-offset_top = 64.1667
-offset_right = 208.833
-offset_bottom = 131.167
+offset_left = 63.3333
+offset_top = 65.0
+offset_right = 173.333
+offset_bottom = 118.0
 theme = ExtResource("2_80k3h")
 theme_override_fonts/font = ExtResource("4_mdrl8")
 theme_override_font_sizes/font_size = 35
@@ -125,23 +125,28 @@ anchor_left = -0.138
 anchor_top = -0.106
 anchor_right = -0.138
 anchor_bottom = -0.106
-offset_left = -267.32
-offset_top = -120.534
-offset_right = 129.68
-offset_bottom = 133.466
+offset_left = -327.32
+offset_top = -148.534
+offset_right = 38.68
+offset_bottom = 75.466
 theme = ExtResource("6_ispnt")
 
 [node name="BubbleSection" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 0
-offset_left = -795.0
-offset_top = -108.0
-offset_right = -521.0
-offset_bottom = -8.00001
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.266
+anchor_top = -0.089
+anchor_right = -0.266
+anchor_bottom = -0.089
+offset_left = -294.24
+offset_top = -68.571
+offset_right = -56.2401
+offset_bottom = -0.570999
 scale = Vector2(1.3, 1.3)
 
 [node name="ReleasePressureButton" type="Button" parent="BubbleSection"]
-custom_minimum_size = Vector2(150, 100)
+custom_minimum_size = Vector2(50, 50)
 layout_direction = 2
 layout_mode = 2
 theme = ExtResource("2_80k3h")
@@ -157,17 +162,17 @@ position = Vector2(249.231, -3.07692)
 position = Vector2(-441, 53)
 
 [node name="LiquidUnitPanel" type="Panel" parent="LiquidUnitSection"]
-offset_left = 1068.0
-offset_top = 175.0
-offset_right = 1247.0
-offset_bottom = 437.0
+offset_left = 449.0
+offset_top = 37.0
+offset_right = 628.0
+offset_bottom = 299.0
 theme = ExtResource("2_qpl4u")
 
 [node name="LiquidUnitSlot" type="Area2D" parent="LiquidUnitSection"]
 script = ExtResource("2_ncmwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/LiquidUnitSlot"]
-position = Vector2(1205, 304)
+position = Vector2(586, 166)
 shape = SubResource("RectangleShape2D_xjp4r")
 debug_color = Color(0.728159, 0.474566, 0, 0.42)
 
@@ -191,21 +196,21 @@ position = Vector2(-515, -479)
 script = ExtResource("3_0pmcg")
 
 [node name="Sprite2D" type="Sprite2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(257.2, 725.499)
+position = Vector2(155.2, 667.499)
 scale = Vector2(-7.13338, 6.96142)
 texture = ExtResource("2_xls2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidUnitSection/NewLiquidUnit"]
-position = Vector2(256.7, 737.999)
+position = Vector2(154.7, 679.999)
 scale = Vector2(3.88889, 4.39423)
 shape = SubResource("RectangleShape2D_cwgfn")
 
 [node name="CommandSection" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -484.0
-offset_top = 305.0
-offset_right = 340.0
-offset_bottom = 532.0
+offset_left = -749.0
+offset_top = 386.0
+offset_right = 75.0
+offset_bottom = 613.0
 
 [node name="CommandLabel" type="Label" parent="CommandSection"]
 layout_mode = 2
@@ -220,7 +225,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="PowerOn" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
 theme_override_fonts/font = ExtResource("4_mdrl8")
@@ -228,7 +233,7 @@ theme_override_font_sizes/font_size = 35
 text = "Power On"
 
 [node name="WaterFlow" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
 theme_override_fonts/font = ExtResource("4_mdrl8")
@@ -236,7 +241,7 @@ theme_override_font_sizes/font_size = 30
 text = "Water Flow"
 
 [node name="Electrolysis" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
 theme_override_fonts/font = ExtResource("4_mdrl8")
@@ -244,7 +249,7 @@ theme_override_font_sizes/font_size = 20
 text = "Electrolysis Start"
 
 [node name="HydrogenPurge" type="Button" parent="CommandSection/CommandButtonRow"]
-custom_minimum_size = Vector2(200, 150)
+custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
 theme = ExtResource("2_80k3h")
 theme_override_fonts/font = ExtResource("4_mdrl8")
@@ -255,10 +260,10 @@ text = "Hydrogen Purge"
 
 [node name="NewElektronUnitPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -815.0
-offset_top = 105.0
-offset_right = -577.0
-offset_bottom = 206.0
+offset_left = -917.0
+offset_top = 47.0
+offset_right = -679.0
+offset_bottom = 148.0
 theme = ExtResource("11_gvy0i")
 
 [node name="NewElektronUnitLabel" type="Label" parent="NewElektronUnitPanel"]

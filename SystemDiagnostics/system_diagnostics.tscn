@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://q84ddoxkffpr"]
+[gd_scene load_steps=11 format=3 uid="uid://q84ddoxkffpr"]
 
 [ext_resource type="Script" path="res://SystemDiagnostics/system_diagnostics.gd" id="1_3n2lh"]
 [ext_resource type="Texture2D" uid="uid://chcu6ns5nt552" path="res://minigames/elektron/Elements-01.png" id="2_0v2os"]
 [ext_resource type="FontFile" uid="uid://47e1nbgxk5y2" path="res://minigames/elektron/diffusion-bold.ttf" id="3_p2jo0"]
 [ext_resource type="Texture2D" uid="uid://c8a22k8uyoemf" path="res://minigames/elektron/GUI.png" id="4_xxppf"]
 [ext_resource type="Theme" uid="uid://v4j386rauj8p" path="res://minigames/elektron/ButtonTheme.tres" id="5_70qvk"]
+[ext_resource type="Theme" uid="uid://qqxa7tnwedyg" path="res://minigames/elektron/instructionsTheme.tres" id="6_4u73p"]
+[ext_resource type="FontFile" uid="uid://ciwbki5m65m7g" path="res://minigames/elektron/Stacked pixel.ttf" id="7_wgbai"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88l3h"]
 texture = ExtResource("2_0v2os")
@@ -13,6 +15,8 @@ region_rect = Rect2(226, 2184, 1014, 350.93)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3w5jo"]
 texture = ExtResource("4_xxppf")
 region_rect = Rect2(98.1706, 38.3924, 21.9209, 20.2696)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgnii"]
 
 [node name="SystemDiagnostics" type="Control"]
 layout_mode = 3
@@ -39,46 +43,47 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_88l3h")
 
 [node name="SystemDiagnostics" type="Label" parent="."]
 layout_mode = 0
-offset_left = 105.0
-offset_top = 620.0
-offset_right = 807.0
-offset_bottom = 710.0
+offset_left = 395.0
+offset_top = 631.0
+offset_right = 1097.0
+offset_bottom = 721.0
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 50
 text = "System Diagnostics"
 horizontal_alignment = 1
 
 [node name="DecodeMessagesBackground" type="Panel" parent="."]
-offset_left = 1245.0
-offset_top = 192.0
-offset_right = 1739.0
-offset_bottom = 537.0
+layout_mode = 0
+offset_left = 834.0
+offset_top = 209.0
+offset_right = 1328.0
+offset_bottom = 554.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3w5jo")
 
 [node name="FrequencyTuningBackground" type="Panel" parent="."]
-layout_mode = 0
+layout_mode = 2
 offset_left = 123.0
-offset_top = 198.0
-offset_right = 723.0
-offset_bottom = 551.0
+offset_top = 160.0
+offset_right = 733.0
+offset_bottom = 615.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3w5jo")
 
 [node name="SystemDiagnosticsBackground" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 704.0
-offset_right = 1682.0
+offset_right = 1360.0
 offset_bottom = 987.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3w5jo")
 
 [node name="SendUpdatesButton" type="Button" parent="SystemDiagnosticsBackground"]
 layout_mode = 0
-offset_left = 1013.0
-offset_top = 69.0
-offset_right = 1428.0
-offset_bottom = 217.0
+offset_left = 808.0
+offset_top = 91.0
+offset_right = 1138.0
+offset_bottom = 188.0
 theme = ExtResource("5_70qvk")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "SEND UPDATES"
 
 [node name="StatusGrid" type="GridContainer" parent="."]
@@ -136,10 +141,10 @@ text = "Press 'E' to return to Ship"
 
 [node name="FrequencyTuning" type="Label" parent="."]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 212.0
-offset_right = 720.0
-offset_bottom = 293.0
+offset_left = 112.0
+offset_top = 184.0
+offset_right = 716.0
+offset_bottom = 265.0
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 40
 text = "Frequency Tuning"
@@ -161,11 +166,73 @@ text = "Mission Control"
 horizontal_alignment = 1
 
 [node name="DecodeMessages" type="Label" parent="."]
-offset_left = 1176.0
-offset_top = 205.0
-offset_right = 1780.0
-offset_bottom = 284.0
+layout_mode = 0
+offset_left = 765.0
+offset_top = 222.0
+offset_right = 1369.0
+offset_bottom = 301.0
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 40
 text = "Decode Messages"
 horizontal_alignment = 1
+
+[node name="InstructionsPanel" type="Panel" parent="DecodeMessages"]
+offset_left = 629.0
+offset_top = 13.0
+offset_right = 1166.0
+offset_bottom = 674.0
+theme = ExtResource("6_4u73p")
+
+[node name="InstructionsLabel" type="Label" parent="DecodeMessages/InstructionsPanel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 210.0
+offset_right = 333.0
+offset_bottom = 424.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("3_p2jo0")
+theme_override_font_sizes/font_size = 15
+text = "(will be generated once compiled)"
+autowrap_mode = 2
+
+[node name="InstructionsHeader" type="Label" parent="DecodeMessages/InstructionsPanel"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 149.0
+offset_right = 217.0
+offset_bottom = 172.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("7_wgbai")
+theme_override_font_sizes/font_size = 25
+text = "Instructions:"
+
+[node name="FrequencyTuningPanel" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 125.0
+offset_top = 291.0
+offset_right = 712.0
+offset_bottom = 502.0
+
+[node name="FrequencySlider" type="HSlider" parent="FrequencyTuningPanel"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 243.0
+offset_right = 372.0
+offset_bottom = 317.0
+
+[node name="PlayerEKGPanel" type="ColorRect" parent="FrequencyTuningPanel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 116.0
+offset_right = 536.0
+offset_bottom = 202.0
+color = Color(0, 0, 0, 1)
+
+[node name="TargetEKGPanel" type="ColorRect" parent="FrequencyTuningPanel"]
+material = SubResource("ShaderMaterial_tgnii")
+layout_mode = 0
+offset_left = 74.0
+offset_top = -8.0
+offset_right = 537.0
+offset_bottom = 81.0
+color = Color(0, 0, 0, 1)

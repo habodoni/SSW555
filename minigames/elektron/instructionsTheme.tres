@@ -4,7 +4,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_io2dq"]
 texture = ExtResource("1_85cbm")
-region_rect = Rect2(0, 96, 48, 32)
+region_rect = Rect2(0.513201, 96.9994, 47.5659, 28.2425)
 
 [resource]
 Panel/styles/panel = SubResource("StyleBoxTexture_io2dq")
