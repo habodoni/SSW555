@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k2vbv4uo5sa"
-path="res://.godot/imported/IndustrialTile_70.png-296ddd6a6dc0f28d44d7a55f3189d1d1.ctex"
+uid="uid://cvdnnfr6q7ju1"
+path="res://.godot/imported/IndustrialTile_15.png-863acc69ead2f7b7be2bb81f767902c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MegaApple/OxygenMinigame/IndustrialTile_70.png"
-dest_files=["res://.godot/imported/IndustrialTile_70.png-296ddd6a6dc0f28d44d7a55f3189d1d1.ctex"]
+source_file="res://MegaFood/OxygenMinigame/IndustrialTile_15.png"
+dest_files=["res://.godot/imported/IndustrialTile_15.png-863acc69ead2f7b7be2bb81f767902c7.ctex"]
 
 [params]
 

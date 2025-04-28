@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgopngyon01io"
-path="res://.godot/imported/Hammer.png-719419e230956fb61714a4758a660352.ctex"
+uid="uid://y82imyqox82d"
+path="res://.godot/imported/Fire-extinguisher1.png-4387e4bc552c9005af5cd13ea864397e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MegaApple/OxygenMinigame/Hammer.png"
-dest_files=["res://.godot/imported/Hammer.png-719419e230956fb61714a4758a660352.ctex"]
+source_file="res://MegaFood/OxygenMinigame/Fire-extinguisher1.png"
+dest_files=["res://.godot/imported/Fire-extinguisher1.png-4387e4bc552c9005af5cd13ea864397e.ctex"]
 
 [params]
 

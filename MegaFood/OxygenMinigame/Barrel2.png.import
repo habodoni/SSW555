@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y82imyqox82d"
-path="res://.godot/imported/Fire-extinguisher1.png-ef32fb285d643acd220916333c2fb29d.ctex"
+uid="uid://g0td6m6kewg2"
+path="res://.godot/imported/Barrel2.png-ea75f9c8b4a35dc950f2e51c9aa58c78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MegaApple/OxygenMinigame/Fire-extinguisher1.png"
-dest_files=["res://.godot/imported/Fire-extinguisher1.png-ef32fb285d643acd220916333c2fb29d.ctex"]
+source_file="res://MegaFood/OxygenMinigame/Barrel2.png"
+dest_files=["res://.godot/imported/Barrel2.png-ea75f9c8b4a35dc950f2e51c9aa58c78.ctex"]
 
 [params]
 

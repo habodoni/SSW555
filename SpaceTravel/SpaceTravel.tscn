@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
 [ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
 [ext_resource type="PackedScene" uid="uid://b102yoln5f6aa" path="res://Spaceship/Spaceship.tscn" id="2_8s5n5"]
-[ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaApple/apple.tscn" id="3_447bn"]
+[ext_resource type="PackedScene" uid="uid://c3drho0qnnkn6" path="res://MegaFood/spacefood.tscn" id="3_447bn"]
 [ext_resource type="PackedScene" uid="uid://dd7imvfo72tbu" path="res://TaskMarker/TaskMarker.tscn" id="4_ynd6j"]
 [ext_resource type="PackedScene" uid="uid://xd7ffxi5gwxs" path="res://OxygenMinigame/OxygenMinigame.tscn" id="6_6mcsa"]
 [ext_resource type="PackedScene" uid="uid://cfnxk2s14rps7" path="res://Task2.tscn" id="7_5fd5d"]
