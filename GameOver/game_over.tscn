@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0x44t5o07rqg"]
+
+[ext_resource type="Script" path="res://GameOver/game_over.gd" id="1_jp4le"]
+[ext_resource type="FontFile" uid="uid://ciwbki5m65m7g" path="res://minigames/elektron/Stacked pixel.ttf" id="2_5qx1d"]
+[ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="2_m0tvt"]
+[ext_resource type="FontFile" uid="uid://47e1nbgxk5y2" path="res://minigames/elektron/diffusion-bold.ttf" id="4_dw5ei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fjum"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpnew"]
+bg_color = Color(0.388398, 0.581479, 1, 1)
+
+[sub_resource type="Theme" id="Theme_aafqj"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jp4le")
+
+[node name="Background" parent="." instance=ExtResource("2_m0tvt")]
+position = Vector2(957, 539)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 234.0
+offset_right = 1411.0
+offset_bottom = 837.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2fjum")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 110.0
+offset_right = 973.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.293336, 0.506328, 1, 1)
+theme_override_fonts/font = ExtResource("2_5qx1d")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Label"]
+offset_left = 1.0
+offset_top = 110.0
+offset_right = 973.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.293336, 0.506328, 1, 1)
+theme_override_fonts/font = ExtResource("4_dw5ei")
+theme_override_font_sizes/font_size = 25
+text = "KEEP AN EYE ON YOUR HEALTH BAR!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 338.0
+offset_right = 648.0
+offset_bottom = 428.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpnew")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 350.0
+offset_right = 641.0
+offset_bottom = 416.0
+theme = SubResource("Theme_aafqj")
+theme_override_fonts/font = ExtResource("2_5qx1d")
+theme_override_font_sizes/font_size = 40
+text = "Restart"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds05bt1gshscd"]
+[gd_scene load_steps=15 format=3 uid="uid://ds05bt1gshscd"]
 
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
 [ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
@@ -10,12 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://devy8q30tlart" path="res://Task3.tscn" id="8_lpcof"]
 [ext_resource type="PackedScene" uid="uid://dfcyqmsv328hw" path="res://minigames/elektron/elektron_minigame.tscn" id="9_rdfu0"]
 [ext_resource type="PackedScene" uid="uid://q84ddoxkffpr" path="res://SystemDiagnostics/system_diagnostics.tscn" id="9_tg18w"]
+[ext_resource type="PackedScene" uid="uid://w767ndba4pbw" path="res://minigames/elektron/FrequencyTuningPanel.tscn" id="11_dxtnd"]
 [ext_resource type="PackedScene" uid="uid://cf54tditsy27r" path="res://Navigation/Navigation.tscn" id="11_rqjfd"]
 [ext_resource type="PackedScene" uid="uid://eocfu1s8yudf" path="res://ResourceTracker/ResourceTracker.tscn" id="12_4wnto"]
 [ext_resource type="PackedScene" uid="uid://jbw3ul6emcm8" path="res://TaskManager/TaskManager.tscn" id="13_1fen6"]
 
 [node name="SpaceTravel" type="Node2D"]
 script = ExtResource("1_wutnr")
+metadata/_edit_horizontal_guides_ = [542.0, -539.0]
+metadata/_edit_vertical_guides_ = [-958.0, 960.0]
 
 [node name="Background" parent="." instance=ExtResource("1_16vgx")]
 position = Vector2(1, 1)
@@ -57,7 +60,22 @@ visible = false
 visible = false
 
 [node name="SystemDiagnostics" parent="." instance=ExtResource("9_tg18w")]
-visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -959.0
+offset_top = -538.0
+offset_right = -959.0
+offset_bottom = -538.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="FrequencyTuningPanel2" parent="SystemDiagnostics" instance=ExtResource("11_dxtnd")]
+layout_mode = 1
+offset_left = 102.0
+offset_top = 259.0
+offset_right = 1230.0
+offset_bottom = 688.0
 
 [node name="OxygenWarning" type="Label" parent="."]
 visible = false
