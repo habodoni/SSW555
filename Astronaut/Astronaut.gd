@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var repair_skill := 1.0
 
 var active_player = false
+var role = "Astronaut"
 
 # Store base stats for reset after switching
 @onready var switch_sound = $SwitchSound
@@ -141,3 +142,7 @@ func create_collision_shapes():
 
 func is_player():
 	return active_player
+
+func set_role(role_input):
+	role = role_input
+	$LabelNode/Label.text = role

@@ -144,3 +144,16 @@ stream = ExtResource("7_436gr")
 volume_db = -5.0
 max_distance = 1e+10
 attenuation = 244590.0
+
+[node name="LabelNode" type="Node2D" parent="."]
+position = Vector2(0, 30)
+
+[node name="Label" type="Label" parent="LabelNode"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_right = 39.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Astronaut"

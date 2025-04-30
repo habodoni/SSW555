@@ -34,9 +34,18 @@ func _ready() -> void:
 	var astronaut_1 = astronaut.instantiate()
 	add_child(astronaut_1)
 	astronaut_1.setup(true, 0, 0)
+	astronaut_1.set_role("Navigator")
+	
 	var astronaut_2 = astronaut.instantiate()
 	add_child(astronaut_2)
 	astronaut_2.setup(false, 416, -180)
+	astronaut_2.set_role("Mechanic")
+	
+	var astronaut_3 = astronaut.instantiate()
+	add_child(astronaut_3)
+	astronaut_3.setup(false, -162, -180)
+	astronaut_3.set_role("Scientist")
+	
 	var task_markers = [minigame_3_marker, oxygen_minigame_marker, minigame_2_marker]
 	minigame_2_marker.deactivate()
 	stack_deck()
