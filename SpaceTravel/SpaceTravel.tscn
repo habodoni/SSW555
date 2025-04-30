@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds05bt1gshscd"]
+[gd_scene load_steps=15 format=3 uid="uid://ds05bt1gshscd"]
 
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
 [ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cf54tditsy27r" path="res://Navigation/Navigation.tscn" id="11_rqjfd"]
 [ext_resource type="PackedScene" uid="uid://eocfu1s8yudf" path="res://ResourceTracker/ResourceTracker.tscn" id="12_4wnto"]
 [ext_resource type="PackedScene" uid="uid://jbw3ul6emcm8" path="res://TaskManager/TaskManager.tscn" id="13_1fen6"]
+[ext_resource type="Script" path="res://MegaFood/spawner.gd" id="14_b177m"]
 
 [node name="SpaceTravel" type="Node2D"]
 script = ExtResource("1_wutnr")
@@ -78,3 +79,26 @@ visible = false
 
 [node name="TaskManager" parent="." instance=ExtResource("13_1fen6")]
 position = Vector2(0, -540)
+
+[node name="FoodSpawner" type="Node2D" parent="."]
+script = ExtResource("14_b177m")
+space_food_scene = ExtResource("3_447bn")
+spawn_points_node_path = NodePath(".")
+
+[node name="FoodPack1" type="Marker2D" parent="FoodSpawner"]
+position = Vector2(-347, 345)
+
+[node name="FoodPack2" type="Marker2D" parent="FoodSpawner"]
+position = Vector2(735, 94)
+
+[node name="FoodPack3" type="Marker2D" parent="FoodSpawner"]
+position = Vector2(-661, 153)
+
+[node name="FoodPack4" type="Marker2D" parent="FoodSpawner"]
+position = Vector2(-344, -161)
+
+[node name="FoodPack5" type="Marker2D" parent="FoodSpawner"]
+position = Vector2(474, -153)
+
+[node name="FoodPack6" type="Marker2D" parent="FoodSpawner"]
+position = Vector2(-504, 127)
