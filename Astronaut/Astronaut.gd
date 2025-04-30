@@ -18,27 +18,44 @@ var not_active_shape: CircleShape2D
 func _physics_process(delta):
 	if not get_parent().minigame_active:
 		show()
-		if(active_player):
+		if active_player:
 			get_input()
 			move_and_slide()
-		drain_health(delta)  # Call health drain every frame
+		drain_health(delta)
 	else:
 		hide()
+
+		# ✅ Force stop walking sound when minigame is active
+		if $WalkSound.playing:
+			$WalkSound.stop()
+
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-	#walking animation
-	if input_direction == Vector2(0,0):
+
+	var is_moving = input_direction.length() > 0.1
+
+	# Play walking animation
+	if is_moving:
+		if input_direction.y == -1:
+			$AnimatedSprite2D.play("UpWalk")
+		elif input_direction.y == 1:
+			$AnimatedSprite2D.play("DownWalk")
+		elif input_direction.x == -1:
+			$AnimatedSprite2D.play("LeftWalk")
+		elif input_direction.x == 1:
+			$AnimatedSprite2D.play("RightWalk")
+
+		# Start walking sound if not already playing
+		if not $WalkSound.playing:
+			$WalkSound.play()
+	else:
 		$AnimatedSprite2D.play("default")
-	elif input_direction.y == -1:
-		$AnimatedSprite2D.play("UpWalk")
-	elif input_direction.y == 1:
-		$AnimatedSprite2D.play("DownWalk")
-	elif input_direction.x == -1:
-		$AnimatedSprite2D.play("LeftWalk")
-	elif input_direction.x == 1:
-		$AnimatedSprite2D.play("RightWalk")
+		if $WalkSound.playing:
+			$WalkSound.stop()
+
+
 
 
 # ==============================

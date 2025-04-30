@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b102yoln5f6aa"]
+[gd_scene load_steps=6 format=3 uid="uid://b102yoln5f6aa"]
 
 [ext_resource type="Texture2D" uid="uid://dag6fxbbkoffm" path="res://Spaceship/tileset_sf.png" id="1_cmsd0"]
 [ext_resource type="Texture2D" uid="uid://clt5hphmtwb4y" path="res://minigames/elektron/Barrel2.png" id="2_mvkhk"]
+[ext_resource type="FontFile" uid="uid://47e1nbgxk5y2" path="res://minigames/elektron/diffusion-bold.ttf" id="3_1heim"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmcj3"]
 texture = ExtResource("1_cmsd0")
@@ -175,6 +176,37 @@ layer_0/tile_data = PackedInt32Array(-131082, 589825, 16, -131081, 655361, 16, -
 position = Vector2(-222, -323)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-position = Vector2(117, -394)
+position = Vector2(252, -776)
+scale = Vector2(2.16667, 1.91583)
 texture = ExtResource("2_mvkhk")
 offset = Vector2(-117, 394)
+
+[node name="Navigation" type="Label" parent="."]
+offset_left = 252.0
+offset_top = -431.0
+offset_right = 438.0
+offset_bottom = -399.0
+theme_override_fonts/font = ExtResource("3_1heim")
+text = "Navigation Station"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OxygenGenerator" type="Label" parent="."]
+offset_left = -320.0
+offset_top = -430.0
+offset_right = -134.0
+offset_bottom = -398.0
+theme_override_fonts/font = ExtResource("3_1heim")
+text = "Oxygen Generator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SystemDiagnostics" type="Label" parent="."]
+offset_left = 618.0
+offset_top = -172.0
+offset_right = 804.0
+offset_bottom = -140.0
+theme_override_fonts/font = ExtResource("3_1heim")
+text = "System Diagnostics"
+horizontal_alignment = 1
+vertical_alignment = 1

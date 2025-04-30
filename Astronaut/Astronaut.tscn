@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cx3ayeiy1mufr"]
+[gd_scene load_steps=19 format=3 uid="uid://cx3ayeiy1mufr"]
 
 [ext_resource type="Script" path="res://Astronaut/Astronaut.gd" id="1_flsmn"]
 [ext_resource type="Shape2D" uid="uid://be68berb4364j" path="res://Astronaut/Active_Astronaut.tres" id="2_71fq7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shape2D" uid="uid://btqv3ghp7f87c" path="res://Astronaut/Not_Active_Astronaut.tres" id="4_up3sq"]
 [ext_resource type="Script" path="res://Astronaut/astronaut_area_2d.gd" id="4_ys2bt"]
 [ext_resource type="Gradient" uid="uid://c5780kyy8ulfw" path="res://TaskMarker/Highlight.tres" id="6_y365f"]
+[ext_resource type="AudioStream" uid="uid://d14uivcgd2r6" path="res://audio/concrete-footsteps-6752.mp3" id="7_436gr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kdit"]
 atlas = ExtResource("3_8murx")
@@ -124,6 +125,12 @@ animation = &"UpWalk"
 frame_progress = 0.869232
 
 [node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_436gr")
+volume_db = -5.0
+max_distance = 1e+10
+attenuation = 244590.0
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("4_ys2bt")

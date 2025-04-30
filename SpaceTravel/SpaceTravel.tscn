@@ -31,7 +31,7 @@ position = Vector2(380, 290)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="OxygenTaskMarker" parent="." instance=ExtResource("4_ynd6j")]
-position = Vector2(-224, -320)
+position = Vector2(-224, -335)
 
 [node name="TaskMarker2" parent="." instance=ExtResource("4_ynd6j")]
 position = Vector2(-224, 184)
@@ -60,6 +60,7 @@ visible = false
 visible = false
 
 [node name="SystemDiagnostics" parent="." instance=ExtResource("9_tg18w")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
