@@ -1,14 +1,17 @@
-extends Area2D  # Ensure Apple is an Area2D, NOT Node2D
+class_name SpaceFood
+extends Area2D
 
-@export var heal_amount: int = 20  # Amount of health the apple restores
+@export var heal_amount: int = 20
+signal food_eaten
 
 func _ready():
 	connect("body_entered", _on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	#print("body entered")
-	if body is CharacterBody2D:  # Ensure only the player picks it up
-		if body.has_method("increase_health"):
-			body.increase_health(heal_amount)  # Increase player's health
-		print("+%d Health!" % heal_amount)
-		queue_free()  # Remove the apple after being picked up
+	print("body entered: ", body.name)
+
+	if body.has_method("increase_health"):
+		print("Food touched by: ", body.name)
+		body.increase_health(heal_amount)
+		emit_signal("food_eaten")
+		queue_free()

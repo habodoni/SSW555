@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc27y6qi7q78n"]
+
+[ext_resource type="Script" path="res://MegaFood/spawner.gd" id="1_2y45a"]
+
+[node name="SpacefoodSpawner" type="Node2D"]
+script = ExtResource("1_2y45a")
