@@ -20,17 +20,20 @@ func _ready():
 	light.texture.gradient = base_gradient
 	connect("body_entered", _on_body_entered)
 	connect("body_exited", _on_body_exited)
+	$Label.hide()
 
 func _process(delta):
 	if active:
 		if player_near != null and Input.is_action_just_pressed("interact"):
 			if (player_near.role == role):
+				$Label.hide()
 				if get_parent().minigame_active:
 					end_task()
 				else:
 					begin_task()
 			else:
-				print("wrong player")
+				$Label.text = "Wrong Astronaut switch to:\n" + role
+				$Label.show()
 
 func activate():
 	active = true
