@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgxb142bs5h4e"]
+
+[ext_resource type="AudioStream" uid="uid://das2m4j5i7w85" path="res://audio/calm-space-music-312291.mp3" id="1_o4sfc"]
+[ext_resource type="Script" path="res://music_player.gd" id="2_nkmlg"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_o4sfc")
+volume_db = -25.0
+script = ExtResource("2_nkmlg")

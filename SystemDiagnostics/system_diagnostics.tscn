@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://q84ddoxkffpr"]
+[gd_scene load_steps=10 format=3 uid="uid://q84ddoxkffpr"]
 
 [ext_resource type="Script" path="res://SystemDiagnostics/system_diagnostics.gd" id="1_3n2lh"]
 [ext_resource type="Texture2D" uid="uid://chcu6ns5nt552" path="res://minigames/elektron/Elements-01.png" id="2_0v2os"]
 [ext_resource type="FontFile" uid="uid://47e1nbgxk5y2" path="res://minigames/elektron/diffusion-bold.ttf" id="3_p2jo0"]
 [ext_resource type="Texture2D" uid="uid://c8a22k8uyoemf" path="res://minigames/elektron/GUI.png" id="4_xxppf"]
 [ext_resource type="Theme" uid="uid://v4j386rauj8p" path="res://minigames/elektron/ButtonTheme.tres" id="5_70qvk"]
-[ext_resource type="Theme" uid="uid://qqxa7tnwedyg" path="res://minigames/elektron/instructionsTheme.tres" id="6_4u73p"]
 [ext_resource type="FontFile" uid="uid://ciwbki5m65m7g" path="res://minigames/elektron/Stacked pixel.ttf" id="7_wgbai"]
 [ext_resource type="PackedScene" path="res://minigames/FrequencyTuningPanel.tscn" id="8_u1frw"]
 
@@ -42,9 +41,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_88l3h")
 
 [node name="SystemDiagnostics" type="Label" parent="."]
 layout_mode = 0
-offset_left = 395.0
+offset_left = 167.0
 offset_top = 631.0
-offset_right = 1097.0
+offset_right = 1781.0
 offset_bottom = 721.0
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 50
@@ -55,7 +54,7 @@ horizontal_alignment = 1
 layout_mode = 2
 offset_left = 123.0
 offset_top = 160.0
-offset_right = 1281.0
+offset_right = 1759.0
 offset_bottom = 615.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3w5jo")
 
@@ -63,19 +62,21 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_3w5jo")
 layout_mode = 0
 offset_left = 111.0
 offset_top = 704.0
-offset_right = 1360.0
+offset_right = 1781.0
 offset_bottom = 987.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3w5jo")
 
 [node name="SendUpdatesButton" type="Button" parent="SystemDiagnosticsBackground"]
 layout_mode = 0
-offset_left = 808.0
-offset_top = 91.0
-offset_right = 1138.0
-offset_bottom = 188.0
+offset_left = 1041.0
+offset_top = 32.0
+offset_right = 1488.0
+offset_bottom = 248.0
 theme = ExtResource("5_70qvk")
-theme_override_font_sizes/font_size = 30
-text = "SEND UPDATES"
+theme_override_fonts/font = ExtResource("7_wgbai")
+theme_override_font_sizes/font_size = 90
+text = "SEND
+UPDATES"
 
 [node name="StatusGrid" type="GridContainer" parent="."]
 layout_mode = 0
@@ -132,10 +133,10 @@ text = "Press 'E' to return to Ship"
 
 [node name="FrequencyTuning" type="Label" parent="."]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 186.0
-offset_right = 1272.0
-offset_bottom = 267.0
+offset_left = 123.0
+offset_top = 172.0
+offset_right = 1750.0
+offset_bottom = 268.0
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 50
 text = "Frequency Tuning"
@@ -158,38 +159,7 @@ horizontal_alignment = 1
 
 [node name="FrequencyTuningPanel" parent="." instance=ExtResource("8_u1frw")]
 layout_mode = 1
-offset_left = 104.0
+offset_left = 136.0
 offset_top = 275.0
-offset_right = -668.0
+offset_right = -178.0
 offset_bottom = -398.0
-
-[node name="InstructionsPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 1388.0
-offset_top = 278.0
-offset_right = 1882.0
-offset_bottom = 707.0
-theme = ExtResource("6_4u73p")
-
-[node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
-layout_mode = 0
-offset_left = 78.0
-offset_top = 172.0
-offset_right = 335.0
-offset_bottom = 386.0
-scale = Vector2(1.5, 1.5)
-theme_override_fonts/font = ExtResource("3_p2jo0")
-theme_override_font_sizes/font_size = 15
-text = "(will be generated once compiled)"
-autowrap_mode = 2
-
-[node name="InstructionsHeader" type="Label" parent="InstructionsPanel"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 111.0
-offset_right = 219.0
-offset_bottom = 134.0
-scale = Vector2(1.5, 1.5)
-theme_override_fonts/font = ExtResource("7_wgbai")
-theme_override_font_sizes/font_size = 25
-text = "Instructions:"
