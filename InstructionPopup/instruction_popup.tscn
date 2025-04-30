@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cemymkjero5ly"]
+
+[ext_resource type="Script" path="res://InstructionPopup/instruction_popup.gd" id="1_uhrva"]
+[ext_resource type="FontFile" uid="uid://ciwbki5m65m7g" path="res://minigames/elektron/Stacked pixel.ttf" id="3_eelqr"]
+[ext_resource type="Texture2D" uid="uid://dpau32xvmeurh" path="res://icon.svg" id="3_ktkpd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fjum"]
+bg_color = Color(0.00375668, 0.0548092, 0.143877, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 70
+shadow_offset = Vector2(11.195, 13.44)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpnew"]
+bg_color = Color(0.388398, 0.581479, 1, 1)
+
+[sub_resource type="Theme" id="Theme_aafqj"]
+
+[node name="InstructionPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_uhrva")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 234.0
+offset_right = 1411.0
+offset_bottom = 837.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2fjum")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 32.0
+offset_right = 725.0
+offset_bottom = 433.0
+theme_override_colors/font_color = Color(0.293336, 0.506328, 1, 1)
+theme_override_fonts/font = ExtResource("3_eelqr")
+theme_override_font_sizes/font_size = 100
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 433.0
+offset_right = 542.0
+offset_bottom = 523.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpnew")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 445.0
+offset_right = 535.0
+offset_bottom = 511.0
+theme = SubResource("Theme_aafqj")
+theme_override_fonts/font = ExtResource("3_eelqr")
+theme_override_font_sizes/font_size = 40
+text = "Next"
+
+[node name="Icon" type="Sprite2D" parent="Panel"]
+position = Vector2(938.5, 272.5)
+scale = Vector2(1.39844, 1.44531)
+texture = ExtResource("3_ktkpd")
