@@ -1,6 +1,6 @@
 extends Node2D
 
-var tasks = ["Navigate to Ganymede", "Replace Oxygen Tank"]
+var tasks = ["Navigate to Ganymede", "Replace Oxygen Tank", "Manage Human Waste"]
 var task_markers = []
 var tasks_done = 0
 
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if tasks_done < tasks.size():
 		display_text = "Task: " + tasks[tasks_done]
 	else:
-		display_text = "All Tasks Complete"
+		display_text = "All Tasks Complete: Send to mission control"
 	label_node.text = display_text
 
 func set_task_markers(markers: Array):

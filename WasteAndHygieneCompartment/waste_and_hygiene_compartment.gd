@@ -15,7 +15,7 @@ var prompt_2 = "In space, solid waste goes to a separate sanitation station.\n N
 
 var prompt_3 = "The feces will be stored and later disposed of.\n The urine however needs to be recycled into drinkable water. \n To do this you need to first put the urine into a centrifuge.\n Then it needs to be heated up to separate the water from the rest of the urine\n\n Gently tap UP to increase the temperature in the centrifuge. \n Try to keep it in the green for 5 seconds"
 
-var prompt_4 = "Good job, you seperated the water from the urine.\nThe water will now be filtered to remove microbes and chemicals.\n Then it will be drinkable for all the astronauts.\n\n Press E to go back to the spaceship."
+var prompt_4 = "Good job, you seperated the water from the urine.\nThe water will now be filtered to remove microbes and chemicals.\n Then it will be drinkable for all the astronauts.\n\n Press next to go back to the spaceship."
 
 var label_1 = "Liquid Waste Station"
 var label_2 = "Solid Waste Station"
@@ -23,7 +23,7 @@ var label_3 = "Urine Processing Assembly"
 
 var WasteParticle = preload("res://WasteAndHygieneCompartment/WasteParticle.tscn") 
 var bounds = Rect2(Vector2(-300, -200), Vector2(600, 400))  # (top-left, size)
-
+var Task_Manager = null
 
 func _ready():
 	spawn_particles_yellow(30)  # for example, spawn 30 particles
@@ -63,6 +63,8 @@ func _on_next_pressed():
 	elif level == 2:
 		screen_dim.hide()
 		next_button.hide()
+	else:
+		task_done()
 
 func next():
 	level += 1
@@ -89,4 +91,12 @@ func next():
 		UPA.deactivate()
 		screen_dim.show()
 		instructions.text = prompt_4
+		next_button.show()
 		$StationLabel.hide()
+
+func set_task_manager(task_manager):
+	Task_Manager = task_manager
+
+func task_done():
+	if Task_Manager != null:
+		Task_Manager.task_done()

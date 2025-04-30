@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://v4j386rauj8p" path="res://minigames/elektron/ButtonTheme.tres" id="5_70qvk"]
 [ext_resource type="Theme" uid="uid://qqxa7tnwedyg" path="res://minigames/elektron/instructionsTheme.tres" id="6_4u73p"]
 [ext_resource type="FontFile" uid="uid://ciwbki5m65m7g" path="res://minigames/elektron/Stacked pixel.ttf" id="7_wgbai"]
-[ext_resource type="PackedScene" uid="uid://bmoqn351ok71y" path="res://minigames/FrequencyTuningPanel.tscn" id="8_u1frw"]
+[ext_resource type="PackedScene" path="res://minigames/FrequencyTuningPanel.tscn" id="8_u1frw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88l3h"]
 texture = ExtResource("2_0v2os")
