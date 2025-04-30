@@ -1,11 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://w767ndba4pbw"]
 
-[gd_scene load_steps=5 format=3]
+[ext_resource type="Script" path="res://minigames/elektron/frequency_tuning_panel.gd" id="1_jll7c"]
+[ext_resource type="Shader" path="res://minigames/elektron/FrequencyTuningPanel.gdshader" id="2_bi2om"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mk87w"]
+shader = ExtResource("2_bi2om")
+shader_parameter/time = 0.0
+shader_parameter/freq = 1.0
+shader_parameter/speed = 0.1
+shader_parameter/waves = 10.0
+shader_parameter/thickness = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yubw"]
+shader = ExtResource("2_bi2om")
+shader_parameter/time = 0.0
+shader_parameter/freq = 1.0
+shader_parameter/speed = 0.1
+shader_parameter/waves = 10.0
+shader_parameter/thickness = 0.02
 
 [node name="FrequencyTuningPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jll7c")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 164.0
+offset_top = 525.0
+offset_right = 1728.0
+offset_bottom = 618.0
 
 [node name="TargetEKGPanel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mk87w")
+layout_mode = 0
 anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
@@ -13,6 +46,8 @@ anchor_bottom = 0.2
 color = Color(0, 0, 0, 1)
 
 [node name="PlayerEKGPanel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0yubw")
+layout_mode = 0
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.9
@@ -20,6 +55,7 @@ anchor_bottom = 0.35
 color = Color(0, 0, 0, 1)
 
 [node name="FrequencySlider" type="HSlider" parent="."]
+layout_mode = 0
 anchor_left = 0.1
 anchor_top = 0.4
 anchor_right = 0.9
@@ -30,22 +66,48 @@ step = 0.1
 value = 3.0
 
 [node name="TargetFrequencyLabel" type="Label" parent="."]
-anchor_left = 0.1
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.55
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.087
+anchor_top = 0.489
+anchor_right = 0.288
+anchor_bottom = 0.57
+offset_left = -0.0400085
+offset_top = -0.119995
+offset_right = 0.039978
+offset_bottom = 0.399963
+theme_override_font_sizes/font_size = 25
 text = "Target Frequency: 3.2 Hz"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerFrequencyLabel" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.731
+anchor_top = 0.485
 anchor_right = 0.9
-anchor_bottom = 0.55
+anchor_bottom = 0.57
+offset_left = 0.47998
+offset_top = 0.200012
+offset_bottom = 0.399963
+theme_override_font_sizes/font_size = 25
 text = "Your Frequency: 3.0 Hz"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="."]
-anchor_left = 0.35
-anchor_top = 0.6
-anchor_right = 0.65
-anchor_bottom = 0.65
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.452
+anchor_top = 0.484
+anchor_right = 0.613
+anchor_bottom = 0.566
+offset_left = -0.840027
+offset_top = 0.279968
+offset_right = -1.96008
+offset_bottom = -0.280029
+theme_override_font_sizes/font_size = 25
 text = "Tuning..."
+horizontal_alignment = 1
+vertical_alignment = 2

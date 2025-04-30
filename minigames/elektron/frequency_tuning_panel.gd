@@ -14,9 +14,7 @@ var tolerance = 0.1
 var is_locked = false
 
 func _ready():
-	print("✅ FrequencyTuningPanel _ready called")
-	self.size = Vector2(300, 150)
-	self.visible = true	# 1) Assign nodes explicitly and check for errors
+	# 1) Assign nodes explicitly and check for errors
 	target_label    = get_node("TargetFrequencyLabel")    as Label
 	player_label    = get_node("PlayerFrequencyLabel")    as Label
 	slider          = get_node("FrequencySlider")         as HSlider

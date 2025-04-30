@@ -78,10 +78,21 @@ func _ready():
 	create_collision_shapes()
 
 func drain_health(delta):
-	var health_decrease_rate = MAX_HEALTH / drain_time
-	health -= health_decrease_rate * delta
-	health = max(health, 0)  # Prevent negative health
+	if not active_player:
+		return               # 🚫 don’t drain inactive astronauts
+
+	var rate = MAX_HEALTH / drain_time
+	health -= rate * delta
+	health = max(health, 0)
 	health_bar.value = health
+
+	if health <= 0:
+		_on_health_depleted()
+
+func _on_health_depleted():
+	# show “Game Over – Health Reached Zero” and restart entire game
+	get_tree().change_scene_to_file("res://GameOver/game_over.tscn")
+
 
 # Function to increase health when picking up an apple
 func increase_health(amount: int):
