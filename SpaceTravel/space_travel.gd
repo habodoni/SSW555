@@ -55,13 +55,14 @@ func _ready() -> void:
 	minigame_2_marker.deactivate()
 	stack_deck()
 	task_manager.set_task_markers(task_markers)
+	inventory_marker.hide()
 
 func stack_deck():
 	oxygen_minigame_marker.setup(oxygen_minigame)
 	minigame_2_marker.setup(minigame_2)
 	minigame_3_marker.setup(minigame_3)
 	system_diagnostics_marker.setup(system_diagnostics)
-	inventory_marker.setup(inventory)
+	#inventory_marker.setup(inventory)
 	
 	minigame_3.offset(770, -320)
 	
@@ -87,7 +88,6 @@ func set_minigame_active(active: bool):
 		minigame_2_marker.light.hide()
 		minigame_3_marker.light.hide()
 		system_diagnostics_marker.light.hide()
-		inventory_marker.light.hide()
 		task_manager.hide()
 		$FoodSpawner.hide() 
 
@@ -96,7 +96,6 @@ func set_minigame_active(active: bool):
 		minigame_2_marker.light.show()
 		minigame_3_marker.light.show()
 		system_diagnostics_marker.light.show()
-		inventory_marker.light.show()
 		task_manager.show()
 		$FoodSpawner.show()
 

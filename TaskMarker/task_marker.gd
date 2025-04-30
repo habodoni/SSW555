@@ -23,9 +23,9 @@ func _ready():
 	$Label.hide()
 
 func _process(delta):
-	if active:
+	if active && minigame != null:
 		if player_near != null and Input.is_action_just_pressed("interact"):
-			if (player_near.role == role):
+			if (role == null || player_near.role == role):
 				$Label.hide()
 				if get_parent().minigame_active:
 					end_task()
