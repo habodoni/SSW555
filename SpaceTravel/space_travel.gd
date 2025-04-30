@@ -69,6 +69,7 @@ func stack_deck():
 	oxygen_minigame.set_task_manager(task_manager)
 	minigame_3.set_task_manager(task_manager)
 	minigame_2.set_task_manager(task_manager)
+	system_diagnostics.set_task_manager(task_manager)
 	
 	system_diagnostics_marker.activate()
 	inventory_marker.activate()

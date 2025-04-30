@@ -9,6 +9,8 @@ var system_status = {
 	# Add more systems as you create them
 }
 
+var task_manager = null
+
 # Node references
 @onready var oxygen_indicator = $StatusGrid/OxygenIndicator
 @onready var navigation_indicator = $StatusGrid/NavigationIndicator
@@ -74,6 +76,9 @@ func update_ui():
 		print("Navigation indicator not found!")
 	
 	# Add more systems as you implement them
+
+func set_task_manager(manager):
+	task_manager = manager
 
 # Function to return to the main game
 func return_to_main_game():
