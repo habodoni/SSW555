@@ -16,7 +16,7 @@ void fragment() {
     float phase = (UV.x * waves - time * speed) * freq;
     float wave = sin(phase);
 
-    // 3) Convert that into a soft line: 
+    // 3) Convert that into a soft line:
     //    distance from mid‑line, with a smooth edge
     //    abs(wave) near 0 = on the line
     float dist = abs(wave);

@@ -7,6 +7,7 @@ extends CharacterBody2D
 var active_player = false
 
 # Store base stats for reset after switching
+@onready var switch_sound = $SwitchSound
 var base_navigation_skill := 1.0
 var base_repair_skill := 1.0
 var base_speed := 250
@@ -33,27 +34,30 @@ func _physics_process(delta):
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-
-	var is_moving = input_direction.length() > 0.1
-
-	# Play walking animation
+	
+	# Check if player is moving with a small threshold to account for floating point imprecision
+	var is_moving = input_direction.length() > 0.3
+	
+	# Play walking animation and sound only when moving
 	if is_moving:
-		if input_direction.y == -1:
+		if input_direction.y < -0.1:
 			$AnimatedSprite2D.play("UpWalk")
-		elif input_direction.y == 1:
+		elif input_direction.y > 0.1:
 			$AnimatedSprite2D.play("DownWalk")
-		elif input_direction.x == -1:
+		elif input_direction.x < -0.1:
 			$AnimatedSprite2D.play("LeftWalk")
-		elif input_direction.x == 1:
+		elif input_direction.x > 0.1:
 			$AnimatedSprite2D.play("RightWalk")
-
+			
 		# Start walking sound if not already playing
 		if not $WalkSound.playing:
 			$WalkSound.play()
 	else:
+		# Player has stopped moving
 		$AnimatedSprite2D.play("default")
-		if $WalkSound.playing:
-			$WalkSound.stop()
+		
+		# IMPORTANT: Always force stop the sound when not moving
+		$WalkSound.stop()
 
 
 
@@ -73,15 +77,25 @@ func setup(active: bool, x: int, y: int):
 	position = Vector2(x, y)
 	
 
+var has_initialized = false  # ← Flag to track first-time setup
+
 func set_active_player(active: bool):
 	active_player = active
-	if(active_player):
+	if active_player:
 		$CollisionShape2D.disabled = false
 		$Area2D/CollisionShape2D.disabled = true
+
+		# ✅ Don't play the sound during initial setup
+		if has_initialized and switch_sound:
+			switch_sound.stop()  # Ensure no delay from overlapping sound
+			switch_sound.play()
 	else:
 		$CollisionShape2D.disabled = true
 		$Area2D/CollisionShape2D.disabled = false
 		$AnimatedSprite2D.play("default")
+	has_initialized = true  # Mark setup complete after first run
+
+
 	
 
 func _ready():
