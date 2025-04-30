@@ -60,17 +60,17 @@ horizontal_alignment = 1
 [node name="InstructionsPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 318.0
-offset_top = -406.0
+offset_top = -295.0
 offset_right = 974.0
-offset_bottom = 432.0
+offset_bottom = 285.0
 theme = ExtResource("2_6dos2")
 
 [node name="InstructionsLabel" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 228.0
-offset_right = 392.0
-offset_bottom = 401.0
+offset_left = 101.0
+offset_top = 165.0
+offset_right = 396.0
+offset_bottom = 338.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("4_23a4x")
 theme_override_font_sizes/font_size = 15
@@ -79,36 +79,14 @@ autowrap_mode = 2
 
 [node name="InstructionsHeader" type="Label" parent="InstructionsPanel"]
 layout_mode = 0
-offset_left = 94.0
-offset_top = 167.0
-offset_right = 289.0
-offset_bottom = 199.0
+offset_left = 98.0
+offset_top = 104.0
+offset_right = 293.0
+offset_bottom = 136.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("4_23a4x")
 theme_override_font_sizes/font_size = 25
 text = "Instructions:"
-
-[node name="StopAndReadButton" type="Button" parent="InstructionsPanel"]
-layout_mode = 0
-offset_left = 163.0
-offset_top = 710.0
-offset_right = 471.0
-offset_bottom = 769.0
-theme_override_fonts/font = ExtResource("4_23a4x")
-theme_override_font_sizes/font_size = 40
-text = "Stop & Read"
-
-[node name="BubblePanel" type="Panel" parent="."]
-layout_mode = 2
-anchor_left = -0.138
-anchor_top = -0.106
-anchor_right = -0.138
-anchor_bottom = -0.106
-offset_left = -356.32
-offset_top = -171.534
-offset_right = 87.68
-offset_bottom = 95.466
-theme = ExtResource("6_ispnt")
 
 [node name="GasAnalyzerPanel" type="Panel" parent="."]
 layout_mode = 0
@@ -140,6 +118,18 @@ theme = ExtResource("2_80k3h")
 theme_override_fonts/font = ExtResource("4_mdrl8")
 theme_override_font_sizes/font_size = 35
 text = "SCAN"
+
+[node name="BubblePanel" type="Panel" parent="."]
+layout_mode = 2
+anchor_left = -0.138
+anchor_top = -0.106
+anchor_right = -0.138
+anchor_bottom = -0.106
+offset_left = -327.32
+offset_top = -148.534
+offset_right = 38.68
+offset_bottom = 75.466
+theme = ExtResource("6_ispnt")
 
 [node name="BubbleSection" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(25, 0)
@@ -312,5 +302,15 @@ text = "Elektron Oxygen Generator Control Panel"
 position = Vector2(19, -15)
 scale = Vector2(1.2, 1.2)
 zoom = Vector2(0.95, 0.95)
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 178.0
+offset_right = 797.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("4_23a4x")
+theme_override_font_sizes/font_size = 40
+text = "Stop & Read"
 
 [connection signal="pressed" from="BubbleSection/ReleasePressureButton" to="." method="_on_release_pressure_button_pressed"]
