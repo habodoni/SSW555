@@ -29,7 +29,6 @@ func _process(delta: float) -> void:
 				count = 0
 				resources["fuel"] = resources["fuel"] - 1
 		else:
-			print("count")
 			count += 1
 
 # Set a specific system's status
