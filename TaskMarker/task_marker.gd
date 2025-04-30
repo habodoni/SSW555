@@ -25,14 +25,17 @@ func _ready():
 func _process(delta):
 	if active && minigame != null:
 		if player_near != null and Input.is_action_just_pressed("interact"):
-			if (role == null || player_near.role == role):
+			if ((role == null || player_near.role == role) && player_near.health >= 20):
 				$Label.hide()
 				if get_parent().minigame_active:
 					end_task()
 				else:
 					begin_task()
-			else:
+			elif(player_near.role != role):
 				$Label.text = "Wrong Astronaut switch to:\n" + role
+				$Label.show()
+			else:
+				$Label.text = "Not enough energy for task\n Eat food!"
 				$Label.show()
 
 func activate():
