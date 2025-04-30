@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6u28ibmjgpdo"]
+
+[ext_resource type="Script" path="res://WasteAndHygieneCompartment/waste_particle.gd" id="1_1nj64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql0v2"]
+size = Vector2(40, 40)
+
+[node name="WasteParticle" type="Node2D"]
+script = ExtResource("1_1nj64")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141984, 0.494683, 0.773822, 0.933333)
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ql0v2")

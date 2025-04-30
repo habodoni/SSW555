@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2tamf5sdartp"]
+
+[ext_resource type="Script" path="res://WasteAndHygieneCompartment/waste_and_hygiene_compartment.gd" id="1_83hs8"]
+[ext_resource type="Script" path="res://WasteAndHygieneCompartment/suction_tube.gd" id="2_3khjt"]
+[ext_resource type="PackedScene" uid="uid://cstt8q2nphqml" path="res://WasteAndHygieneCompartment/UrineProcessorAssembly.tscn" id="3_0dsgq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0anq3"]
+
+[node name="WasteAndHygieneCompartment" type="Node2D"]
+script = ExtResource("1_83hs8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.290354, 0.290354, 0.290353, 1)
+
+[node name="StationLabel" type="Label" parent="."]
+offset_left = -80.0
+offset_top = 215.0
+offset_right = 79.0
+offset_bottom = 238.0
+text = "Liquid Waste Station"
+
+[node name="SuctionTube" type="Node2D" parent="."]
+z_index = 19
+position = Vector2(0, 400)
+script = ExtResource("2_3khjt")
+
+[node name="ColorRect" type="ColorRect" parent="SuctionTube"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+color = Color(0.685146, 0.685146, 0.685146, 1)
+
+[node name="SuctionArea" type="Area2D" parent="SuctionTube"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SuctionTube/SuctionArea"]
+polygon = PackedVector2Array(-10, 0, 10, 0, 50, -50, -50, -50)
+
+[node name="CollectionArea" type="Area2D" parent="SuctionTube"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuctionTube/CollectionArea"]
+shape = SubResource("RectangleShape2D_0anq3")
+
+[node name="ColorRect2" type="ColorRect" parent="SuctionTube"]
+offset_left = -9.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 11.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+z_index = 21
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -764.0
+offset_top = -450.0
+offset_right = 764.0
+offset_bottom = -416.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "In space when you use the bathroom, suction is used to collect waste since it will float away in zero gravity. Try sucking up the urine."
+horizontal_alignment = 1
+
+[node name="UrineProcessorAssembly" parent="." instance=ExtResource("3_0dsgq")]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 20
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.717647)
+
+[node name="NextButton" type="MenuButton" parent="."]
+z_index = 23
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 400.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "Next"
