@@ -90,7 +90,7 @@ columns = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 50
-text = "Oxygen System"
+text = "Oxygen System      "
 horizontal_alignment = 1
 
 [node name="OxygenIndicator" type="ColorRect" parent="StatusGrid"]
@@ -110,14 +110,14 @@ custom_minimum_size = Vector2(5, 30)
 layout_mode = 2
 color = Color(0.8, 0.2, 0.2, 1)
 
-[node name="Fuel SystemLabel" type="Label" parent="StatusGrid"]
+[node name="WasteLabel" type="Label" parent="StatusGrid"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p2jo0")
 theme_override_font_sizes/font_size = 50
-text = "Fuel System  "
+text = "Waste Compartment  "
 horizontal_alignment = 1
 
-[node name="FuelSystemIndicator" type="ColorRect" parent="StatusGrid"]
+[node name="WasteIndicator" type="ColorRect" parent="StatusGrid"]
 custom_minimum_size = Vector2(5, 30)
 layout_mode = 2
 color = Color(0.8, 0.2, 0.2, 1)

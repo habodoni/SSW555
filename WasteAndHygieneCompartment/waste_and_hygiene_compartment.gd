@@ -99,4 +99,5 @@ func set_task_manager(task_manager):
 
 func task_done():
 	if Task_Manager != null:
+		GameState.set_system_status("waste", true)
 		Task_Manager.task_done()

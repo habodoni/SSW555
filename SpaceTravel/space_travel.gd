@@ -46,7 +46,7 @@ func _ready() -> void:
 	astronaut_3.setup(false, -162, -180)
 	astronaut_3.set_role("Scientist")
 	
-	var task_markers = [minigame_3_marker, oxygen_minigame_marker, minigame_2_marker]
+	var task_markers = [minigame_3_marker, oxygen_minigame_marker, minigame_2_marker, system_diagnostics_marker]
 	
 	minigame_3_marker.set_role("Navigator")
 	oxygen_minigame_marker.set_role("Mechanic")
@@ -56,6 +56,7 @@ func _ready() -> void:
 	stack_deck()
 	task_manager.set_task_markers(task_markers)
 	inventory_marker.hide()
+	system_diagnostics_marker.activate()
 
 func stack_deck():
 	oxygen_minigame_marker.setup(oxygen_minigame)
