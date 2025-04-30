@@ -29,7 +29,7 @@ var BubbleScene = preload("res://minigames/elektron/Bubble.tscn")
 # Track if the minigame is completed
 var minigame_completed = false
 
-func _ready():
+func _ready():	
 	oxygen_level = max_oxygen
 	oxygen_bar.value = oxygen_level
 

@@ -5,7 +5,19 @@ extends Area2D
 signal food_eaten
 
 func _ready():
+	add_to_group("space_food")
+
+	# If we're not in active gameplay, delete this food
+	if not is_in_gameplay():
+		print("🧽 SpaceFood auto-cleaned (not in gameplay scene)")
+		queue_free()
+		return
+
 	connect("body_entered", _on_body_entered)
+	
+func is_in_gameplay() -> bool:
+	return get_tree().current_scene.name == "SpaceTravel"
+
 
 func _on_body_entered(body: Node2D) -> void:
 	print("body entered: ", body.name)
@@ -15,3 +27,4 @@ func _on_body_entered(body: Node2D) -> void:
 		body.increase_health(heal_amount)
 		emit_signal("food_eaten")
 		queue_free()
+	

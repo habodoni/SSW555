@@ -74,6 +74,8 @@ func set_minigame_active(active: bool):
 		system_diagnostics_marker.light.hide()
 		inventory_marker.light.hide()
 		task_manager.hide()
+		$FoodSpawner.hide() 
+
 	else:
 		oxygen_minigame_marker.light.show()
 		minigame_2_marker.light.show()
@@ -81,6 +83,7 @@ func set_minigame_active(active: bool):
 		system_diagnostics_marker.light.show()
 		inventory_marker.light.show()
 		task_manager.show()
+		$FoodSpawner.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

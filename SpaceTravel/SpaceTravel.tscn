@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds05bt1gshscd"]
+[gd_scene load_steps=16 format=3 uid="uid://ds05bt1gshscd"]
 
 [ext_resource type="PackedScene" uid="uid://lt7rt0ip6a44" path="res://Background/Background.tscn" id="1_16vgx"]
 [ext_resource type="Script" path="res://SpaceTravel/space_travel.gd" id="1_wutnr"]
