@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi2w3wnl51syv"]
+
+[ext_resource type="Script" path="res://tests/test_waste_management.gd" id="1_pkg4y"]
+
+[node name="RunWasteManagementTests" type="Node"]
+script = ExtResource("1_pkg4y")
