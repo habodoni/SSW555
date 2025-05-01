@@ -62,4 +62,7 @@ func end_cards():
 	if tasks_done < tasks.size():
 		get_parent().astronaut_1.health = 100
 	else:
+		GameState.set_system_status("waste", false)
+		GameState.set_system_status("oxygen", false)
+		GameState.set_system_status("navigation", false)
 		get_tree().change_scene_to_file("res://SpaceTravel/SpaceTravel.tscn")

@@ -20,3 +20,6 @@ func _on_restart():
 	else:
 		print("Restarting main game") # Debug line
 		get_tree().change_scene_to_file("res://SpaceTravel/SpaceTravel.tscn")
+		GameState.set_system_status("waste", false)
+		GameState.set_system_status("oxygen", false)
+		GameState.set_system_status("navigation", false)
