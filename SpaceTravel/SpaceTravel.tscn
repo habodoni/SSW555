@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://devy8q30tlart" path="res://Task3.tscn" id="8_lpcof"]
 [ext_resource type="PackedScene" uid="uid://dfcyqmsv328hw" path="res://minigames/elektron/elektron_minigame.tscn" id="9_rdfu0"]
 [ext_resource type="PackedScene" uid="uid://q84ddoxkffpr" path="res://SystemDiagnostics/system_diagnostics.tscn" id="9_tg18w"]
-[ext_resource type="PackedScene" path="res://minigames/elektron/FrequencyTuningPanel.tscn" id="11_dxtnd"]
+[ext_resource type="PackedScene" uid="uid://w767ndba4pbw" path="res://minigames/elektron/FrequencyTuningPanel.tscn" id="11_dxtnd"]
 [ext_resource type="PackedScene" uid="uid://cf54tditsy27r" path="res://Navigation/Navigation.tscn" id="11_rqjfd"]
 [ext_resource type="PackedScene" uid="uid://eocfu1s8yudf" path="res://ResourceTracker/ResourceTracker.tscn" id="12_4wnto"]
 [ext_resource type="PackedScene" uid="uid://jbw3ul6emcm8" path="res://TaskManager/TaskManager.tscn" id="13_1fen6"]

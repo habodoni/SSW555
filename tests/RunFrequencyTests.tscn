@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhfn5y7qff7al"]
+
+[ext_resource type="Script" path="res://tests/test_frequency_tuning_panel.gd" id="1_ofiam"]
+
+[node name="RunFrequencyTests" type="Node"]
+script = ExtResource("1_ofiam")
