@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jbw3ul6emcm8"]
+[gd_scene load_steps=3 format=3 uid="uid://jbw3ul6emcm8"]
 
 [ext_resource type="Script" path="res://TaskManager/task_manager.gd" id="1_a5e27"]
+[ext_resource type="PackedScene" uid="uid://cemymkjero5ly" path="res://InstructionPopup/instruction_popup.tscn" id="2_ouc6l"]
 
 [node name="TaskManager" type="Node2D"]
 script = ExtResource("1_a5e27")
@@ -15,3 +16,6 @@ offset_bottom = 88.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "Test"
+
+[node name="InstructionPopup" parent="." instance=ExtResource("2_ouc6l")]
+z_index = 50

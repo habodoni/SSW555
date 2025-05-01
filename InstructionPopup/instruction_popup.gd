@@ -15,6 +15,7 @@ func show_cards(new_cards: Array, callback = null) -> void:
 	current_index = 0
 	on_done_callback = callback
 	card_text.text = cards[current_index]
+	$DimBackground.visible = true
 	show()
 
 func _on_next_pressed() -> void:
@@ -23,5 +24,6 @@ func _on_next_pressed() -> void:
 		card_text.text = cards[current_index]
 	else:
 		hide()
+		$DimBackground.visible = false
 		if on_done_callback:
 			on_done_callback.call()
