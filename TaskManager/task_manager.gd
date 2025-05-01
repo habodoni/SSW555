@@ -8,7 +8,7 @@ var intro_cards = [
 	"Each astronaut on your crew has a special role...",
 	"Use the WASD keys or Arrow keys to move your astronaut around the ship...",
 	"You will find food packs floating in the ship...",
-	"Pay close attention to your ship’s resources...",
+	"Pay close attention to your ship's resources...",
 	"If any resource reaches zero, the mission will fail...",
 	"Press [E] near terminals to engage with computers or start a mini-game.",	
 	"Press [X] to switch between crew members at any time.",

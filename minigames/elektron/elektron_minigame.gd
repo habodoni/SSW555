@@ -123,17 +123,17 @@ func _on_command_button(command):
 		command_index += 1
 		match command:
 			"Power On":
-				instructions_label.text = "✅ Power is ON! The Elektron system is now awake and ready to fix our oxygen problem. Next let's ensure proper Water Flow"
+				instructions_label.text = "Power is ON! The Elektron system is now awake and ready to fix our oxygen problem. Next let's ensure proper Water Flow"
 			"Water Flow":
-				instructions_label.text = "✅ Water is now flowing through the machine. We need water to make oxygen! Next let's begin the process of splitting Hydrogen and Oxygen molecules through Electrolysis"
+				instructions_label.text = "Water is now flowing through the machine. We need water to make oxygen! Next let's begin the process of splitting Hydrogen and Oxygen molecules through Electrolysis"
 			"Electrolysis Start":
-				instructions_label.text = "✅ Electrolysis started! This step splits water into two gases: oxygen (for us) and hydrogen (which we don’t need). We can now get rid of the hydrogen through Hydrogen Purge"
+				instructions_label.text = "Electrolysis started! This step splits water into two gases: oxygen (for us) and hydrogen (which we don’t need). We can now get rid of the hydrogen through Hydrogen Purge"
 			"Hydrogen Purge":
-				instructions_label.text = "✅ Hydrogen is being purged! We're removing the extra hydrogen so only safe oxygen stays."
+				instructions_label.text = "Hydrogen is being purged! We're removing the extra hydrogen so only safe oxygen stays."
 
 		if command_index == command_sequence.size():
 			minigame_completed = true
-			complete_minigame("✅ Hydrogen is being purged! We're removing the extra hydrogen so only safe oxygen stays. \n\nAll steps complete. Oxygen system restored!")
+			complete_minigame("Hydrogen is being purged! We're removing the extra hydrogen so only safe oxygen stays. \n\nAll steps complete. Oxygen system restored!")
 	else:
 		command_index = 0
 		instructions_label.text = "Oops! Wrong step. Start again with 'Power On'."

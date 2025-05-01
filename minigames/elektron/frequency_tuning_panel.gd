@@ -73,7 +73,7 @@ func _process(delta):
 
 	# 4) Update status and lock state
 	if diff < tolerance:
-		status_label.text = "✅ Frequency Locked!"
+		status_label.text = "Frequency Locked!"
 		is_locked = true
 	else:
 		is_locked = false
