@@ -58,13 +58,13 @@ func _process(delta):
 
 func handle_input(delta):
 	if Input.is_action_pressed("left"):
-		angle -= turn_speed * delta
+		angle -= turn_speed * delta / 10
 	if Input.is_action_pressed("right"):
-		angle += turn_speed * delta
+		angle += turn_speed * delta / 10
 	if Input.is_action_pressed("up"):
-		thrust_power += 10
+		thrust_power += 5
 	if Input.is_action_pressed("down"):
-		thrust_power -= 10
+		thrust_power -= 5
 	if thrust_power < 0:
 		thrust_power = 0
 

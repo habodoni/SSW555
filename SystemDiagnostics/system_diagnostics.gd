@@ -33,6 +33,7 @@ func _ready():
 	# Set instruction text
 	if instruction_label:
 		instruction_label.text = "Press 'E' to return to ship"
+	$FrequencyTuning.hide()
 
 func _process(delta):
 	# Check for 'E' key press to exit

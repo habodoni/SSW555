@@ -35,16 +35,19 @@ func _ready() -> void:
 	add_child(astronaut_1)
 	astronaut_1.setup(true, 0, 0)
 	astronaut_1.set_role("Navigator")
+	astronaut_1.get_node("AnimatedSprite2D").modulate = Color("#ff8877")
 	
 	var astronaut_2 = astronaut.instantiate()
 	add_child(astronaut_2)
 	astronaut_2.setup(false, 416, -180)
 	astronaut_2.set_role("Mechanic")
+	astronaut_2.get_node("AnimatedSprite2D").modulate = Color("#ffb778")
 	
 	var astronaut_3 = astronaut.instantiate()
 	add_child(astronaut_3)
 	astronaut_3.setup(false, -162, -180)
 	astronaut_3.set_role("Scientist")
+	astronaut_3.get_node("AnimatedSprite2D").modulate = Color("#a6ebff")
 	
 	var task_markers = [minigame_3_marker, oxygen_minigame_marker, minigame_2_marker, system_diagnostics_marker]
 	

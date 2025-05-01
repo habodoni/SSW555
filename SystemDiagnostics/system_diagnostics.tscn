@@ -158,6 +158,7 @@ text = "Mission Control"
 horizontal_alignment = 1
 
 [node name="FrequencyTuningPanel" parent="." instance=ExtResource("8_u1frw")]
+visible = false
 layout_mode = 1
 offset_left = 136.0
 offset_top = 275.0
