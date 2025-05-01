@@ -4,6 +4,7 @@ extends Node
 var system_status = {
 	"oxygen": false,
 	"navigation": false,
+	"waste": false
 	# Add more systems as you create them
 }
 
