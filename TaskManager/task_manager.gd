@@ -21,7 +21,7 @@ var outro_cards = [
 	"Your teamwork and quick thinking kept the ship and crew safe...",
 	"The data you gathered will help future explorers...",
 	"Mission Control thanks you for your courage...",
-	"Mission Complete. Welcome home."
+	"Mission Complete. \nWelcome home.\n [Press next to restart]"
 ]
 
 @onready var instruction_popup = $InstructionPopup
@@ -57,3 +57,9 @@ func task_done():
 		task_markers[tasks_done].activate()
 	else:
 		instruction_popup.show_cards(outro_cards)
+
+func end_cards():
+	if tasks_done < tasks.size():
+		get_parent().astronaut_1.health = 100
+	else:
+		get_tree().change_scene_to_file("res://SpaceTravel/SpaceTravel.tscn")

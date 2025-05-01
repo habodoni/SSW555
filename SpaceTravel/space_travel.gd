@@ -28,22 +28,25 @@ var minigame_active = false
 var count = 0
 var cardDeal = 250
 
+var astronaut_1
+var astronaut_2
+var astronaut_3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var astronaut_1 = astronaut.instantiate()
+	astronaut_1 = astronaut.instantiate()
 	add_child(astronaut_1)
 	astronaut_1.setup(true, 0, 0)
 	astronaut_1.set_role("Navigator")
 	astronaut_1.get_node("AnimatedSprite2D").modulate = Color("#ff8877")
 	
-	var astronaut_2 = astronaut.instantiate()
+	astronaut_2 = astronaut.instantiate()
 	add_child(astronaut_2)
 	astronaut_2.setup(false, 416, -180)
 	astronaut_2.set_role("Mechanic")
 	astronaut_2.get_node("AnimatedSprite2D").modulate = Color("#ffb778")
 	
-	var astronaut_3 = astronaut.instantiate()
+	astronaut_3 = astronaut.instantiate()
 	add_child(astronaut_3)
 	astronaut_3.setup(false, -162, -180)
 	astronaut_3.set_role("Scientist")

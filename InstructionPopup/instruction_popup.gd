@@ -19,11 +19,15 @@ func show_cards(new_cards: Array, callback = null) -> void:
 	show()
 
 func _on_next_pressed() -> void:
+	get_parent().get_parent().astronaut_1.health = 100
+	get_parent().get_parent().astronaut_2.health = 100
+	get_parent().get_parent().astronaut_3.health = 100
 	current_index += 1
 	if current_index < cards.size():
 		card_text.text = cards[current_index]
 	else:
 		hide()
 		$DimBackground.visible = false
+		get_parent().end_cards()
 		if on_done_callback:
 			on_done_callback.call()
